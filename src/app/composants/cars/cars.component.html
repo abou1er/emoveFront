@@ -1,16 +1,28 @@
-<div class="row row-cols-1 row-cols-md-3 g-4">
+<h2 class="text-center text-success mb-5 p-5 bg-light">Voitures</h2>
 
-    <div class="col">
-        <div class="card h-100">
-            <img src="..." class="card-img-top" style="max-height: 300px ; object-fit: cover; " alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-            </div>
-            <div class="card-footer">
-                <small class="text-muted">Last updated 3 mins ago</small>
+<div class="container">
+
+<!-- Affichage Principal Cards -->
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+
+        <div class="col" *ngFor="let car of Cars">
+            <div class="card h-100">
+                <img src="{{car.image}}" class="card-img-top" style="max-height: 300px ; object-fit: cover;">
+                <div class="card-body text-center">
+                    <h5 class="card-title">{{car.marque}}+{{car.modele}}</h5>
+                    <ul class="list-group list-group-flush text-center">
+                        <li class="list-group-item" style="height: 64px;">{{car.marque}}</li>
+                        <li class="list-group-item" style="height: 32px;">{{car.modele}}</li>
+                        <li class="list-group-item" style="height: 32px;">{{car.puissance}}</li>
+                        <li class="list-group-item" style="height: 32px;"><b>{{car.prix}} €</b></li>
+                    </ul>
+                </div>
+                <div class="card-footer text-center">
+                    <small class="text-muted">Détails</small>
+                </div>
             </div>
         </div>
+
     </div>
 
 </div>
