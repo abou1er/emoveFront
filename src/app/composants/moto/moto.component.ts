@@ -9,9 +9,34 @@ import { UsersService } from 'src/app/services/users.service';
 })
 export class MotoComponent implements OnInit {
 
+  Motos: any;
+  detailRecup : any
+  waitInfo : boolean = false
+
   constructor(private productsservice: ProductsService, private usersservice: UsersService) { }
 
   ngOnInit(): void {
+    this.getMotos();
+  }
+
+
+  getMotos(){
+    this.productsservice.getMotos().subscribe(data =>{
+      this.Motos = data
+      console.log(this.Motos);
+      
+    })
+  }
+
+  getDetail(c : any){
+    this.waitInfo = true;
+    this.detailRecup = c;
+    
+    console.log(this.detailRecup);
+    console.log(this.detailRecup.description);
+
+    
+    
   }
 
 }

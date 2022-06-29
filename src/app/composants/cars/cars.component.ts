@@ -11,12 +11,13 @@ import { UsersService } from 'src/app/services/users.service';
 export class CarsComponent implements OnInit {
 
 Cars: any;
-
+ detailRecup : any
+ waitInfo : boolean = false
 
   constructor(private productsservice: ProductsService, private usersservice: UsersService) { }
 
   ngOnInit(): void {
-  this.getCars()
+  this.getCars();
   }
 
   getCars(){
@@ -25,6 +26,17 @@ Cars: any;
       console.log(this.Cars);
       
     })
+  }
+
+  getDetail(c : any){
+    this.waitInfo = true;
+    this.detailRecup = c;
+    
+    console.log(this.detailRecup);
+    console.log(this.detailRecup.description);
+
+    
+    
   }
 
 }

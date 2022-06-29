@@ -25,8 +25,11 @@ getMotos(){
 
 // méthode GET Trottinettes
 getTrottinettes(){
-  return this.http.get("http://localhost:7878/tottinettes");
+  return this.http.get("http://localhost:7878/trottinettes");
 }
 
 
+updateVoiture(voiture :  any){
+  return this.http.patch("http://localhost:7878/"+voiture._id, voiture)
+}
 }
