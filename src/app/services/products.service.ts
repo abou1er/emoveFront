@@ -8,4 +8,26 @@ import { HttpClient } from '@angular/common/http';
 export class ProductsService {
 
   constructor(private http: HttpClient) { }
+
+// méthode GET TOUS les Produits
+getAll(){
+  return this.http.get("http://localhost:7878");
+}
+
+// méthode GET Voitures
+getVoitures(){
+  return this.http.get("http://localhost:7878/voitures");
+}
+
+// méthode GET Motos
+getMotos(){
+  return this.http.get("http://localhost:7878/motos");
+}
+
+// méthode GET Trottinettes
+getTrottinettes(){
+  return this.http.get("http://localhost:7878/tottinettes");
+}
+
+
 }

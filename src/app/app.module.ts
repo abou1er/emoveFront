@@ -3,6 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+
+// import des composants
 import { HomeComponent } from './composants/home/home.component';
 import { BarnavComponent } from './composants/barnav/barnav.component';
 import { FooterComponent } from './composants/footer/footer.component';
@@ -12,9 +14,16 @@ import { MotoComponent } from './composants/moto/moto.component';
 import { TrottinetteComponent } from './composants/trottinette/trottinette.component';
 import { GestionAdminComponent } from './composants/gestion-admin/gestion-admin.component';
 
+// import du FormsModule qui active les futures balises <form>
+import { FormsModule } from '@angular/forms';
+
+// import pour le service HttpClientModule
+import { HttpClientModule } from '@angular/common/http';
+
 @NgModule({
   declarations: [
     AppComponent,
+
     HomeComponent,
     BarnavComponent,
     FooterComponent,
@@ -27,7 +36,10 @@ import { GestionAdminComponent } from './composants/gestion-admin/gestion-admin.
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+
+    FormsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
