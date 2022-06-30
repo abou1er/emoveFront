@@ -29,7 +29,15 @@ getTrottinettes(){
 }
 
 
-updateVoiture(voiture :  any){
-  return this.http.patch("http://localhost:7878/"+voiture._id, voiture)
+getbyCategoVehicule(catego:any){
+  return this.http.get(`http://localhost:7878/byCat?categorie=${catego}`);
+}
+
+getbyPermis(permis:any){
+  return this.http.get(`http://localhost:7878/byCat?permis=${permis}`);
+}
+
+updateV(v:any){
+  return this.http.patch("http://localhost:7878/"+v._id, v)
 }
 }

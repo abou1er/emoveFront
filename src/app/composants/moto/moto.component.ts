@@ -12,6 +12,7 @@ export class MotoComponent implements OnInit {
   Motos: any;
   detailRecup : any
   waitInfo : boolean = false
+  motoCategory = "moto";
 
   constructor(private productsservice: ProductsService, private usersservice: UsersService) { }
 
@@ -21,7 +22,7 @@ export class MotoComponent implements OnInit {
 
 
   getMotos(){
-    this.productsservice.getMotos().subscribe(data =>{
+    this.productsservice.getbyCategoVehicule(this.motoCategory).subscribe(data =>{
       this.Motos = data
       console.log(this.Motos);
       
@@ -35,8 +36,6 @@ export class MotoComponent implements OnInit {
     console.log(this.detailRecup);
     console.log(this.detailRecup.description);
 
-    
-    
   }
 
 }

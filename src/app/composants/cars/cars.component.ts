@@ -13,6 +13,7 @@ export class CarsComponent implements OnInit {
 Cars: any;
  detailRecup : any
  waitInfo : boolean = false
+ carsCategory = "voiture";
 
   constructor(private productsservice: ProductsService, private usersservice: UsersService) { }
 
@@ -21,12 +22,13 @@ Cars: any;
   }
 
   getCars(){
-    this.productsservice.getVoitures().subscribe(data =>{
+    this.productsservice.getbyCategoVehicule(this.carsCategory).subscribe(data =>{
       this.Cars = data
       console.log(this.Cars);
       
     })
   }
+  
 
   getDetail(c : any){
     this.waitInfo = true;
