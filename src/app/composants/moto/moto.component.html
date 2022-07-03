@@ -1,8 +1,41 @@
 <h2 class="text-center text-success mb-5 p-5 bg-light">Moto</h2>
 
+<div class="container mb-5">
+  <!-- <div class="row"> -->
+    <!--------------------------------------------- ZONE de RECHERCHE ---------------------------------->
+    <!-- <div class="col-6">
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="saisir votre recherche" aria-label="Search"
+          name="KeyWord" [(ngModel)]="MotCle">
+        <button class="btn btn-outline-success me-5" type="submit" (click)="getByMotCle()">Chercher</button>
+      </form>
+    </div> -->
+    <!---------------------------------- Prix MINI / Prix MAX / Chercher ---------------------------------------->
+    <!-- <div class="col-6"> -->
+      <form class="row" (ngSubmit)="getByPrix(f.value)" #f="ngForm">
+        
+        <div class="col-3">
+          <button type="text" class="form-control">Recherche par prix</button>
+        </div>
+        
+        <div class="col-3">
+          <input type="number" ngModel name="min" class="form-control" placeholder="mini">
+        </div>
+        <div class="col-3">
+          <input type="number" ngModel name="max" class="form-control" placeholder="max">
+        </div>
+        <div class="col-3">
+          <button class="btn btn-outline-success" type="submit">Chercher</button>
+        </div>
+      </form>
+    <!-- </div> -->
+  <!-- </div> -->
+
+</div>
+
+<!----------------------------------------- PARTIE PRINCIPALE -------------------------------------------->
 <div class="container">
- 
-    
+
   <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 g-4">
     <div class="col" *ngFor="let moto of Motos">
       <div class="card h-100">
@@ -17,32 +50,38 @@
           </ul>
         </div>
         <div class="card-footer text-center">
-        
-          <button type="button" (click)="getDetail(moto)" class="btn " data-bs-toggle="modal" data-bs-target="#staticBackdrop"><small> Voir plus de
+
+          <button type="button" (click)="getDetail(moto)" class="btn " data-bs-toggle="modal"
+            data-bs-target="#staticBackdrop"><small> Voir plus de
               détails </small></button>
 
         </div>
       </div>
     </div>
   </div>
+
 </div>
 
 
 
-<!-- Modal all info--><!-- Scrollable modal -->
+<!-- Modal all info-->
+<!-- Scrollable modal -->
 
-<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" >
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+  aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog  modal-dialog-scrollable modal-fullscreen">
     <div class="modal-content" *ngIf="waitInfo">
       <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel">{{this.detailRecup.marque}} {{this.detailRecup.modele}}   <small>Prix : </small>{{this.detailRecup.prix}} €</h5>
+        <h5 class="modal-title" id="staticBackdropLabel">{{this.detailRecup.marque}} {{this.detailRecup.modele}}
+          <small>Prix : </small>{{this.detailRecup.prix}} €
+        </h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <div class="container-fluid">
 
           <!-- grande carte -->
-          <div class="card mb-3" >
+          <div class="card mb-3">
             <div class="row g-0">
               <div class="col-md-6 col-lg-7">
                 <!-- <img src="{{this.detailRecup.image3}}" class="img-fluid rounded-start" alt="..."> -->
@@ -50,9 +89,12 @@
                 <!-- carousel -->
                 <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
                   <div class="carousel-indicators bg-dark rounded-pill">
-                    <button  type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                    <button  type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                    <button  type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
+                      class="active" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                      aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                      aria-label="Slide 3"></button>
                   </div>
                   <div class="carousel-inner">
                     <div class="carousel-item active">
@@ -65,11 +107,13 @@
                       <img src="{{this.detailRecup.image3}}" class="d-block w-100" alt="...">
                     </div>
                   </div>
-                  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+                    data-bs-slide="prev">
                     <span class="carousel-control-prev-icon rounded-circle bg-dark" aria-hidden="true"></span>
                     <span class="visually-hidden">Previous</span>
                   </button>
-                  <button class="carousel-control-next " type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                  <button class="carousel-control-next " type="button" data-bs-target="#carouselExampleIndicators"
+                    data-bs-slide="next">
                     <span class="carousel-control-next-icon rounded-circle bg-dark " aria-hidden="true"></span>
                     <span class="visually-hidden bg-dark text-black-50">Next</span>
                   </button>
@@ -85,18 +129,26 @@
                   <p class="card-text">A propos du véhicule : {{this.detailRecup.description}}</p>
                   <p>Etat neuf</p>
                   <div class="row">
-                    <div class="col-6"><p>Autonomie : {{this.detailRecup.autonomie}}</p></div>
-                    <div class="col-6"><p>Puissance : {{this.detailRecup.puissance}}</p></div>
+                    <div class="col-6">
+                      <p>Autonomie : {{this.detailRecup.autonomie}}</p>
+                    </div>
+                    <div class="col-6">
+                      <p>Puissance : {{this.detailRecup.puissance}}</p>
+                    </div>
                   </div>
 
-                 
-                    <div ><p>Equivalent : {{this.detailRecup.equivalent}}</p></div>
-                    <!-- <div class="col-6"><p>Puissance : {{this.detailRecup.puissance}}</p></div> -->
-                  
 
-                  <div ><p class="fs-4">Permis : {{this.detailRecup.permis}}</p></div>
-                  
-                  
+                  <div>
+                    <p>Equivalent : {{this.detailRecup.equivalent}}</p>
+                  </div>
+                  <!-- <div class="col-6"><p>Puissance : {{this.detailRecup.puissance}}</p></div> -->
+
+
+                  <div>
+                    <p class="fs-4">Permis : {{this.detailRecup.permis}}</p>
+                  </div>
+
+
                   <p class="card-text"><strong class="text-muted">Prix : {{this.detailRecup.prix}} €</strong></p>
                 </div>
               </div>
@@ -105,7 +157,7 @@
           <!-- FIN grande carte -->
 
 
-        
+
         </div>
       </div>
       <div class="modal-footer">

@@ -19,8 +19,10 @@ export class ProductsComponent implements OnInit {
   trottinetteCategory ="trottinette";
 
 
+  MotCle = ""
 
-  constructor(private productsservice: ProductsService, private usersservice: UsersService) { }
+
+    constructor(private productsservice: ProductsService, private usersservice: UsersService) { }
 
   ngOnInit(): void {
     this.getallProducts()
@@ -42,6 +44,30 @@ export class ProductsComponent implements OnInit {
     console.log(this.detailRecup.description);
 
   }
+
+  // ***** méthode de recherche par  Mot Clé ******************
+  getByMotCle() {
+    this.productsservice.getByKeyWord(this.MotCle).subscribe(result => {
+      this.allProducts = result;
+    })
+  }
+
+  // ***** méthode de recherche par Catégorie ******************
+  getByCategoVehicule(C:any) {
+    this.productsservice.getbyCategoVehicule(C).subscribe(result => {
+      this.allProducts = result;
+    })
+  }
+
+  // ***** méthode de tri par PRIX***********************************
+  getByPrix(f: any) {
+    // console.log(f.min, f.max);
+    this.productsservice.getByPrix(f.min, f.max).subscribe(result => {
+      this.allProducts = result;
+      // console.log(result);
+    })
+  }
+
 
 
   // getCars(){
