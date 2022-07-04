@@ -40,4 +40,15 @@ getbyPermis(permis:any){
 updateV(v:any){
   return this.http.patch("http://localhost:7878/"+v._id, v)
 }
+
+getByPrix(min:any, max:any){
+  return this.http.get(`http://localhost:7878/byPrice?min=${min}&max=${max}`);
+}
+
+getByKeyWord(k:any){
+  return this.http.get(`http://localhost:7878/byKeyWord?Key=${k}`)
+}
+
+
+
 }
