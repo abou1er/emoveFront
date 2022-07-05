@@ -1,18 +1,9 @@
 <h2 class="text-center text-success mb-5 p-5 bg-light">Moto</h2>
 
+
 <div class="container mb-5">
-  <!-- <div class="row"> -->
-    <!--------------------------------------------- ZONE de RECHERCHE ---------------------------------->
-    <!-- <div class="col-6">
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="saisir votre recherche" aria-label="Search"
-          name="KeyWord" [(ngModel)]="MotCle">
-        <button class="btn btn-outline-success me-5" type="submit" (click)="getByMotCle()">Chercher</button>
-      </form>
-    </div> -->
-    <!---------------------------------- Prix MINI / Prix MAX / Chercher ---------------------------------------->
-    <!-- <div class="col-6"> -->
-      <form class="row" (ngSubmit)="getByPrix(f.value)" #f="ngForm">
+
+      <form class="row" (ngSubmit)="getMotosByPrix(f.value, this.Motos.categorie)" #f="ngForm">
         
         <div class="col-3">
           <p class="btn btn-outline-success">Recherche par prix</p>
@@ -45,7 +36,7 @@
           <ul class="list-group list-group-flush text-center">
             <li class="list-group-item" style="height: 64px">{{ moto.marque }}</li>
             <li class="list-group-item" style="height: 32px">{{ moto.modele }}</li>
-            <li class="list-group-item" style="height: 32px">{{ moto.puissance }}</li>
+            <li class="list-group-item" style="height: 32px">Puissance {{ moto.puissance }} Watt</li>
             <li class="list-group-item" style="height: 32px"><b>{{ moto.prix }} €</b></li>
           </ul>
         </div>

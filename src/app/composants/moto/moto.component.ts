@@ -9,6 +9,9 @@ import { UsersService } from 'src/app/services/users.service';
 })
 export class MotoComponent implements OnInit {
 
+//http://localhost:7878/byCat?categorie=trottinette&pricemin=300&pricemax=50000
+
+
   Motos: any;
   detailRecup: any
   waitInfo: boolean = false
@@ -43,9 +46,23 @@ export class MotoComponent implements OnInit {
     // console.log(f.min, f.max);
     this.productsservice.getByPrix(f.min, f.max).subscribe(result => {
       this.Motos = result;
-      // console.log(result);
+      //console.log(result);
     })
   }
+
+   // ***** méthode de tri par PRIX tes moto***********************************
+   getMotosByPrix(f: any, moto : any) {
+    console.log(f.min, f.max, );
+    // console.log(moto.categorie);
+      
+    this.productsservice.getMotosByPrix(f.min, f.max).subscribe(result => {
+      this.Motos = result;
+      console.log( this.Motos);
+      
+      
+    })
+  }
+
 
   // ***** méthode de recherche par  Mot Clé ******************
   getByMotCle() {

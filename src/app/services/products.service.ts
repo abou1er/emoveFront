@@ -5,48 +5,59 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class ProductsService {
-
+  URL = "https://scenic-congaree-98068.herokuapp.com"
   constructor(private http: HttpClient) { }
 
 // méthode GET TOUS les Produits
 getAll(){
-  return this.http.get("http://localhost:7878");
+  return this.http.get(this.URL);
 }
 
 // méthode GET Voitures
 getVoitures(){
-  return this.http.get("http://localhost:7878/voitures");
+  return this.http.get(`${this.URL}/voitures`);
 }
 
 // méthode GET Motos
 getMotos(){
-  return this.http.get("http://localhost:7878/motos");
+  return this.http.get(`${this.URL}/motos`);
 }
 
 // méthode GET Trottinettes
 getTrottinettes(){
-  return this.http.get("http://localhost:7878/trottinettes");
+  return this.http.get(`${this.URL}/trottinettes`);
 }
 
 
 getbyCategoVehicule(catego:any){
-  return this.http.get(`http://localhost:7878/byCat?categorie=${catego}`);
+  return this.http.get(`${this.URL}/byCat/cat/cat?categorie=${catego}`);
 }
 
 getbyPermis(permis:any){
-  return this.http.get(`http://localhost:7878/byCat?permis=${permis}`);
+  return this.http.get(`${this.URL}/byCat/cat/cat?permis=${permis}`);
 }
 
 updateV(v:any){
-  return this.http.patch("http://localhost:7878/"+v._id, v)
+  return this.http.patch(`${this.URL}/v._id`, v)
 }
 
 getByPrix(min:any, max:any){
-  return this.http.get(`http://localhost:7878/byPrice?min=${min}&max=${max}`);
+  return this.http.get(`${this.URL}/byPrice?min=${min}&max=${max}`);
 }
 
+getMotosByPrix(min:any, max:any){
+  return this.http.get(`${this.URL}/byCat/moto/by/price?min=${min}&max=${max}&categorie=moto`);
+}
+
+// getMotosByPrix(min:any, max:any, catego:any){
+//   return this.http.get(`${this.URL}/byCat/moto/by/price?min=${min}&max=${max}&categorie=${catego}`);
+// }
+
+
 getByKeyWord(k:any){
-  return this.http.get(`http://localhost:7878/byKeyWord?Key=${k}`)
+  return this.http.get(`${this.URL}/byKeyWord/kw?Key=${k}`)
+
+  
 }
 
 
