@@ -19,6 +19,7 @@ import { FormsModule } from '@angular/forms';
 
 // import pour le service HttpClientModule
 import { HttpClientModule } from '@angular/common/http';
+import { AjoutervehiculeComponent } from './composants/ajoutervehicule/ajoutervehicule.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,8 @@ import { HttpClientModule } from '@angular/common/http';
     MotoComponent,
     TrottinetteComponent,
     GestionAdminComponent,
+    AjoutervehiculeComponent,
+    
 
   ],
   imports: [
