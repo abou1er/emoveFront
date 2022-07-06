@@ -13,14 +13,14 @@
                 <th>Autonomie </th>
                 <th>Prix</th>
                 <th>Image</th>
-                <th>Images</th>
+                <!-- <th>Images</th> -->
                 <th>Détails</th>
 
 
 
-                
-                <!-- <th>Supprimer résa  </th>
-                <th>Réservé/Annulé </th>
+                <th>Supprimer véhicule  </th>
+
+                <!--<th>Réservé/Annulé </th>
                 <th>Modifier info </th> -->
     
             </tr>
@@ -39,59 +39,14 @@
                     <img src="{{allP.image}}" class="card-img-top" style="max-height: 50px; object-fit: cover" alt="">
                 </td>
 
-                        <!-- test -->
-                    <td>
-<!-- carousel -->
-<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-    <!-- <div class="carousel-indicators bg-dark rounded-pill">
-      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
-        class="active" aria-current="true" aria-label="Slide 1"></button>
-      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
-        aria-label="Slide 2"></button>
-      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
-        aria-label="Slide 3"></button>
-    </div> -->
-    <div class="carousel-inner">
-      <div class="carousel-item active" style="max-width: 50px; max-height: 50px;">
-        <img src="{{allP.image}}" class="d-block w-100" style="max-height: 50px; object-fit: cover" alt="...">
-      </div>
-      <div class="carousel-item" style="max-width: 50px; max-height: 50px;">
-        <img src="{{allP.image2}}" class="d-block w-100" style="max-height: 50px; object-fit: cover" alt="...">
-      </div>
-      <div class="carousel-item" style="max-width: 50px; max-height: 50px;">
-        <img src="{{allP.image3}}" class="d-block w-100" style="max-height: 50px; object-fit: cover" alt="...">
-      </div>
-    </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
-      data-bs-slide="prev">
-      <span class="carousel-control-prev-icon rounded-circle bg-dark" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next " type="button" data-bs-target="#carouselExampleIndicators"
-      data-bs-slide="next">
-      <span class="carousel-control-next-icon rounded-circle bg-dark " aria-hidden="true"></span>
-      <span class="visually-hidden bg-dark text-black-50">Next</span>
-    </button>
-  </div>
-  <!-- carousel -->
-                    </td>
-                    <!-- test -->
-
 
                 <td> <button type="button" class="btn btn-outline-dark" (click)="getDetail(allP)"  data-bs-toggle="modal"
                     data-bs-target="#staticBackdrop"><small> Voir plus de
                       détails </small></button></td>
+
+
+                      <td><button type="button" class="btn btn-danger" (click)="deleteV(allP._id)" >Supprimer</button></td>
                 
-    
-                <!-- <td><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" > Supprimer la reservation</button> </td>         
-                
-                <td><button type="button" class="btn btn-primary"  > 
-                  <strong *ngIf="allP.confirme"> Réservé</strong>
-                  <strong *ngIf="!allP.confirme"  class="bg-warning"> Annulé</strong>
-                </button> </td>   
-                
-                <td><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#updateModal"  > Modifier la reservation</button> </td>  -->
-          
               </tr>
         </tbody>
     </table>

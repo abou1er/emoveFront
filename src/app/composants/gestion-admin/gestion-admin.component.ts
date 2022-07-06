@@ -40,4 +40,17 @@ export class GestionAdminComponent implements OnInit {
 
   }
 
+  
+
+
+  deleteV(_id:any){
+    
+    console.log("avant vehicule avec id", _id , "delete" );
+    this.adminService.deleteV(_id).subscribe(() =>{
+      
+      console.log("apres vehicule avec id", _id , "delete" );
+    })
+
+  }
+
 }
