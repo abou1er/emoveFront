@@ -20,7 +20,7 @@ export class AdminService {
 
 
   deleteV(_id:any){
-    return this.http.delete(this.URL,_id);
+    return this.http.delete(this.URL+"/"+_id);
   }
 
 }

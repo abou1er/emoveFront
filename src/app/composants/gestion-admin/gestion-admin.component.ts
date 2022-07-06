@@ -22,8 +22,7 @@ export class GestionAdminComponent implements OnInit {
     this.getallProducts()
   }
 
-  getallProducts(){
-    
+  getallProducts(){    
     this.adminService.getAll().subscribe(data =>{
       this.allProducts = data
       console.log(this.allProducts);

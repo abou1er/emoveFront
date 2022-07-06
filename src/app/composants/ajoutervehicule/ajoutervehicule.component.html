@@ -1,7 +1,4 @@
-<p>ajoutervehicule works!</p>
 
-
-<p>ajouterunproduit works!</p>
 <div class="container mt-5 mb-5">
 
     <h4 class=" text-center m-auto mb-5">Ajouter un produit</h4>
@@ -9,14 +6,9 @@
 
     <form (ngSubmit)="saveV(produitForm)" #produitForm="ngForm">
 
-        <!-- <select name="categorie" ngModel="" class="form-select" aria-label="Default select example" >
-            <option selected>choisir une catégorie</option>
-            <option value="voiture"  ngModel>voiture</option>
-            <option value="moto"  ngModel>moto</option>
-            <option value="trottinette"  ngModel>trottinette</option>
-          </select> -->
+      
 
-          <div name="categorie1" class="col-md-4">
+        <div name="categorie1" class="col-md-4 mb-3">
             <label  for="inputState" class="form-label">Catégorie véhicule</label>
             <select name="categorie" ngModel="" id="categorie" class="form-select">
             
@@ -61,8 +53,8 @@
                 aria-describedby="basic-addon3" ngModel>
         </div>
 
-        <div name="permis1" class="col-md-4">
-            <label  for="inputState" class="form-label">Si moto choisir type de permis</label>
+        <div name="permis1" class="col-md-4 mb-3">
+            <label  for="inputState" class="form-label ">Si moto choisir type de permis</label>
             <select name="permis"  ngModel="" id="permis" class="form-select">
             
             <option value="permis moto" >permis moto</option>
@@ -140,7 +132,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <a class="nav-link" routerLink="/produits"><button class="btn btn-primary " data-bs-dismiss="modal" >Voir les produits</button></a>
+                    <a class="nav-link" routerLink="/products"><button class="btn btn-primary " data-bs-dismiss="modal" >Voir les produits</button></a>
                 </div>
             </div>
         </div>
