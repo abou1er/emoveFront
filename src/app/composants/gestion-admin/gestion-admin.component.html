@@ -11,14 +11,14 @@
                 <th>Autonomie </th>
                 <th>Prix</th>
                 <th>Image</th>
-                <th>Images</th>
+                <!-- <th>Images</th> -->
                 <th>Détails</th>
 
 
 
-                
-                <!-- <th>Supprimer résa  </th>
-                <th>Réservé/Annulé </th>
+                <th>Supprimer véhicule  </th>
+
+                <!--<th>Réservé/Annulé </th>
                 <th>Modifier info </th> -->
     
             </tr>
@@ -37,69 +37,81 @@
                     <img src="{{allP.image}}" class="card-img-top" style="max-height: 50px; object-fit: cover" alt="">
                 </td>
 
-                        <!-- test -->
-                    <td>
-<!-- carousel -->
-<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-    <!-- <div class="carousel-indicators bg-dark rounded-pill">
-      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
-        class="active" aria-current="true" aria-label="Slide 1"></button>
-      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
-        aria-label="Slide 2"></button>
-      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
-        aria-label="Slide 3"></button>
-    </div> -->
-    <div class="carousel-inner">
-      <div class="carousel-item active" style="max-width: 50px; max-height: 50px;">
-        <img src="{{allP.image}}" class="d-block w-100" style="max-height: 50px; object-fit: cover" alt="...">
-      </div>
-      <div class="carousel-item" style="max-width: 50px; max-height: 50px;">
-        <img src="{{allP.image2}}" class="d-block w-100" style="max-height: 50px; object-fit: cover" alt="...">
-      </div>
-      <div class="carousel-item" style="max-width: 50px; max-height: 50px;">
-        <img src="{{allP.image3}}" class="d-block w-100" style="max-height: 50px; object-fit: cover" alt="...">
-      </div>
-    </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
-      data-bs-slide="prev">
-      <span class="carousel-control-prev-icon rounded-circle bg-dark" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next " type="button" data-bs-target="#carouselExampleIndicators"
-      data-bs-slide="next">
-      <span class="carousel-control-next-icon rounded-circle bg-dark " aria-hidden="true"></span>
-      <span class="visually-hidden bg-dark text-black-50">Next</span>
-    </button>
-  </div>
-  <!-- carousel -->
-                    </td>
-                    <!-- test -->
-
 
                 <td> <button type="button" class="btn btn-outline-dark" (click)="getDetail(allP)"  data-bs-toggle="modal"
                     data-bs-target="#staticBackdrop"><small> Voir plus de
                       détails </small></button></td>
-                
-    
-                <!-- <td><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" > Supprimer la reservation</button> </td>         
-                
-                <td><button type="button" class="btn btn-primary"  > 
-                  <strong *ngIf="allP.confirme"> Réservé</strong>
-                  <strong *ngIf="!allP.confirme"  class="bg-warning"> Annulé</strong>
-                </button> </td>   
-                
-                <td><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#updateModal"  > Modifier la reservation</button> </td>  -->
-          
+
+
+                      <td>
+                        <!-- DELETE Button trigger modal -->
+                          <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal" (click)="getDetail(allP)">
+                            Supprimer
+                          </button>
+                      </td>
+                          
               </tr>
         </tbody>
+
     </table>
 
+
+<!-- MODAL DELETE -->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+  <div class="modal-dialog  modal-lg modal-dialog-scrollable">
+    <div class="modal-content" style="height: 450px;" *ngIf="waitInfo">
+      <div class="modal-header">
+        <h5 class="modal-title" id="deleteModalLabel">Supprimer {{this.detailRecup.marque}} {{this.detailRecup.modele}} </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" >
+        Etes vous sur de vouloir supprimer ce véhicule. Cette action est définitive.
+            <div class="row">
+              <div class="col-4"><div class="" style="max-width: 250px; max-height: 250px;"> <img src="{{this.detailRecup.image}}" class="d-block w-100" alt="..." style="max-height: 250px; object-fit: cover"></div>
+              </div>
+
+              <div class="col-4"><div class="" style="max-width: 250px; max-height: 250px;"> <img src="{{this.detailRecup.image2}}" class="d-block w-100" alt="..." style="max-height: 250px; object-fit: cover"></div>
+              </div>
+
+              <div class="col-4"><div class="" style="max-width: 250px; max-height: 250px;"> <img src="{{this.detailRecup.image3}}" class="d-block w-100" alt="..." style="max-height: 250px; object-fit: cover"></div>
+              </div>
+            </div>
+      </div>
+
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-bs-dismiss="modal" >Close</button>
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal"  (click)="deleteV(this.detailRecup._id)" >Supprimer modal</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- FIN MODAL DELETE -->
+
+<!-- CONFIRM DELETE -->
+<!-- Modal -->
+<div class="modal fade" id="confirmDeleteModal" tabindex="-1" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content" *ngIf="waitInfo">
+      <div class="modal-header">
+        <h5 class="modal-title" id="confirmDeleteModalLabel">Confirmation</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="getallProducts()"></button>
+      </div>
+      <div class="modal-body">
+        Le véhicule {{this.detailRecup.marque}} {{this.detailRecup.modele}} a bien été supprimé.
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="getallProducts()">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- FIN CONFIRM DELETE -->
 
 
 
     <!-- modal détail -->
-    
-
 <!-- Modal all info-->
 <!-- Scrollable modal -->
 
@@ -108,7 +120,8 @@ aria-labelledby="staticBackdropLabel" aria-hidden="true">
 <div class="modal-dialog  modal-dialog-scrollable modal-fullscreen">
   <div class="modal-content" *ngIf="waitInfo">
     <div class="modal-header">
-      <h5 class="modal-title" id="staticBackdropLabel">{{this.detailRecup.marque}} {{this.detailRecup.modele}}
+      
+      <h5 class="modal-title" id="staticBackdropLabel"> <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> {{this.detailRecup.marque}} {{this.detailRecup.modele}}
         <small>Prix : </small>{{this.detailRecup.prix}} €
       </h5>
       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>

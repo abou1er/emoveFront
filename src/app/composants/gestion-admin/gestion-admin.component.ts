@@ -22,8 +22,7 @@ export class GestionAdminComponent implements OnInit {
     this.getallProducts()
   }
 
-  getallProducts(){
-    
+  getallProducts(){    
     this.adminService.getAll().subscribe(data =>{
       this.allProducts = data
       console.log(this.allProducts);
@@ -37,6 +36,19 @@ export class GestionAdminComponent implements OnInit {
     
     console.log(this.detailRecup);
     console.log(this.detailRecup.description);
+
+  }
+
+  
+
+
+  deleteV(_id:any){
+    
+    console.log("avant vehicule avec id", _id , "delete" );
+    this.adminService.deleteV(_id).subscribe(() =>{
+      
+      console.log("apres vehicule avec id", _id , "delete" );
+    })
 
   }
 
