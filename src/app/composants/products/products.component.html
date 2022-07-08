@@ -59,7 +59,7 @@
         <div class="card-footer text-center">
 
           <button type="button" (click)="getDetail(allP)" class="btn " data-bs-toggle="modal"
-            data-bs-target="#staticBackdrop"><small> Voir plus de
+            data-bs-target="#allInfo"><small> Voir plus de
               détails </small></button>
 
         </div>
@@ -73,14 +73,12 @@
 
 
 <!-- Modal all info-->
-<!-- Scrollable modal -->
 
-<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-  aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog  modal-dialog-scrollable modal-fullscreen">
+<div class="modal fade" id="allInfo" tabindex="-1" aria-labelledby="allInfoModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-fullscreen">
     <div class="modal-content" *ngIf="waitInfo">
       <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel">{{this.detailRecup.marque}} {{this.detailRecup.modele}}
+        <h5 class="modal-title" id="exampleModalLabel">{{this.detailRecup.marque}} {{this.detailRecup.modele}}
           <small>Prix : </small>{{this.detailRecup.prix}} €</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
