@@ -1,4 +1,4 @@
-<nav class="navbar d-flex justify-content-between navbar-expand-lg navbar-dark bg-dark text-center text-white">
+<nav class="navbar d-flex justify-content-between navbar-expand-lg navbar-dark bg-dark text-center text-white" > 
 
   <div class="container-fluid">
 
@@ -11,32 +11,32 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     
-    <div class="collapse navbar-collapse align-self-end" id="navbarNavDropdown">
+    <div class="collapse navbar-collapse align-self-end" id="navbarNavDropdown" >
 
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link active text-white" aria-current="page" routerLink="/">Accueil</a>
+          <a class="nav-link active text-white" aria-current="page" routerLink="/" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show">Accueil</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white" routerLink="/products">TOUS nos Produits</a>
+          <a class="nav-link text-white" routerLink="/products" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show">TOUS nos Produits</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white" routerLink="/cars">Voitures</a>
+          <a class="nav-link text-white" routerLink="/cars" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show">Voitures</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle text-white" routerLink="/moto" id="navbarDropdownMenuLink" role="button"
             data-bs-toggle="dropdown" aria-expanded="false">Moto</a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <li><a class="dropdown-item text-black" routerLink="/moto">Avec Permis</a></li>
-            <li><a class="dropdown-item text-black" routerLink="/moto">Sans Permis</a></li>
+            <li><a class="dropdown-item text-black" routerLink="/moto" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show">Avec Permis</a></li>
+            <li><a class="dropdown-item text-black" routerLink="/moto" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show">Sans Permis</a></li>
           </ul>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white" routerLink="/trottinette">Trottinettes</a>
+          <a class="nav-link text-white" routerLink="/trottinette" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show">Trottinettes</a>
         </li>
 
         <li class="nav-item">
-          <a class="nav-link text-white" routerLink="/">Se Connecter</a>
+          <a class="nav-link text-white" routerLink="/" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show">Se Connecter</a>
         </li>
 
         <li class="nav-item dropdown">
@@ -45,8 +45,8 @@
             Administrateur
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <li><a class="dropdown-item text-black" routerLink="/gestionAdmin">Gestion des véhicules</a></li>
-            <li><a class="dropdown-item text-black" routerLink="/ajoutervehicule">Ajouter un véhicule</a></li>
+            <li><a class="dropdown-item text-black" routerLink="/gestionAdmin" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show">Gestion des véhicules</a></li>
+            <li><a class="dropdown-item text-black" routerLink="/ajoutervehicule" data-bs-toggle="collapse" data-bs-target=".navbar-collapse.show">Ajouter un véhicule</a></li>
           </ul>
         </li>
 
