@@ -11,35 +11,37 @@ export class ProductsComponent implements OnInit {
 
   cars: any;
   allProducts: any;
-  detailRecup : any;
-  waitInfo : boolean = false;
-  allCategory = ["voiture" , "moto","trottinette"];
+  detailRecup: any;
+  waitInfo: boolean = false;
+  allCategory = ["voiture", "moto", "trottinette"];
   carsCategory = "voiture";
   motoCategory = "moto";
-  trottinetteCategory ="trottinette";
+  trottinetteCategory = "trottinette";
 
 
   MotCle = ""
 
+  pages = [1, 2, 3, 4, 5]
 
-    constructor(private productsservice: ProductsService, private usersservice: UsersService) { }
+  constructor(private productsservice: ProductsService, private usersservice: UsersService) { }
 
   ngOnInit(): void {
-    this.getallProducts()
+    // this.getallProducts()        // plus besoin après pagination
+    this.pagination(0);
   }
 
-  getallProducts(){
-    this.productsservice.getAll().subscribe(data =>{
+  getallProducts() {
+    this.productsservice.getAll().subscribe(data => {
       this.allProducts = data
       console.log(this.allProducts);
-      
+
     })
   }
 
-  getDetail(c : any){
+  getDetail(c: any) {
     this.waitInfo = true;
     this.detailRecup = c;
-    
+
     console.log(this.detailRecup);
     console.log(this.detailRecup.description);
 
@@ -53,13 +55,13 @@ export class ProductsComponent implements OnInit {
   }
 
   // ***** méthode de recherche par Catégorie ******************
-  getByCategoVehicule(C:any) {
+  getByCategoVehicule(C: any) {
     this.productsservice.getbyCategoVehicule(C).subscribe(result => {
       this.allProducts = result;
     })
   }
 
-  // ***** méthode de tri par PRIX***********************************
+  // ***** méthode de tri par PRIX ***********************************
   getByPrix(f: any) {
     // console.log(f.min, f.max);
     this.productsservice.getByPrix(f.min, f.max).subscribe(result => {
@@ -69,12 +71,24 @@ export class ProductsComponent implements OnInit {
   }
 
 
+  // ***** méthode Pagination ****************
+  pagination(p: any) {
+    let limite = 6;
+    this.productsservice.getPagination(p, limite).subscribe(result => {
+      this.allProducts = result;
+    console.log(p, this.allProducts);
+    
+    })
+  }
+
+
+
 
   // getCars(){
   //   this.productsservice.getbyCategoVehicule(this.carsCategory).subscribe(data =>{
   //     this.cars = data
   //     console.log(this.cars);
-      
+
   //   })
   // }
 

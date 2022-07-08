@@ -56,10 +56,12 @@ getMotosByPrix(min:any, max:any){
 
 getByKeyWord(k:any){
   return this.http.get(`${this.URL}/byKeyWord/kw?Key=${k}`)
-
-  
 }
 
+
+getPagination(p:any, limite:any){
+  return this.http.get(`${this.URL}?_page=${p}&_limit=${limite}`);
+}
 
 
 

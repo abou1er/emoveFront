@@ -1,58 +1,57 @@
-<h2 class="text-center text-success mb-5 p-5 bg-light">Moto</h2>
+<h2 class="text-center text-success p-5 bg-light">Motos</h2>
+<div class="bg-dark p-3">
+  <div class="container pb-3">
+
+    <form class="row" (ngSubmit)="getMotosByPrix(f.value, this.Motos.categorie)" #f="ngForm">
+
+      <div>
+        <p class="btn btn-outline-success">Recherche par prix</p>
+      </div>
+
+      <div class="col-4">
+        <input type="number" ngModel name="min" class="form-control" placeholder="mini">
+      </div>
+      <div class="col-4">
+        <input type="number" ngModel name="max" class="form-control" placeholder="max">
+      </div>
+      <div class="col-3">
+        <button class="btn btn-outline-success" type="submit">Chercher</button>
+      </div>
+
+    </form>
+
+  </div>
 
 
-<div class="container mb-5">
+  <!----------------------------------------- PARTIE PRINCIPALE -------------------------------------------->
+  <div class="container pb-3">
 
-      <form class="row" (ngSubmit)="getMotosByPrix(f.value, this.Motos.categorie)" #f="ngForm">
-        
-        <div class="col-3">
-          <p class="btn btn-outline-success">Recherche par prix</p>
-        </div>
-        
-        <div class="col-3">
-          <input type="number" ngModel name="min" class="form-control" placeholder="mini">
-        </div>
-        <div class="col-3">
-          <input type="number" ngModel name="max" class="form-control" placeholder="max">
-        </div>
-        <div class="col-3">
-          <button class="btn btn-outline-success" type="submit">Chercher</button>
-        </div>
-      </form>
-    <!-- </div> -->
-  <!-- </div> -->
+    <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 g-4">
+      <div class="col" *ngFor="let moto of Motos">
+        <div class="card h-100">
+          <img src="{{ moto.image }}" class="card-img-top" style="max-height: 300px; object-fit: cover" />
+          <div class="card-body text-center">
+            <h5 class="card-title">{{ moto.marque }}+{{ moto.modele }}</h5>
+            <ul class="list-group list-group-flush text-center">
+              <li class="list-group-item" style="height: 64px">{{ moto.marque }}</li>
+              <li class="list-group-item" style="height: 32px">{{ moto.modele }}</li>
+              <li class="list-group-item" style="height: 32px">Puissance {{ moto.puissance }} Watt</li>
+              <li class="list-group-item" style="height: 32px"><b>{{ moto.prix }} €</b></li>
+            </ul>
+          </div>
+          <div class="card-footer text-center">
 
-</div>
+            <button type="button" (click)="getDetail(moto)" class="btn " data-bs-toggle="modal"
+              data-bs-target="#staticBackdrop"><small> Voir plus de
+                détails </small></button>
 
-<!----------------------------------------- PARTIE PRINCIPALE -------------------------------------------->
-<div class="container">
-
-  <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 g-4">
-    <div class="col" *ngFor="let moto of Motos">
-      <div class="card h-100">
-        <img src="{{ moto.image }}" class="card-img-top" style="max-height: 300px; object-fit: cover" />
-        <div class="card-body text-center">
-          <h5 class="card-title">{{ moto.marque }}+{{ moto.modele }}</h5>
-          <ul class="list-group list-group-flush text-center">
-            <li class="list-group-item" style="height: 64px">{{ moto.marque }}</li>
-            <li class="list-group-item" style="height: 32px">{{ moto.modele }}</li>
-            <li class="list-group-item" style="height: 32px">Puissance {{ moto.puissance }} Watt</li>
-            <li class="list-group-item" style="height: 32px"><b>{{ moto.prix }} €</b></li>
-          </ul>
-        </div>
-        <div class="card-footer text-center">
-
-          <button type="button" (click)="getDetail(moto)" class="btn " data-bs-toggle="modal"
-            data-bs-target="#staticBackdrop"><small> Voir plus de
-              détails </small></button>
-
+          </div>
         </div>
       </div>
     </div>
+
   </div>
-
 </div>
-
 
 
 <!-- Modal all info-->
@@ -153,7 +152,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
-        <button type="button" class="btn btn-primary">Etre contacté</button>
+        <button type="button" class="btn btn-success">Etre contacté</button>
       </div>
     </div>
   </div>
