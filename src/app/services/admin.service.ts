@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class AdminService {
-  URL = "https://scenic-congaree-98068.herokuapp.com"
+  URL = "https://scenic-congaree-98068.herokuapp.com/"
   
   constructor(private http : HttpClient) { }
 
@@ -20,7 +20,11 @@ export class AdminService {
 
 
   deleteV(_id:any){
-    return this.http.delete(this.URL+"/"+_id);
+    return this.http.delete(this.URL+_id);
+  }
+
+  updateV(v:any){
+    return this.http.patch(this.URL+v._id,v)
   }
 
 }
