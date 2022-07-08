@@ -35,11 +35,9 @@ export class GestionAdminComponent implements OnInit {
     this.detailRecup = c;
     
     console.log(this.detailRecup);
-    console.log(this.detailRecup.description);
+    // console.log(this.detailRecup.description);
 
   }
-
-  
 
 
   deleteV(_id:any){
@@ -51,5 +49,13 @@ export class GestionAdminComponent implements OnInit {
     })
 
   }
+
+
+  vUpdate(){
+    this.adminService.updateV(this.detailRecup).subscribe(() => {
+      // this.detailRecup = data
+      console.log("update effectué ??");
+      
+    })  }
 
 }
