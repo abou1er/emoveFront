@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProductsService } from 'src/app/services/products.service';
 import { UsersService } from 'src/app/services/users.service';
 
+
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
@@ -21,22 +22,55 @@ export class ProductsComponent implements OnInit {
 
   MotCle = ""
 
-  pages = [1, 2, 3, 4, 5]
+  // limit = 6;
+  // dataset: any[] = ["1", "2", "3", "4", "5"]
+
+  p: number = 0;
 
   constructor(private productsservice: ProductsService, private usersservice: UsersService) { }
 
   ngOnInit(): void {
-    // this.getallProducts()        // plus besoin après pagination
-    this.pagination(0);
+    this.getallProducts()        // plus besoin après pagination
+    // this.pagination(0);
   }
+
+  // ***** méthode Pagination ****************
+  pageChange($event: any) {
+    this.p = $event
+    document.documentElement.scrollTop = 0
+  }
+
+  //   let limite = 6;
+  //   this.productsservice.getPagination(p, limite).subscribe(result => {
+  //     this.allProducts = result;
+  //   console.log(p, this.allProducts);
+  //   })
+  // }
+
 
   getallProducts() {
     this.productsservice.getAll().subscribe(data => {
       this.allProducts = data
-      console.log(this.allProducts);
-
+      console.log(this.allProducts, this.p);
+      
     })
   }
+
+
+  // getallProducts(p: any) {
+  //     let limit = 2
+  //     // p = this.allProducts.currentPage
+
+  //     this.productsservice.getAll(p, limit).subscribe(data => {
+  //     this.allProducts = data
+
+
+  //     console.log("p égal " , p, );
+  //     console.log("this.allProducts égal " , this.allProducts.currentPage);
+  //     console.log("limit égal " , limit);
+
+  //   })
+  // }
 
   getDetail(c: any) {
     this.waitInfo = true;
@@ -72,15 +106,13 @@ export class ProductsComponent implements OnInit {
 
 
   // ***** méthode Pagination ****************
-  pagination(p: any) {
-    let limite = 6;
-    this.productsservice.getPagination(p, limite).subscribe(result => {
-      this.allProducts = result;
-    console.log(p, this.allProducts);
-    
-    })
-  }
-
+  // pageChange(p: any) {
+  //   let limite = 6;
+  //   this.productsservice.getPagination(p, limite).subscribe(result => {
+  //     this.allProducts = result;
+  //   console.log(p, this.allProducts);
+  //   })
+  // }
 
 
 

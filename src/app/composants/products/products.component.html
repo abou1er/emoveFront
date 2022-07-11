@@ -43,20 +43,20 @@
   <div class="container">
 
 
-  <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 g-4">
-    <div class="col" *ngFor="let allP of allProducts">
-      <div class="card h-100">
-        <img src="{{ allP.image }}" class="card-img-top" style="max-height: 300px; object-fit: cover" />
-        <div class="card-body text-center">
-          <h5 class="card-title">{{ allP.marque }}  {{ allP.modele }}</h5>
-          <ul class="list-group list-group-flush text-center">
-            <li class="list-group-item" style="height: 64px">{{ allP.marque }}</li>
-            <li class="list-group-item" style="height: 32px">{{ allP.modele }}</li>
-            <li class="list-group-item" style="height: 32px">{{ allP.puissance }}</li>
-            <li class="list-group-item" style="height: 32px"><b>{{ allP.prix }} €</b></li>
-          </ul>
-        </div>
-        <div class="card-footer text-center">
+    <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 g-4">
+      <div class="col" *ngFor="let allP of allProducts | paginate : { itemsPerPage: 6, currentPage: p}">
+        <div class="card h-100">
+          <img src="{{ allP.image }}" class="card-img-top" style="max-height: 300px; object-fit: cover" />
+          <div class="card-body text-center">
+            <h5 class="card-title">{{ allP.marque }} {{ allP.modele }}</h5>
+            <ul class="list-group list-group-flush text-center">
+              <li class="list-group-item" style="height: 64px">{{ allP.marque }}</li>
+              <li class="list-group-item" style="height: 32px">{{ allP.modele }}</li>
+              <li class="list-group-item" style="height: 32px">{{ allP.puissance }}</li>
+              <li class="list-group-item" style="height: 32px"><b>{{ allP.prix }} €</b></li>
+            </ul>
+          </div>
+          <div class="card-footer text-center">
 
             <button type="button" (click)="getDetail(allP)" class="btn " data-bs-toggle="modal"
               data-bs-target="#staticBackdrop"><small> Voir plus de
@@ -177,8 +177,11 @@
 
 <div class="pt-3">
   <nav aria-label="Page navigation example">
-    <ul class="pagination justify-content-center">
-      <li class="page-item" *ngFor="let p of pages"><a class="page-link" (click)="pagination(p)">{{p}}</a></li>
-    </ul>
+    <pagination-controls previousLabel="Précédent" nextLabel="Suivant" (pageChange)="pageChange($event)">
+    </pagination-controls>
+
+    <!-- <ul class="pagination justify-content-center">
+  <li class="page-item" *ngFor="let p of allProducts"><a class="page-link" (click)="getallProducts(p.currentPage)">{{p.totalPages}}</a></li>
+  </ul> -->
   </nav>
 </div>

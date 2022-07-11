@@ -8,60 +8,65 @@ export class ProductsService {
   URL = "https://scenic-congaree-98068.herokuapp.com"
   constructor(private http: HttpClient) { }
 
-// méthode GET TOUS les Produits
-getAll(){
-  return this.http.get(this.URL);
-}
+  // méthode GET TOUS les Produits 
+  getAll() {
+    return this.http.get(`${this.URL}`);
+    
+  }
 
-// méthode GET Voitures
-getVoitures(){
-  return this.http.get(`${this.URL}/voitures`);
-}
-
-// méthode GET Motos
-getMotos(){
-  return this.http.get(`${this.URL}/motos`);
-}
-
-// méthode GET Trottinettes
-getTrottinettes(){
-  return this.http.get(`${this.URL}/trottinettes`);
-}
+  // getPagination(p:any, limite:any){
+  //   return this.http.get(`${this.URL}?_page=${p}&_limit=${limite}`);
+  // }
 
 
-getbyCategoVehicule(catego:any){
-  return this.http.get(`${this.URL}/byCat/cat/cat?categorie=${catego}`);
-}
 
-getbyPermis(permis:any){
-  return this.http.get(`${this.URL}/byCat/cat/cat?permis=${permis}`);
-}
+  // méthode GET Voitures
+  getVoitures() {
+    return this.http.get(`${this.URL}/voitures`);
+  }
 
-updateV(v:any){
-  return this.http.patch(`${this.URL}/v._id`, v)
-}
+  // méthode GET Motos
+  getMotos() {
+    return this.http.get(`${this.URL}/motos`);
+  }
 
-getByPrix(min:any, max:any){
-  return this.http.get(`${this.URL}/byPrice?min=${min}&max=${max}`);
-}
-
-getMotosByPrix(min:any, max:any){
-  return this.http.get(`${this.URL}/byCat/moto/by/price?min=${min}&max=${max}&categorie=moto`);
-}
-
-// getMotosByPrix(min:any, max:any, catego:any){
-//   return this.http.get(`${this.URL}/byCat/moto/by/price?min=${min}&max=${max}&categorie=${catego}`);
-// }
+  // méthode GET Trottinettes
+  getTrottinettes() {
+    return this.http.get(`${this.URL}/trottinettes`);
+  }
 
 
-getByKeyWord(k:any){
-  return this.http.get(`${this.URL}/byKeyWord/kw?Key=${k}`)
-}
+  getbyCategoVehicule(catego: any) {
+    return this.http.get(`${this.URL}/byCat/cat/cat?categorie=${catego}`);
+  }
+
+  getbyPermis(permis: any) {
+    return this.http.get(`${this.URL}/byCat/cat/cat?permis=${permis}`);
+  }
+
+  updateV(v: any) {
+    return this.http.patch(`${this.URL}/v._id`, v)
+  }
+
+  getByPrix(min: any, max: any) {
+    return this.http.get(`${this.URL}/byPrice?min=${min}&max=${max}`);
+  }
+
+  getMotosByPrix(min: any, max: any) {
+    return this.http.get(`${this.URL}/byCat/moto/by/price?min=${min}&max=${max}&categorie=moto`);
+  }
+
+  // getMotosByPrix(min:any, max:any, catego:any){
+  //   return this.http.get(`${this.URL}/byCat/moto/by/price?min=${min}&max=${max}&categorie=${catego}`);
+  // }
 
 
-getPagination(p:any, limite:any){
-  return this.http.get(`${this.URL}?_page=${p}&_limit=${limite}`);
-}
+  getByKeyWord(k: any) {
+    return this.http.get(`${this.URL}/byKeyWord/kw?Key=${k}`)
+  }
+
+
+
 
 
 

@@ -19,6 +19,10 @@ import { FormsModule } from '@angular/forms';
 
 // import pour le service HttpClientModule
 import { HttpClientModule } from '@angular/common/http';
+
+// import du ngxPagination Module qui permet de faire la pagination
+import {NgxPaginationModule} from 'ngx-pagination';
+
 import { AjoutervehiculeComponent } from './composants/ajoutervehicule/ajoutervehicule.component';
 
 @NgModule({
@@ -43,6 +47,7 @@ import { AjoutervehiculeComponent } from './composants/ajoutervehicule/ajouterve
 
     FormsModule,
     HttpClientModule,
+    NgxPaginationModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
