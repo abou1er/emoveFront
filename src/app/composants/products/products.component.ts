@@ -19,6 +19,33 @@ export class ProductsComponent implements OnInit {
   motoCategory = "moto";
   trottinetteCategory = "trottinette";
 
+
+  userInfo: any;
+  commandRecap:  any = {
+    sex: "",
+    nom: "",
+    prenom: "",
+    age: "",
+    adresseMail: "",
+    adresse: "",
+    ville:"",
+    codePostal: "",
+    image : "",
+    image2 : "",
+    image3 : "",
+    categorie :"",
+    marque : "",
+    modele : "",
+    annee : "",
+    autonomie : "",
+    permis :"",
+    kilometrage : "",
+    puissance : Number,
+    description : "", 
+    equivalent : "",
+    prix : Number
+    }
+
   MotCle = ""
 
   p: number = 0;
@@ -80,6 +107,48 @@ export class ProductsComponent implements OnInit {
       this.allProducts = result;
       // console.log(result);
     })
+  }
+
+  takeCommand(){
+    this.commandRecap.image =  this.detailRecup.image;
+    this.commandRecap.categorie =  this.detailRecup.categorie;
+    this.commandRecap.marque =  this.detailRecup.marque;
+    this.commandRecap.modele =  this.detailRecup.modele;
+    this.commandRecap.annee =  this.detailRecup.annee;
+    this.commandRecap.autonomie =  this.detailRecup.autonomie;
+    this.commandRecap.permis =  this.detailRecup.permis;
+    this.commandRecap.kilometrage =  this.detailRecup.kilometrage;
+    this.commandRecap.puissance =  this.detailRecup.puissance;
+    this.commandRecap.description =  this.detailRecup.description;
+    this.commandRecap.equivalent =  this.detailRecup.equivalent;
+    this.commandRecap.prix =  this.detailRecup.prix;
+
+    console.log(this.commandRecap);
+    
+    
+  }
+
+
+  validCommand(f:any){
+    this.commandRecap = f   //voir après si je détail
+
+
+    this.commandRecap.image =  this.detailRecup.image;
+    this.commandRecap.categorie =  this.detailRecup.categorie;
+    this.commandRecap.marque =  this.detailRecup.marque;
+    this.commandRecap.modele =  this.detailRecup.modele;
+    this.commandRecap.annee =  this.detailRecup.annee;
+    this.commandRecap.autonomie =  this.detailRecup.autonomie;
+    this.commandRecap.permis =  this.detailRecup.permis;
+    this.commandRecap.kilometrage =  this.detailRecup.kilometrage;
+    this.commandRecap.puissance =  this.detailRecup.puissance;
+    this.commandRecap.description =  this.detailRecup.description;
+    this.commandRecap.equivalent =  this.detailRecup.equivalent;
+    this.commandRecap.prix =  this.detailRecup.prix;
+
+    console.log("commandRecap", this.commandRecap);
+    console.log("detailRecup" , this.detailRecup);
+
   }
 
 
