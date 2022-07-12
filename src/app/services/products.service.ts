@@ -14,11 +14,6 @@ export class ProductsService {
     
   }
 
-  // getPagination(p:any, limite:any){
-  //   return this.http.get(`${this.URL}?_page=${p}&_limit=${limite}`);
-  // }
-
-
 
   // méthode GET Voitures
   getVoitures() {

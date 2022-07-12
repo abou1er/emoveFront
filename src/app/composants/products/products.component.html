@@ -175,13 +175,9 @@
   </div>
 </div>
 
-<div class="pt-3">
-  <nav aria-label="Page navigation example">
-    <pagination-controls previousLabel="Précédent" nextLabel="Suivant" (pageChange)="pageChange($event)">
+<div class="text-center pt-3">
+  <nav aria-label="Page navigation example" >
+    <pagination-controls previousLabel="Précédent" nextLabel="Suivant" (pageChange)="pageChange($event)" class="justify-content-center">
     </pagination-controls>
-
-    <!-- <ul class="pagination justify-content-center">
-  <li class="page-item" *ngFor="let p of allProducts"><a class="page-link" (click)="getallProducts(p.currentPage)">{{p.totalPages}}</a></li>
-  </ul> -->
   </nav>
 </div>
