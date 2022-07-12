@@ -85,6 +85,7 @@
           </h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
+
         <div class="modal-body">
           <div class="container-fluid">
 
@@ -106,13 +107,13 @@
                     </div>
                     <div class="carousel-inner" style="max-height: 400px; object-fit: cover">
                       <div class="carousel-item active">
-                        <img src="{{this.detailRecup.image}}" class="d-block w-100" style="object-fit: cover" alt="...">
+                        <img src="{{this.detailRecup.image}}" class="d-block w-100" style="object-fit: cover">
                       </div>
                       <div class="carousel-item">
-                        <img src="{{this.detailRecup.image2}}" class="d-block w-100" alt="...">
+                        <img src="{{this.detailRecup.image2}}" class="d-block w-100">
                       </div>
                       <div class="carousel-item">
-                        <img src="{{this.detailRecup.image3}}" class="d-block w-100" alt="...">
+                        <img src="{{this.detailRecup.image3}}" class="d-block w-100">
                       </div>
                     </div>
                     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
@@ -164,20 +165,107 @@
             </div>
             <!-- FIN grande carte -->
 
+            <div class="container" *ngIf="isBooked">
+
+              <!----------partie à saisir par l'utilisateur ---------------->
+              <div class="row">
+                <div class="col-6">
+                  <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">Saisir votre NOM</span>
+                    <input type="text" name="userName" ngModel class="form-control" id="userName">
+                  </div>
+                </div>
+
+                <div class="col-6">
+                  <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">Saisir votre Prénom</span>
+                    <input type="text" name="userFirstName" ngModel class="form-control" id="userFisrtSName">
+                  </div>
+                </div>
+
+                <div class="col-6">
+                  <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">Saisir votre mail</span>
+                    <input type="mail" name="userMail" ngModel class="form-control" id="userMail">
+                  </div>
+                </div>
+
+                <div class="col-6">
+                  <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">Saisir votre numéro de téléphone</span>
+                    <input type="number" name="userTel" ngModel class="form-control" id="userTel">
+                  </div>
+                </div>
+
+                <div class="col-6">
+                  <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">Saisir votre adresse</span>
+                    <input type="text" name="userAdress" ngModel class="form-control" id="userAdress">
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+
           </div>
         </div>
+
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
-          <button type="button" class="btn btn-primary">Etre contacté</button>
+          <!-- Button trigger modal -->
+          <button type="button" class="btn btn-success" (click)="book()" *ngIf="!isBook">Réserver ce Véhicule</button>
+          <button type="button" class="btn btn-danger" *ngIf="isBooked">Finaliser votre commande</button>
         </div>
       </div>
+
     </div>
   </div>
 </div>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <div class="text-center pt-3">
-  <nav aria-label="Page navigation example" >
-    <pagination-controls previousLabel="Précédent" nextLabel="Suivant" (pageChange)="pageChange($event)" class="justify-content-center">
+  <nav aria-label="Page navigation example">
+    <pagination-controls previousLabel="Précédent" nextLabel="Suivant" (pageChange)="pageChange($event)"
+      class="justify-content-center">
     </pagination-controls>
   </nav>
 </div>
