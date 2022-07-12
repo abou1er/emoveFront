@@ -20,7 +20,7 @@ export class ProductsComponent implements OnInit {
   trottinetteCategory = "trottinette";
 
 
-  userInfo: any;
+  // objet pour formulaire client + validation
   commandRecap:  any = {
     sex: "",
     nom: "",
@@ -101,7 +101,6 @@ export class ProductsComponent implements OnInit {
   getDetail(c: any) {
     this.waitInfo = true;
     this.detailRecup = c;
-
     console.log(this.detailRecup);
     console.log(this.detailRecup.description);
 
@@ -130,7 +129,7 @@ export class ProductsComponent implements OnInit {
     })
   }
 
-  takeCommand(){
+  takeCommand(){ //transfère donnée dans l'objet vide qui va être réutilisé pour afficher les infos dan sles modal suivantes
     this.commandRecap.image =  this.detailRecup.image;
     this.commandRecap.categorie =  this.detailRecup.categorie;
     this.commandRecap.marque =  this.detailRecup.marque;
@@ -145,15 +144,9 @@ export class ProductsComponent implements OnInit {
     this.commandRecap.prix =  this.detailRecup.prix;
 
     console.log(this.commandRecap);
-    
-    
   }
-
-
   validCommand(f:any){
-    this.commandRecap = f   //voir après si je détail
-
-
+    this.commandRecap = f   //recup info formulaire
     this.commandRecap.image =  this.detailRecup.image;
     this.commandRecap.categorie =  this.detailRecup.categorie;
     this.commandRecap.marque =  this.detailRecup.marque;
