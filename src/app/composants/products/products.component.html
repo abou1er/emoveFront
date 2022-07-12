@@ -165,57 +165,14 @@
             </div>
             <!-- FIN grande carte -->
 
-            <div class="container" *ngIf="isBooked">
-
-              <!----------partie à saisir par l'utilisateur ---------------->
-              <div class="row">
-                <div class="col-6">
-                  <div class="input-group mb-3">
-                    <span class="input-group-text" id="basic-addon1">Saisir votre NOM</span>
-                    <input type="text" name="userName" ngModel class="form-control" id="userName">
-                  </div>
-                </div>
-
-                <div class="col-6">
-                  <div class="input-group mb-3">
-                    <span class="input-group-text" id="basic-addon1">Saisir votre Prénom</span>
-                    <input type="text" name="userFirstName" ngModel class="form-control" id="userFisrtSName">
-                  </div>
-                </div>
-
-                <div class="col-6">
-                  <div class="input-group mb-3">
-                    <span class="input-group-text" id="basic-addon1">Saisir votre mail</span>
-                    <input type="mail" name="userMail" ngModel class="form-control" id="userMail">
-                  </div>
-                </div>
-
-                <div class="col-6">
-                  <div class="input-group mb-3">
-                    <span class="input-group-text" id="basic-addon1">Saisir votre numéro de téléphone</span>
-                    <input type="number" name="userTel" ngModel class="form-control" id="userTel">
-                  </div>
-                </div>
-
-                <div class="col-6">
-                  <div class="input-group mb-3">
-                    <span class="input-group-text" id="basic-addon1">Saisir votre adresse</span>
-                    <input type="text" name="userAdress" ngModel class="form-control" id="userAdress">
-                  </div>
-                </div>
-
-              </div>
-
-            </div>
-
           </div>
         </div>
 
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
           <!-- Button trigger modal -->
-          <button type="button" class="btn btn-success" (click)="book()" *ngIf="!isBook">Réserver ce Véhicule</button>
-          <button type="button" class="btn btn-danger" *ngIf="isBooked">Finaliser votre commande</button>
+          <button type="button" class="btn btn-success" ></button>
+          <button type="button" class="btn btn-danger"></button>
         </div>
       </div>
 

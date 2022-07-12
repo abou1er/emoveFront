@@ -18,8 +18,7 @@ export class ProductsComponent implements OnInit {
   carsCategory = "voiture";
   motoCategory = "moto";
   trottinetteCategory = "trottinette";
-  isBooked : boolean = false
-  isBook : boolean = false
+
   MotCle = ""
 
   p: number = 0;
@@ -103,9 +102,6 @@ export class ProductsComponent implements OnInit {
   //   })
   // }
 
-book(){
-  this.isBooked = true;
-  this.isBook = true
-}
+
 
 }
