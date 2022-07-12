@@ -24,7 +24,9 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let allP of allProducts;" [ngClass]="{'table-success' : allP.confirme, 'table-striped ': !allP.confirme}">
+          <tr *ngFor="let allP of allProducts;" [ngClass]="{'table-success' : allP.confirme, 'table-striped ': !allP.confirme}">
+                
+            <!-- <tr class="d-flex flex-column"  *ngFor="let allP of allProducts;" [ngClass]="{'table-success' : allP.confirme, 'table-striped ': !allP.confirme}"> -->
                 
 
                 <td> {{allP.categorie}} </td>

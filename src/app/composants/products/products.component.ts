@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProductsService } from 'src/app/services/products.service';
 import { UsersService } from 'src/app/services/users.service';
 
+
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
@@ -19,24 +20,83 @@ export class ProductsComponent implements OnInit {
   trottinetteCategory = "trottinette";
 
 
+  userInfo: any;
+  commandRecap:  any = {
+    sex: "",
+    nom: "",
+    prenom: "",
+    age: "",
+    adresseMail: "",
+    adresse: "",
+    ville:"",
+    codePostal: "",
+    image : "",
+    image2 : "",
+    image3 : "",
+    categorie :"",
+    marque : "",
+    modele : "",
+    annee : "",
+    autonomie : "",
+    permis :"",
+    kilometrage : "",
+    puissance : Number,
+    description : "", 
+    equivalent : "",
+    prix : Number
+    }
+
   MotCle = ""
 
-  pages = [1, 2, 3, 4, 5]
+  // limit = 6;
+  // dataset: any[] = ["1", "2", "3", "4", "5"]
+
+  p: number = 0;
 
   constructor(private productsservice: ProductsService, private usersservice: UsersService) { }
 
   ngOnInit(): void {
-    // this.getallProducts()        // plus besoin après pagination
-    this.pagination(0);
+    this.getallProducts()        // plus besoin après pagination
+    // this.pagination(0);
   }
+
+  // ***** méthode Pagination ****************
+  pageChange($event: any) {
+    this.p = $event
+    document.documentElement.scrollTop = 0
+  }
+
+  //   let limite = 6;
+  //   this.productsservice.getPagination(p, limite).subscribe(result => {
+  //     this.allProducts = result;
+  //   console.log(p, this.allProducts);
+  //   })
+  // }
+
 
   getallProducts() {
     this.productsservice.getAll().subscribe(data => {
       this.allProducts = data
-      console.log(this.allProducts);
-
+      console.log(this.allProducts, this.p);
+      
     })
   }
+
+
+  // getallProducts(p: any) {
+  //     let limit = 2
+  //     // p = this.allProducts.currentPage
+
+  //     this.productsservice.getAll(p, limit).subscribe(data => {
+  //     this.allProducts = data
+
+
+  //     console.log("p égal " , p, );
+  //     console.log("this.allProducts égal " , this.allProducts.currentPage);
+  //     console.log("limit égal " , limit);
+
+  //   })
+  // }
 
   getDetail(c: any) {
     this.waitInfo = true;
@@ -70,17 +130,57 @@ export class ProductsComponent implements OnInit {
     })
   }
 
+  takeCommand(){
+    this.commandRecap.image =  this.detailRecup.image;
+    this.commandRecap.categorie =  this.detailRecup.categorie;
+    this.commandRecap.marque =  this.detailRecup.marque;
+    this.commandRecap.modele =  this.detailRecup.modele;
+    this.commandRecap.annee =  this.detailRecup.annee;
+    this.commandRecap.autonomie =  this.detailRecup.autonomie;
+    this.commandRecap.permis =  this.detailRecup.permis;
+    this.commandRecap.kilometrage =  this.detailRecup.kilometrage;
+    this.commandRecap.puissance =  this.detailRecup.puissance;
+    this.commandRecap.description =  this.detailRecup.description;
+    this.commandRecap.equivalent =  this.detailRecup.equivalent;
+    this.commandRecap.prix =  this.detailRecup.prix;
 
-  // ***** méthode Pagination ****************
-  pagination(p: any) {
-    let limite = 6;
-    this.productsservice.getPagination(p, limite).subscribe(result => {
-      this.allProducts = result;
-    console.log(p, this.allProducts);
+    console.log(this.commandRecap);
     
-    })
+    
   }
 
+
+  validCommand(f:any){
+    this.commandRecap = f   //voir après si je détail
+
+
+    this.commandRecap.image =  this.detailRecup.image;
+    this.commandRecap.categorie =  this.detailRecup.categorie;
+    this.commandRecap.marque =  this.detailRecup.marque;
+    this.commandRecap.modele =  this.detailRecup.modele;
+    this.commandRecap.annee =  this.detailRecup.annee;
+    this.commandRecap.autonomie =  this.detailRecup.autonomie;
+    this.commandRecap.permis =  this.detailRecup.permis;
+    this.commandRecap.kilometrage =  this.detailRecup.kilometrage;
+    this.commandRecap.puissance =  this.detailRecup.puissance;
+    this.commandRecap.description =  this.detailRecup.description;
+    this.commandRecap.equivalent =  this.detailRecup.equivalent;
+    this.commandRecap.prix =  this.detailRecup.prix;
+
+    console.log("commandRecap", this.commandRecap);
+    console.log("detailRecup" , this.detailRecup);
+
+  }
+
+
+  // ***** méthode Pagination ****************
+  // pageChange(p: any) {
+  //   let limite = 6;
+  //   this.productsservice.getPagination(p, limite).subscribe(result => {
+  //     this.allProducts = result;
+  //   console.log(p, this.allProducts);
+  //   })
+  // }
 
 
 
