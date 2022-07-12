@@ -108,4 +108,18 @@ book(){
   this.isBook = true
 }
 
+reservConfirm(form: any) {
+  this.reservation.nameClient = form.nameClient;
+  this.reservation.arrivaldate = form.dateArriver
+  this.reservation.dureereservation = form.nombreJour
+
+  this.reservation.totalPrice = (this.reservation.chamberprice * this.reservation.dureereservation)
+
+  console.log("mon objet complet :  ", this.reservation);
+  this.chambresService.savereservation(this.reservation).subscribe(data => {
+    console.log("success ...", data);
+  })
+
+
+
 }
