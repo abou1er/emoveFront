@@ -19,6 +19,32 @@ export class MotoComponent implements OnInit {
 
   MotCle = ""
 
+    // objet pour formulaire client + validation
+    commandRecap:  any = {
+      sex: "",
+      nom: "",
+      prenom: "",
+      age: "",
+      adresseMail: "",
+      adresse: "",
+      ville:"",
+      codePostal: "",
+      image : "",
+      image2 : "",
+      image3 : "",
+      categorie :"",
+      marque : "",
+      modele : "",
+      annee : "",
+      autonomie : "",
+      permis :"",
+      kilometrage : "",
+      puissance : Number,
+      description : "", 
+      equivalent : "",
+      prix : Number
+      }
+
   constructor(private productsservice: ProductsService, private usersservice: UsersService) { }
 
   ngOnInit(): void {
@@ -50,7 +76,7 @@ export class MotoComponent implements OnInit {
     })
   }
 
-   // ***** méthode de tri par PRIX tes moto***********************************
+   // ***** méthode de tri par PRIX des motos***********************************
    getMotosByPrix(f: any, moto : any) {
     console.log(f.min, f.max, );
     // console.log(moto.categorie);
@@ -69,6 +95,45 @@ export class MotoComponent implements OnInit {
     this.productsservice.getByKeyWord(this.MotCle).subscribe(result => {
       this.Motos = result;
     })
+  }
+
+
+
+  
+  takeCommand(){ //transfère donnée dans l'objet vide qui va être réutilisé pour afficher les infos dans les modal suivantes
+    this.commandRecap.image =  this.detailRecup.image;
+    this.commandRecap.categorie =  this.detailRecup.categorie;
+    this.commandRecap.marque =  this.detailRecup.marque;
+    this.commandRecap.modele =  this.detailRecup.modele;
+    this.commandRecap.annee =  this.detailRecup.annee;
+    this.commandRecap.autonomie =  this.detailRecup.autonomie;
+    this.commandRecap.permis =  this.detailRecup.permis;
+    this.commandRecap.kilometrage =  this.detailRecup.kilometrage;
+    this.commandRecap.puissance =  this.detailRecup.puissance;
+    this.commandRecap.description =  this.detailRecup.description;
+    this.commandRecap.equivalent =  this.detailRecup.equivalent;
+    this.commandRecap.prix =  this.detailRecup.prix;
+
+    console.log(this.commandRecap);
+  }
+  validCommand(f:any){
+    this.commandRecap = f   //recup info formulaire
+    this.commandRecap.image =  this.detailRecup.image;
+    this.commandRecap.categorie =  this.detailRecup.categorie;
+    this.commandRecap.marque =  this.detailRecup.marque;
+    this.commandRecap.modele =  this.detailRecup.modele;
+    this.commandRecap.annee =  this.detailRecup.annee;
+    this.commandRecap.autonomie =  this.detailRecup.autonomie;
+    this.commandRecap.permis =  this.detailRecup.permis;
+    this.commandRecap.kilometrage =  this.detailRecup.kilometrage;
+    this.commandRecap.puissance =  this.detailRecup.puissance;
+    this.commandRecap.description =  this.detailRecup.description;
+    this.commandRecap.equivalent =  this.detailRecup.equivalent;
+    this.commandRecap.prix =  this.detailRecup.prix;
+
+    console.log("commandRecap", this.commandRecap);
+    console.log("detailRecup" , this.detailRecup);
+
   }
 
 }
