@@ -76,7 +76,7 @@ export class MotoComponent implements OnInit {
     })
   }
 
-   // ***** méthode de tri par PRIX tes moto***********************************
+   // ***** méthode de tri par PRIX des motos***********************************
    getMotosByPrix(f: any, moto : any) {
     console.log(f.min, f.max, );
     // console.log(moto.categorie);

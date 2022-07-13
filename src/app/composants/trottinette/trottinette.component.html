@@ -7,7 +7,7 @@
                 <div class="card h-100">
                     <img src="{{ t.image }}" class="card-img-top" style="max-height: 600px; object-fit: contain" />
                     <div class="card-body text-center">
-                        <h5 class="card-title">{{ t.marque }}+{{ t.modele }}</h5>
+                        <h5 class="card-title">{{ t.marque }} {{ t.modele }}</h5>
                         <ul class="list-group list-group-flush text-center">
                             <li class="list-group-item" style="height: 64px">{{ t.marque }}</li>
                             <li class="list-group-item" style="height: 32px">{{ t.modele }}</li>
@@ -39,16 +39,20 @@
             <div class="modal-dialog modal-fullscreen modal-dialog-centered">
                 <div class="modal-content" *ngIf="waitInfo">
 
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     <div class="modal-header">
-
-                        
-
-                        <h5 class="modal-title" id="exampleModalToggleLabel"> {{this.detailRecup.marque}}
+                        <h5 class="modal-title" id="exampleModalToggleLabel"> <button type="button" class="btn-close"
+                                data-bs-dismiss="modal" aria-label="Close"></button> {{this.detailRecup.marque}}
                             {{this.detailRecup.modele}}</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <div class="modal-body">
+
+                    <!-- <div class="modal-header row justify-content-between custom-line">
+                        <div class="col-1"><p class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></p></div>
+                        <div class="col-10"><h5 class="modal-title" id="exampleModalToggleLabel"> {{this.detailRecup.marque}} {{this.detailRecup.modele}}</h5></div>
+                        <div class="col-1"><p class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></p></div>
+                    </div> -->
+
+                    <div class="modal-body bg-dark">
 
                         <div class="container-fluid">
                             <!-- grande carte -->
@@ -68,17 +72,21 @@
                                                 <button type="button" data-bs-target="#carouselExampleIndicators"
                                                     data-bs-slide-to="2" aria-label="Slide 3"></button>
                                             </div>
-                                            <div class="carousel-inner" style="height: 500px; object-fit: scale-down; border:solid 2px ">
+                                            <div class="carousel-inner"
+                                                style="height: 500px; object-fit: scale-down; border:solid 2px ">
                                                 <div class="carousel-item active" style="height: 500px;">
                                                     <img src="{{this.detailRecup.image}}" class="d-block w-100"
-                                                        style="height: 500px; object-fit: scale-down; border:solid 2px " alt="...">
-                                                </div>
-                                                <div class="carousel-item" style="height: 500px;">
-                                                    <img src="{{this.detailRecup.image2}}" class="d-block w-100" style="height: 500px; object-fit: scale-down; border:solid 2px "
+                                                        style="height: 500px; object-fit: scale-down; border:solid 2px "
                                                         alt="...">
                                                 </div>
                                                 <div class="carousel-item" style="height: 500px;">
-                                                    <img src="{{this.detailRecup.image3}}" class="d-block w-100" style="height: 500px; object-fit: scale-down; border:solid 2px "
+                                                    <img src="{{this.detailRecup.image2}}" class="d-block w-100"
+                                                        style="height: 500px; object-fit: scale-down; border:solid 2px "
+                                                        alt="...">
+                                                </div>
+                                                <div class="carousel-item" style="height: 500px;">
+                                                    <img src="{{this.detailRecup.image3}}" class="d-block w-100"
+                                                        style="height: 500px; object-fit: scale-down; border:solid 2px "
                                                         alt="...">
                                                 </div>
                                             </div>
@@ -103,8 +111,9 @@
                                     <div class="col-md-5">
                                         <div class="card-body">
                                             <h5 class="card-title">Marque : {{this.detailRecup.marque}} </h5>
-                                            <h5 class="card-title">Modele : {{this.detailRecup.modele}}</h5>
-                                            <p class="card-text">A propos du véhicule : {{this.detailRecup.description}}
+                                            <h5 class="card-title">Modèle : {{this.detailRecup.modele}}</h5>
+                                            <p class="card-text">A propos du véhicule :
+                                                <br>{{this.detailRecup.description}}
                                             </p>
                                             <p>Etat neuf</p>
                                             <div class="row">
@@ -117,7 +126,9 @@
                                             </div>
 
                                             <p class="card-text"><strong class="text-muted">Prix :
-                                                  <span style=" letter-spacing: 0.4em;">{{this.detailRecup.prix}}</span>   €</strong></p>
+                                                    <span
+                                                        style=" letter-spacing: 0.4em;">{{this.detailRecup.prix}}</span>
+                                                    €</strong></p>
                                         </div>
                                     </div>
                                     <!--   fin card info left -->
@@ -132,7 +143,7 @@
 
 
                     <div class="modal-footer">
-                        <button class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal"
+                        <button class="btn btn-success" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal"
                             (click)="takeCommand()">Passer une commande</button>
                     </div>
                 </div>
@@ -146,8 +157,10 @@
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalToggleLabel2">achat du modéle
-                            {{this.commandRecap.modele}} de la marque {{this.commandRecap.marque}}</h5>
+                        <h5 class="modal-title" id="exampleModalToggleLabel2">ACHAT du modèle
+                            <strong>{{this.commandRecap.modele}}</strong> de la marque
+                            <strong>{{this.commandRecap.marque}}</strong>
+                        </h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
@@ -156,7 +169,7 @@
                         <div *ngIf="this.commandRecap" class="container mt-5">
                             <form #f="ngForm" class="row  g-3 shadow-lg mb-4 p-2 bg-body rounded">
 
-                                <p> Information du client</p>
+                                <p class="text-center"> Saisir VOS informations</p>
 
                                 <div name="sex" class="col-12">
                                     <label for="inputState" class="form-label">Civilité</label>
@@ -205,18 +218,18 @@
                                     <input type="number" class="form-control" name="codePostal" ngModel required>
                                 </div>
 
-                                <div class="col-12 border border-dark">
+                                <div class="col-12 border border-dark text text-center">
                                     <label for="nbJour" class="form-label">Prix du véhicule</label>
-                                    <p style=" letter-spacing: 0.4em;">{{this.commandRecap.prix}} €</p>
+                                    <p style="letter-spacing: 0.4em;"><strong>{{this.commandRecap.prix}} € </strong></p>
                                 </div>
 
                                 <div *ngIf="this.detailRecup " class="col-12 mt-5 d-flex justify-content-between">
 
-                                    <button (click)="validCommand(f.value)" class="btn btn-primary"
+                                    <button (click)="validCommand(f.value)" class="btn btn-success"
                                         data-bs-target="#modalConfirmBuy" data-bs-toggle="modal">Valider mes
                                         informations </button>
 
-                                    <button type="button" class="btn btn-warning" data-bs-dismiss="modal"
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
                                         aria-label="Close"> Fermer</button>
                                 </div>
                             </form>
@@ -227,7 +240,8 @@
 
                     </div>
                     <div class="modal-footer">
-                        <button class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Retour fiche produit</button>
+                        <button class="btn btn-dark" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Retour
+                            fiche produit</button>
                     </div>
                 </div>
             </div>
@@ -243,28 +257,34 @@
         aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content" *ngIf="this.commandRecap">
+
                 <div class="modal-header">
-                    <h5 class="modal-title" id="modalConfirmBuyLabel">Récap confirme {{this.commandRecap.sex}}
-                        {{this.commandRecap.nom}} {{this.commandRecap.prenom}} </h5>
+                    <h5 class="modal-title text-success" id="modalConfirmBuyLabel"> CONFIRMATION de votre ACHAT
+                        <br><strong>{{this.commandRecap.sex}} {{this.commandRecap.prenom}} {{this.commandRecap.nom}}
+                        </strong>
+                    </h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
-                    <p>La commande du modéle {{this.commandRecap.modele}} de la marque {{this.commandRecap.marque}} est
-                        bien confirmer.</p>
-                    <p> Le total à régler est de {{this.commandRecap.prix}} € </p>
-                    <p>La livraison se fera après récption du paiment chez {{this.commandRecap.sex}}
-                        {{this.commandRecap.nom}} {{this.commandRecap.prenom}} </p>
-                    <p> à l'adresse : {{this.commandRecap.adresse}}. Ville : {{this.commandRecap.ville}}
-                        {{this.commandRecap.codePostal}}</p>
-                    <br>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
 
+                <div class="modal-body">
+                    <p> La commande du modèle <strong>{{this.commandRecap.modele}}</strong> de la marque
+                        <strong>{{this.commandRecap.marque}}</strong> est bien confirmée.
+                    </p>
+                    <p> Le total à régler est de <strong>{{this.commandRecap.prix}} € </strong></p>
+                    <hr>
+                    <p> La livraison se fera après réception du paiement de <strong>{{this.commandRecap.sex}}
+                            {{this.commandRecap.prenom}} {{this.commandRecap.nom}} </strong></p>
+                    <p> à l'adresse : <strong>{{this.commandRecap.adresse}}</strong>. Ville :
+                        <strong>{{this.commandRecap.ville}} {{this.commandRecap.codePostal}} </strong>
+                    </p>
                 </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-bs-dismiss="modal">Fermer</button>
+                </div>
+
             </div>
         </div>
     </div>
     <!-- fin  Modal Récapitulatif/Confirm-->
 </div>
-

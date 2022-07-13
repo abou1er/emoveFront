@@ -55,17 +55,15 @@ formattedPrice: any;
 
   MotCle = ""
 
-  // limit = 6;
-  // dataset: any[] = ["1", "2", "3", "4", "5"]
-
   p: number = 0;
 
   constructor(private productsservice: ProductsService, private usersservice: UsersService) { }
 
   ngOnInit(): void {
-    this.getallProducts()        // plus besoin après pagination
-    // this.pagination(0);
+    this.getallProducts()
+
   }
+
 
   // ***** méthode Pagination ****************
   pageChange($event: any) {
@@ -77,13 +75,6 @@ formattedPrice: any;
     
     // 
   }
-
-  //   let limite = 6;
-  //   this.productsservice.getPagination(p, limite).subscribe(result => {
-  //     this.allProducts = result;
-  //   console.log(p, this.allProducts);
-  //   })
-  // }
 
 
   getallProducts() {
@@ -122,12 +113,14 @@ formattedPrice: any;
 
   }
 
+
   // ***** méthode de recherche par  Mot Clé ******************
   getByMotCle() {
     this.productsservice.getByKeyWord(this.MotCle).subscribe(result => {
       this.allProducts = result;
     })
   }
+
 
   // ***** méthode de recherche par Catégorie ******************
   getByCategoVehicule(C: any) {
@@ -136,6 +129,7 @@ formattedPrice: any;
     })
   }
 
+  
   // ***** méthode de tri par PRIX ***********************************
   getByPrix(f: any) {
     // console.log(f.min, f.max);
