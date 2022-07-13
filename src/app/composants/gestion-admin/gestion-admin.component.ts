@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AdminService } from 'src/app/services/admin.service';
+import { ProductsService } from 'src/app/services/products.service';
 
 @Component({
   selector: 'app-gestion-admin',
@@ -16,7 +17,10 @@ export class GestionAdminComponent implements OnInit {
   motoCategory = "moto";
   trottinetteCategory ="trottinette";
 
-  constructor(private adminService : AdminService) { }
+
+  MotCle = ""
+
+  constructor(private adminService : AdminService, private productsservice: ProductsService) { }
 
   ngOnInit(): void {
     this.getallProducts()
@@ -39,6 +43,20 @@ export class GestionAdminComponent implements OnInit {
 
   }
 
+    // ***** méthode de recherche par Catégorie ******************
+    getByCategoVehicule(C: any) {
+      this.productsservice.getbyCategoVehicule(C).subscribe(result => {
+        this.allProducts = result;
+      })
+    }
+
+    // ***** méthode de recherche par  Mot Clé ******************
+  getByMotCle() {
+    this.productsservice.getByKeyWord(this.MotCle).subscribe(result => {
+      this.allProducts = result;
+    })
+  }
+  
 
   deleteV(_id:any){
     
