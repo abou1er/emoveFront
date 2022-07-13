@@ -10,6 +10,13 @@ import { UsersService } from 'src/app/services/users.service';
 })
 export class ProductsComponent implements OnInit {
 
+// TEST LEILA 
+formattedPrice: any;
+
+
+
+
+
   cars: any;
   allProducts: any;
   detailRecup: any;
@@ -64,6 +71,11 @@ export class ProductsComponent implements OnInit {
   pageChange($event: any) {
     this.p = $event
     document.documentElement.scrollTop = 0
+
+
+    
+    
+    // 
   }
 
   //   let limite = 6;
@@ -77,11 +89,15 @@ export class ProductsComponent implements OnInit {
   getallProducts() {
     this.productsservice.getAll().subscribe(data => {
       this.allProducts = data
-      console.log(this.allProducts, this.p);
-      
     })
   }
 
+
+  formatPrice(num: any){
+  // regExp = 
+   const espaceAvecNombre = String(num).replace(/(?<!\..*)(\d)(?=(?:\d{3})+(?:\.|$))/g, '$1 ');
+  return espaceAvecNombre;
+  }
 
   // getallProducts(p: any) {
   //     let limit = 2

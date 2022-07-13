@@ -57,7 +57,7 @@
               <li class="list-group-item" style="height: 64px">{{ allP.marque }}</li>
               <li class="list-group-item" style="height: 32px">{{ allP.modele }}</li>
               <li class="list-group-item" style="height: 32px">{{ allP.puissance }}</li>
-              <li class="list-group-item" style="height: 32px"><b>{{ allP.prix }} €</b></li>
+              <li class="list-group-item" style="height: 32px"><b>{{ formatPrice(allP.prix) }} €</b></li>
             </ul>
           </div>
           <div class="card-footer text-center">
@@ -164,7 +164,7 @@
                             </div>
           
           
-                            <p class="card-text"><strong class="text-muted">Prix : {{this.detailRecup.prix}} €</strong></p>
+                            <p class="card-text"><strong class="text-muted">Prix : {{formatPrice(this.detailRecup.prix)}} €</strong></p>
                           </div>
                         </div>
                         <!--   fin card info left -->
@@ -249,7 +249,7 @@
 
                     <div class="col-12 border border-dark">
                         <label for="nbJour" class="form-label">Prix du véhicule</label>
-                        <p>{{this.commandRecap.prix}} €</p>
+                        <p>{{formatPrice(this.commandRecap.prix)}} €</p>
                     </div>
 
                     <div *ngIf="this.detailRecup " class="col-12 mt-5">
@@ -289,7 +289,7 @@
       </div>
       <div class="modal-body">
         <p>La commande du modéle {{this.commandRecap.modele}} de la marque {{this.commandRecap.marque}} est bien confirmer.</p>  
-        <p> Le total à  régler est de {{this.commandRecap.prix}} € </p>
+        <p> Le total à  régler est de {{formatPrice(this.commandRecap.prix)}} € </p>
         <p>La livraison se fera après récption du paiment chez {{this.commandRecap.sex}} {{this.commandRecap.nom}} {{this.commandRecap.prenom}} </p>
         <p> à l'adresse : {{this.commandRecap.adresse}}. Ville : {{this.commandRecap.ville}} {{this.commandRecap.codePostal}}</p>
         <br>
