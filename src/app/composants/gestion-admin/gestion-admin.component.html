@@ -19,7 +19,7 @@
 <!--------------------------------------------- ZONE de TRI par Catégorie ---------------------------------->
 <!-- <div class="row"> -->
   <div class="col-12 mt-3 text-dark ">
-    <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
+    <button class="btn btn-outline-success dropdown-toggle" type="button" id="dropdownMenuButton1"
       data-bs-toggle="dropdown" aria-expanded="false">Catégorie</button>
     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
       <li *ngFor="let C of allCategory"><a class="dropdown-item" (click)="getByCategoVehicule(C)">{{C}}</a></li>
@@ -66,16 +66,16 @@
             <tr>
               
 
-                <th>Categorie </th>
+                <th>Catégorie </th>
                 <th>Marque  </th>
-                <th>Modele  </th>
+                <th>Modèle  </th>
                 <th>Autonomie </th>
                 <th>Prix</th>
                 <th>Image</th>
               
-                <th>Voir plus de détails</th>
-                <th>Modifier les informations</th>
-                <th>Supprimer le véhicule  </th>
+                <th>Détails</th>
+                <th>Modifier</th>
+                <th>Supprimer</th>
 
             
     
@@ -160,7 +160,7 @@
 
 
       <div class="input-group mb-3">
-          <span class="input-group-text" id="basic-addon3">entrer le nom/modele du véhicule</span>
+          <span class="input-group-text" id="basic-addon3">entrer le nom/modèle du véhicule</span>
           <input type="text" class="form-control" placeholder="exemple: TROMOX MINO" name="modele"
               aria-describedby="basic-addon3"  [(ngModel)]="detailRecup.modele" required>
       </div>
@@ -173,7 +173,7 @@
       </div>
 
       <div class="input-group mb-3">
-          <span class="input-group-text" id="basic-addon3">entrer annee de commercialisation si voiture</span>
+          <span class="input-group-text" id="basic-addon3">entrer année de commercialisation si voiture</span>
           <input type="text" class="form-control" placeholder="2018, 2021,..." name="annee"
               aria-describedby="basic-addon3" [(ngModel)]="detailRecup.annee" required>
       </div>
@@ -223,7 +223,7 @@
 
 
       <div class="input-group mb-3">
-          <span class="input-group-text" id="basic-addon3">entrer l'url de l'image principal</span>
+          <span class="input-group-text" id="basic-addon3">entrer l'url de l'image principale</span>
           <input type="text" class="form-control"
               placeholder="exemple: https://www.go2roues.com/wp-content/uploads/2021/07/ebroh-bravo-cr-vert-trois-quart-face-droit.jpg"
               name="image" aria-describedby="basic-addon3" [(ngModel)]="detailRecup.image" required>
@@ -272,7 +272,7 @@
               <button type="button" class="btn-close" data-bs-dismiss="modal" (click)="getallProducts()" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-              Modification réussi
+              Modification réussie
           </div>
           <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="getallProducts()" >Fermer</button>
@@ -290,11 +290,11 @@
   <div class="modal-dialog  modal-lg modal-dialog-scrollable">
     <div class="modal-content" style="height: 450px;" *ngIf="waitInfo">
       <div class="modal-header">
-        <h5 class="modal-title" id="deleteModalLabel">Supprimer <span class="text-danger"> {{this.detailRecup.marque}} {{this.detailRecup.modele}} </span></h5>
+        <h5 class="modal-title" id="deleteModalLabel">Supprimer <span class="text-danger"> <strong>{{this.detailRecup.marque}} {{this.detailRecup.modele}} </strong></span></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body" >
-          <p>Etes vous sur de vouloir supprimer ce véhicule. Cette action est définitive.</p>
+          <p>Etes-vous sûr de vouloir <strong>supprimer ce véhicule</strong>? <strong class="text-danger"> Cette action est définitive.</strong></p>
             <div class="row">
               <div class="col-4"><div class="" style="max-width: 250px; max-height: 250px;"> <img src="{{this.detailRecup.image}}" class="d-block w-100" alt="..." style="max-height: 250px; object-fit: cover"></div>
               </div>

@@ -1,112 +1,134 @@
+<h2 class=" text-center m-auto mb-5 text-success p-5 bg-light">Ajouter un produit</h2>
+
 
 <div class="container mt-5 mb-5">
 
-    <h4 class=" text-center m-auto mb-5">Ajouter un produit</h4>
+    <!-- <h2 class=" text-center m-auto mb-5 text-success p-5 bg-light">Ajouter un produit</h2> -->
+
+    <form (ngSubmit)="saveV(produitForm)" #produitForm="ngForm" class="row  g-3 shadow-lg mb-4 p-2 bg-body rounded">
 
 
-    <form (ngSubmit)="saveV(produitForm)" #produitForm="ngForm">
-
-      
-
-        <div name="categorie1" class="col-md-4 mb-3">
-            <label  for="inputState" class="form-label">Catégorie véhicule</label>
+        <!-- <div name="categorie1" class="col-md-4 mb-3">
+            <label for="inputState" class="form-label">Catégorie véhicule</label>
             <select name="categorie" ngModel="" id="categorie" class="form-select">
-            
-            <option value="voiture" >voiture</option>
-            <option value="moto" >moto</option>
-            <option value="trottinette" >trottinette</option>
-                
+                <option value="voiture">voiture</option>
+                <option value="moto">moto</option>
+                <option value="trottinette">trottinette</option>
+            </select>
+        </div> -->
+
+        <div class="input-group mb-3  shadow bg-body rounded">
+            <span class="input-group-text col-3" id="basic-addon3"><strong>&nbsp;catégorie&nbsp;</strong>du véhicule</span>
+            <select name="permis" ngModel="" id="permis" class="form-select">
+                <option value="voiture">voiture</option>
+                <option value="moto">moto</option>
+                <option value="trottinette">trottinette</option>
             </select>
         </div>
 
 
 
-        <div class="input-group mb-3">
-            <span class="input-group-text" id="basic-addon3">entrer la marque du véhicule</span>
-            <input type="text" class="form-control" placeholder="exemple: CITROEN, TESLA, SUPER SOCO, TROMOX MINO" name="marque"
-                aria-describedby="basic-addon3" ngModel required="standalone">
+
+        <div class="input-group mb-3  shadow bg-body rounded">
+            <span class="input-group-text col-3" id="basic-addon3">entrer la <strong>&nbsp;marque&nbsp;</strong> du véhicule</span>
+            <input type="text" class="form-control" placeholder="exemple: CITROEN, TESLA, SUPER SOCO, TROMOX MINO"
+                name="marque" aria-describedby="basic-addon3" ngModel required="standalone">
         </div>
 
 
-        <div class="input-group mb-3">
-            <span class="input-group-text" id="basic-addon3">entrer le nom/modèle du véhicule</span>
+        <div class="input-group mb-3  shadow bg-body rounded">
+            <span class="input-group-text col-3" id="basic-addon3">entrer le <strong>&nbsp;nom/modèle&nbsp;</strong> du véhicule</span>
             <input type="text" class="form-control" placeholder="exemple: TROMOX MINO" name="modele"
                 aria-describedby="basic-addon3" ngModel required="standalone">
         </div>
 
 
-        <div class="input-group mb-3">
-            <span class="input-group-text" id="basic-addon3">entrer autonomie en précisant "km"</span>
+        <div class="input-group mb-3  shadow bg-body rounded">
+            <span class="input-group-text col-3" id="basic-addon3">entrer <strong>&nbsp;autonomie&nbsp;</strong> (en précisant "km")</span>
             <input type="text" class="form-control" placeholder="exemple: 110 km" name="autonomie"
                 aria-describedby="basic-addon3" ngModel>
         </div>
 
-        <div class="input-group mb-3">
-            <span class="input-group-text" id="basic-addon3">entrer année de commercialisation si voiture</span>
-            <input type="text" class="form-control" placeholder="2018, 2021,..." name="annee"
+        <div class="input-group mb-3  shadow bg-body rounded">
+            <span class="input-group-text col-3" id="basic-addon3"> <u>si voiture&nbsp;</u> : <strong>&nbsp;année&nbsp;</strong> de commercialisation</span>
+            <input type="text" class="form-control" placeholder= "2018, 2021,..." name="annee"
                 aria-describedby="basic-addon3" ngModel>
         </div>
 
-        <div class="input-group mb-3">
-            <span class="input-group-text" id="basic-addon3">entrer nombre de km parcouru si voiture</span>
+        <div class="input-group mb-3  shadow bg-body rounded">
+            <span class="input-group-text col-3" id="basic-addon3"><u>si voiture&nbsp;</u> : nombre de <strong>&nbsp;km parcourus</strong></span>
             <input type="text" class="form-control" placeholder="81777, 65142..." name="kilometrage"
                 aria-describedby="basic-addon3" ngModel>
         </div>
 
-        <div name="permis1" class="col-md-4 mb-3">
-            <label  for="inputState" class="form-label ">si moto, choisir type de permis</label>
-            <select name="permis"  ngModel="" id="permis" class="form-select">
-                <option value="permis moto" ></option>
-            <option value="permis moto" >permis moto</option>
-            <option value="sans permis" >sans permis</option>
-            
-                
+
+
+        <div class="input-group mb-3  shadow bg-body rounded">
+            <span class="input-group-text col-3" id="basic-addon3"><u>si moto&nbsp;</u> : choisir type de <strong>&nbsp;permis</strong></span>
+            <select name="permis" ngModel="" id="permis" class="form-select">
+                <option value=" "></option>
+                <option value="permis moto">permis moto</option>
+                <option value="sans permis">sans permis</option>
             </select>
         </div>
 
-        <div class="input-group mb-3">
-            <span class="input-group-text" id="basic-addon3">entrer le prix</span>
+        <!-- <div name="permis1" class="col-md-4 mb-3">
+            <label for="inputState" class="form-label"> si moto, choisir type de permis</label>
+            <select name="permis" ngModel="" id="permis" class="form-select">
+                <option value=" "></option>
+                <option value="permis moto">permis moto</option>
+                <option value="sans permis">sans permis</option>
+            </select>
+        </div> -->
+
+
+
+
+
+
+
+        <div class="input-group mb-3  shadow bg-body rounded">
+            <span class="input-group-text col-3" id="basic-addon3">entrer le <strong>&nbsp;prix</strong></span>
             <input type="number" class="form-control" placeholder="exemple: 14789" name="prix"
                 aria-describedby="basic-addon3" ngModel>
         </div>
 
-        <div class="input-group mb-3">
-            <span class="input-group-text" id="basic-addon3">entrer la puissance en Watt</span>
+        <div class="input-group mb-3  shadow bg-body rounded">
+            <span class="input-group-text col-3" id="basic-addon3">entrer la <strong>&nbsp;puissance&nbsp;</strong> en Watt</span>
             <input type="number" class="form-control" placeholder="exemple: 7500" name="puissance"
                 aria-describedby="basic-addon3" ngModel>
         </div>
 
-        <div class="input-group mb-3">
-            <span class="input-group-text" id="basic-addon3">si moto, entrer l'équivalent par rapport à une moto classique</span>
+        <div class="input-group mb-3  shadow bg-body rounded">
+            <span class="input-group-text" id="basic-addon3"><u>si moto&nbsp;</u> : <strong>&nbsp;équivalent&nbsp;</strong> par rapport à une moto
+                classique</span>
             <input type="text" class="form-control" placeholder="exemple: Équivalent 50 cm3" name="equivalent"
                 aria-describedby="basic-addon3" ngModel>
         </div>
 
-        <div class="input-group mb-3">
-            <span class="input-group-text" id="basic-addon3">description</span>
-
-            <textarea class="form-control" placeholder="description" name="description" id="floatingTextarea"  ngModel></textarea>
-            
+        <div class="input-group mb-3  shadow bg-body rounded">
+            <span class="input-group-text col-3" id="basic-addon3">entrer la <strong>&nbsp;description</strong></span>
+            <textarea class="form-control" placeholder="description" name="description" id="floatingTextarea"
+                ngModel></textarea>
         </div>
 
 
-
-        <div class="input-group mb-3">
-            <span class="input-group-text" id="basic-addon3">entrer l'url de l'image principale</span>
+        <div class="input-group mb-3  shadow bg-body rounded">
+            <span class="input-group-text col-3" id="basic-addon3">entrer l'<strong>&nbsp;url&nbsp;</strong> de l'image principale</span>
             <input type="text" class="form-control"
                 placeholder="exemple: https://www.go2roues.com/wp-content/uploads/2021/07/ebroh-bravo-cr-vert-trois-quart-face-droit.jpg"
                 name="image" aria-describedby="basic-addon3" ngModel>
         </div>
 
-        <div class="input-group mb-3">
-            <span class="input-group-text" id="basic-addon3">entrer l'url de l'image 2</span>
+        <div class="input-group mb-3  shadow bg-body rounded">
+            <span class="input-group-text col-3" id="basic-addon3">entrer l'<strong>&nbsp;url&nbsp;</strong> de l'image 2</span>
             <input type="text" class="form-control"
                 placeholder="exemple: https://www.go2roues.com/wp-content/uploads/2021/07/ebroh-bravo-cr-vert-trois-quart-face-droit.jpg"
                 name="image2" aria-describedby="basic-addon3" ngModel>
         </div>
 
-        <div class="input-group mb-3">
-            <span class="input-group-text" id="basic-addon3">entrer l'url de l'image 3</span>
+        <div class="input-group mb-3  shadow bg-body rounded">
+            <span class="input-group-text col-3" id="basic-addon3">entrer l'<strong>&nbsp;url&nbsp;</strong> de l'image 3</span>
             <input type="text" class="form-control"
                 placeholder="exemple: https://www.go2roues.com/wp-content/uploads/2021/07/ebroh-bravo-cr-vert-trois-quart-face-droit.jpg"
                 name="image3" aria-describedby="basic-addon3" ngModel>
@@ -115,29 +137,31 @@
 
 
 
-        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ajoutReussi" type="submit">Valider</button>
+        <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#ajoutReussi"
+            type="submit">Valider</button>
 
 
 
-    <!-- Modal -->
-    <div class="modal fade" id="ajoutReussi" tabindex="-1" aria-labelledby="ajoutReussiLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="ajoutReussiLabel"> SUCCESS</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    AJOUT REUSSI
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <a class="nav-link" routerLink="/products"><button class="btn btn-primary " data-bs-dismiss="modal" >Voir les produits</button></a>
+        <!-- Modal -->
+        <div class="modal fade" id="ajoutReussi" tabindex="-1" aria-labelledby="ajoutReussiLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="ajoutReussiLabel"> SUCCESS</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        AJOUT REUSSI
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                        <a class="nav-link" routerLink="/products"><button class="btn btn-success "
+                                data-bs-dismiss="modal">Voir les produits</button></a>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- Modal -->
+        <!-- Modal -->
 
 
 
