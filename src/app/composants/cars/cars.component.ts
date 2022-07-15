@@ -49,6 +49,13 @@ export class CarsComponent implements OnInit {
     this.getCars();
   }
 
+  formatPrice(num: any){
+    // regExp = 
+     const espaceAvecNombre = String(num).replace(/(?<!\..*)(\d)(?=(?:\d{3})+(?:\.|$))/g, '$1 ');
+    return espaceAvecNombre;
+    }
+
+
   getCars() {
     this.productsservice.getbyCategoVehicule(this.carsCategory).subscribe(data => {
       this.Cars = data

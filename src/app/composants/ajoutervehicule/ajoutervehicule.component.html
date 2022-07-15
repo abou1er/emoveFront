@@ -17,9 +17,9 @@
             </select>
         </div> -->
 
-        <div class="input-group mb-3  shadow bg-body rounded">
-            <span class="input-group-text col-3" id="basic-addon3"><strong>&nbsp;catégorie&nbsp;</strong>du véhicule</span>
-            <select name="permis" ngModel="" id="permis" class="form-select">
+        <div class="input-group mb-3 bg-body rounded">
+            <span class="input-group-text col-lg-3" id="basic-addon3"><strong>&nbsp;catégorie&nbsp;</strong></span>
+            <select name="categorie" ngModel="" id="categorie" class="form-select">
                 <option value="voiture">voiture</option>
                 <option value="moto">moto</option>
                 <option value="trottinette">trottinette</option>
@@ -29,42 +29,42 @@
 
 
 
-        <div class="input-group mb-3  shadow bg-body rounded">
-            <span class="input-group-text col-3" id="basic-addon3">entrer la <strong>&nbsp;marque&nbsp;</strong> du véhicule</span>
+        <div class="input-group mb-3 bg-body rounded">
+            <span class="input-group-text col-lg-3" id="basic-addon3"><strong>&nbsp;marque&nbsp;</strong></span>
             <input type="text" class="form-control" placeholder="exemple: CITROEN, TESLA, SUPER SOCO, TROMOX MINO"
                 name="marque" aria-describedby="basic-addon3" ngModel required="standalone">
         </div>
 
 
-        <div class="input-group mb-3  shadow bg-body rounded">
-            <span class="input-group-text col-3" id="basic-addon3">entrer le <strong>&nbsp;nom/modèle&nbsp;</strong> du véhicule</span>
+        <div class="input-group mb-3 bg-body rounded">
+            <span class="input-group-text col-lg-3" id="basic-addon3"><strong>&nbsp;nom/modèle&nbsp;</strong></span>
             <input type="text" class="form-control" placeholder="exemple: TROMOX MINO" name="modele"
                 aria-describedby="basic-addon3" ngModel required="standalone">
         </div>
 
 
-        <div class="input-group mb-3  shadow bg-body rounded">
-            <span class="input-group-text col-3" id="basic-addon3">entrer <strong>&nbsp;autonomie&nbsp;</strong> (en précisant "km")</span>
+        <div class="input-group mb-3 bg-body rounded">
+            <span class="input-group-text col-lg-3" id="basic-addon3"><strong>&nbsp;autonomie&nbsp;</strong> (préciser "km")</span>
             <input type="text" class="form-control" placeholder="exemple: 110 km" name="autonomie"
                 aria-describedby="basic-addon3" ngModel>
         </div>
 
-        <div class="input-group mb-3  shadow bg-body rounded">
-            <span class="input-group-text col-3" id="basic-addon3"> <u>si voiture&nbsp;</u> : <strong>&nbsp;année&nbsp;</strong> de commercialisation</span>
-            <input type="text" class="form-control" placeholder= "2018, 2021,..." name="annee"
+        <div class="input-group mb-3 bg-body rounded">
+            <span class="input-group-text voiture" id="basic-addon3"> <u>si voiture&nbsp;</u> : <strong>&nbsp;année&nbsp;</strong> de commercialisation</span>
+            <input type="text" class="form-control" placeholder= "exemple: 2018, 2021,..." name="annee"
                 aria-describedby="basic-addon3" ngModel>
         </div>
 
-        <div class="input-group mb-3  shadow bg-body rounded">
-            <span class="input-group-text col-3" id="basic-addon3"><u>si voiture&nbsp;</u> : nombre de <strong>&nbsp;km parcourus</strong></span>
-            <input type="text" class="form-control" placeholder="81777, 65142..." name="kilometrage"
+        <div class="input-group mb-3 bg-body rounded">
+            <span class="input-group-text voiture" id="basic-addon3"><u>si voiture&nbsp;</u> : nombre de <strong>&nbsp;km parcourus</strong></span>
+            <input type="text" class="form-control" placeholder="exemple: 81777, 65142..." name="kilometrage"
                 aria-describedby="basic-addon3" ngModel>
         </div>
 
 
 
-        <div class="input-group mb-3  shadow bg-body rounded">
-            <span class="input-group-text col-3" id="basic-addon3"><u>si moto&nbsp;</u> : choisir type de <strong>&nbsp;permis</strong></span>
+        <div class="input-group mb-3 bg-body rounded">
+            <span class="input-group-text moto" id="basic-addon3"><u>si moto&nbsp;</u> : type de <strong>&nbsp;permis</strong></span>
             <select name="permis" ngModel="" id="permis" class="form-select">
                 <option value=" "></option>
                 <option value="permis moto">permis moto</option>
@@ -82,53 +82,47 @@
         </div> -->
 
 
-
-
-
-
-
-        <div class="input-group mb-3  shadow bg-body rounded">
-            <span class="input-group-text col-3" id="basic-addon3">entrer le <strong>&nbsp;prix</strong></span>
+        <div class="input-group mb-3 bg-body rounded">
+            <span class="input-group-text col-lg-3" id="basic-addon3"><strong>&nbsp;prix</strong></span>
             <input type="number" class="form-control" placeholder="exemple: 14789" name="prix"
                 aria-describedby="basic-addon3" ngModel>
         </div>
 
-        <div class="input-group mb-3  shadow bg-body rounded">
-            <span class="input-group-text col-3" id="basic-addon3">entrer la <strong>&nbsp;puissance&nbsp;</strong> en Watt</span>
+        <div class="input-group mb-3 bg-body rounded">
+            <span class="input-group-text col-lg-3" id="basic-addon3"><strong>&nbsp;puissance&nbsp;</strong> (Watts)</span>
             <input type="number" class="form-control" placeholder="exemple: 7500" name="puissance"
                 aria-describedby="basic-addon3" ngModel>
         </div>
 
-        <div class="input-group mb-3  shadow bg-body rounded">
-            <span class="input-group-text" id="basic-addon3"><u>si moto&nbsp;</u> : <strong>&nbsp;équivalent&nbsp;</strong> par rapport à une moto
-                classique</span>
+        <div class="input-group mb-3 bg-body rounded">
+            <span class="input-group-text moto" id="basic-addon3"><u>si moto&nbsp;</u> : <strong>&nbsp;équivalent&nbsp;</strong> moto thermique</span>
             <input type="text" class="form-control" placeholder="exemple: Équivalent 50 cm3" name="equivalent"
                 aria-describedby="basic-addon3" ngModel>
         </div>
 
-        <div class="input-group mb-3  shadow bg-body rounded">
-            <span class="input-group-text col-3" id="basic-addon3">entrer la <strong>&nbsp;description</strong></span>
+        <div class="input-group mb-3 bg-body rounded">
+            <span class="input-group-text col-lg-3" id="basic-addon3"><strong>&nbsp;description</strong></span>
             <textarea class="form-control" placeholder="description" name="description" id="floatingTextarea"
                 ngModel></textarea>
         </div>
 
 
-        <div class="input-group mb-3  shadow bg-body rounded">
-            <span class="input-group-text col-3" id="basic-addon3">entrer l'<strong>&nbsp;url&nbsp;</strong> de l'image principale</span>
+        <div class="input-group mb-3 bg-body rounded">
+            <span class="input-group-text col-lg-3" id="basic-addon3"><strong>&nbsp;url&nbsp;</strong> image principale</span>
             <input type="text" class="form-control"
                 placeholder="exemple: https://www.go2roues.com/wp-content/uploads/2021/07/ebroh-bravo-cr-vert-trois-quart-face-droit.jpg"
                 name="image" aria-describedby="basic-addon3" ngModel>
         </div>
 
-        <div class="input-group mb-3  shadow bg-body rounded">
-            <span class="input-group-text col-3" id="basic-addon3">entrer l'<strong>&nbsp;url&nbsp;</strong> de l'image 2</span>
+        <div class="input-group mb-3 bg-body rounded">
+            <span class="input-group-text col-lg-3" id="basic-addon3"><strong>&nbsp;url&nbsp;</strong> image 2</span>
             <input type="text" class="form-control"
                 placeholder="exemple: https://www.go2roues.com/wp-content/uploads/2021/07/ebroh-bravo-cr-vert-trois-quart-face-droit.jpg"
                 name="image2" aria-describedby="basic-addon3" ngModel>
         </div>
 
-        <div class="input-group mb-3  shadow bg-body rounded">
-            <span class="input-group-text col-3" id="basic-addon3">entrer l'<strong>&nbsp;url&nbsp;</strong> de l'image 3</span>
+        <div class="input-group mb-3 bg-body rounded">
+            <span class="input-group-text col-lg-3" id="basic-addon3"><strong>&nbsp;url&nbsp;</strong> image 3</span>
             <input type="text" class="form-control"
                 placeholder="exemple: https://www.go2roues.com/wp-content/uploads/2021/07/ebroh-bravo-cr-vert-trois-quart-face-droit.jpg"
                 name="image3" aria-describedby="basic-addon3" ngModel>
@@ -147,7 +141,7 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="ajoutReussiLabel"> SUCCESS</h5>
+                        <h5 class="modal-title" id="ajoutReussiLabel">CONFIRMATION</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
@@ -156,7 +150,7 @@
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
                         <a class="nav-link" routerLink="/products"><button class="btn btn-success "
-                                data-bs-dismiss="modal">Voir les produits</button></a>
+                                data-bs-dismiss="modal">Voir les véhicules</button></a>
                     </div>
                 </div>
             </div>

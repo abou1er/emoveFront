@@ -51,6 +51,12 @@ export class MotoComponent implements OnInit {
     this.getMotos();
   }
 
+  formatPrice(num: any){
+    // regExp = 
+     const espaceAvecNombre = String(num).replace(/(?<!\..*)(\d)(?=(?:\d{3})+(?:\.|$))/g, '$1 ');
+    return espaceAvecNombre;
+    }
+
 
   getMotos() {
     this.productsservice.getbyCategoVehicule(this.motoCategory).subscribe(data => {

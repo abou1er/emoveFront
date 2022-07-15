@@ -36,7 +36,7 @@
               <li class="list-group-item" style="height: 64px">{{ moto.marque }}</li>
               <li class="list-group-item" style="height: 32px">{{ moto.modele }}</li>
               <li class="list-group-item" style="height: 32px">Puissance {{ moto.puissance }} Watt</li>
-              <li class="list-group-item" style="height: 32px"><b>{{ moto.prix }} €</b></li>
+              <li class="list-group-item" style="height: 32px"><b>{{ formatPrice(moto.prix) }} €</b></li>
             </ul>
           </div>
           <div class="card-footer text-center">
@@ -123,7 +123,7 @@
                   <div class="card-body">
                     <h5 class="card-title">Marque : {{this.detailRecup.marque}} </h5>
                     <h5 class="card-title">Modèle : {{this.detailRecup.modele}}</h5>
-                    <p class="card-text">A propos du véhicule : {{this.detailRecup.description}}</p>
+                    <p class="card-text"><u>A propos du véhicule</u> : <br> {{this.detailRecup.description}}</p>
                     <p>Etat neuf</p>
                     <div class="row">
                       <div class="col-6">
@@ -146,7 +146,7 @@
                     </div>
 
 
-                    <p class="card-text"><strong class="text-muted">Prix : {{this.detailRecup.prix}} €</strong></p>
+                    <p class="card-text"><strong class="text-muted">Prix : {{formatPrice(this.detailRecup.prix)}} €</strong></p>
                   </div>
                 </div>
                 <!--   fin card info left -->
@@ -236,7 +236,7 @@
 
               <div class="col-12 border border-dark text-center">
                 <label for="nbJour" class="form-label">Prix du véhicule</label>
-                <p><strong>{{this.commandRecap.prix}} € </strong></p>
+                <p><strong>{{formatPrice(this.commandRecap.prix)}} € </strong></p>
               </div>
 
               <div *ngIf="this.detailRecup " class="col-12 mt-5 d-flex justify-content-between">
@@ -256,7 +256,7 @@
         </div>
         <div class="modal-footer">
           <button class="btn btn-dark" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Retour fiche
-            produit</button>
+            véhicule</button>
         </div>
       </div>
     </div>
@@ -283,7 +283,7 @@
         <p> La commande du modèle <strong>{{this.commandRecap.modele}}</strong> de la marque
           <strong>{{this.commandRecap.marque}}</strong> est bien confirmée.
         </p>
-        <p> Le total à régler est de <strong>{{this.commandRecap.prix}}</strong> € </p>
+        <p> Le total à régler est de <strong>{{formatPrice(this.commandRecap.prix)}}</strong> € </p>
         <hr>
         <p> La livraison se fera après réception du paiement de <strong>{{this.commandRecap.sex}}
             {{this.commandRecap.prenom}} {{this.commandRecap.nom}} </strong> </p>

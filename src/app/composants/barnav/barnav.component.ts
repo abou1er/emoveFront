@@ -7,20 +7,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BarnavComponent implements OnInit {
 
-  inpConnect: any 
+  inpConnect: any
   // inpConnect =  {
   //   username: "",
   //   mdp: "",
   //   }
   conectGood = false
 
-  isAdmin:boolean = false
-  conectWrong:boolean = false
+  isAdmin: boolean = false
+  conectWrong: boolean = false
 
-  authen : any  = {
-    username :"Pedro",
-    mdp : "1234"
-    }
+  authen: any = {
+    username: "Pedro",
+    mdp: "1234"
+  }
 
   constructor() { }
 
@@ -28,26 +28,25 @@ export class BarnavComponent implements OnInit {
   }
 
   // CONNEXION
-  disconect(){
+  disconect() {
     this.isAdmin = false;
     this.conectGood = false;
-    
   }
 
-  onconect(fConnect:any){
+  onconect(fConnect: any) {
     // this.isAdmin = !this.isAdmin
-  this.inpConnect = fConnect;
-  console.log(this.inpConnect.username , " le username");  
-  console.log(this.inpConnect.mdp , " le mdp");   
-  
-    if(this.inpConnect.username == this.authen.username  &&  this.inpConnect.mdp == this.authen.mdp){        
+    this.inpConnect = fConnect;
+    console.log(this.inpConnect.username, " le username");
+    console.log(this.inpConnect.mdp, " le mdp");
+
+    if (this.inpConnect.username == this.authen.username && this.inpConnect.mdp == this.authen.mdp) {
       this.isAdmin = !this.isAdmin
-      this.conectGood  = true
-    }else{        
-      this.conectWrong = true       
-      setTimeout(() => {this.conectWrong = false}, 5000);
+      this.conectGood = true
+    } else {
+      this.conectWrong = true
+      setTimeout(() => { this.conectWrong = false }, 5000);
       this.onconect(fConnect)
-    }      
+    }
   }
 
 

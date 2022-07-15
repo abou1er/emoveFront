@@ -26,6 +26,14 @@ export class GestionAdminComponent implements OnInit {
     this.getallProducts()
   }
 
+
+  formatPrice(num: any){
+    // regExp = 
+     const espaceAvecNombre = String(num).replace(/(?<!\..*)(\d)(?=(?:\d{3})+(?:\.|$))/g, '$1 ');
+    return espaceAvecNombre;
+    }
+
+
   getallProducts(){    
     this.adminService.getAll().subscribe(data =>{
       this.allProducts = data

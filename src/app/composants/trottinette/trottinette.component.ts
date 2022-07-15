@@ -46,6 +46,13 @@ export class TrottinetteComponent implements OnInit {
     this.getTrottine();
   }
 
+  formatPrice(num: any){
+    // regExp = 
+     const espaceAvecNombre = String(num).replace(/(?<!\..*)(\d)(?=(?:\d{3})+(?:\.|$))/g, '$1 ');
+    return espaceAvecNombre;
+    }
+
+
   getTrottine(){
     this.productsservice.getbyCategoVehicule(this.trottinetteCategory).subscribe(data =>{
       this.trottinette = data
