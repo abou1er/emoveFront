@@ -1,6 +1,42 @@
 <h2 class="text-center text-success p-5 bg-light">Trottinettes</h2>
 <div class="bg-dark p-3">
+
+
     <div class="container pb-3">
+
+        <div class="row mb-2">
+            <!--------------------------------------------- ZONE de RECHERCHE ---------------------------------->
+            <div class="col-12">
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="saisir votre recherche"
+                        aria-label="Search" name="KeyWord" [(ngModel)]="MotCle">
+                    <button class="btn btn-outline-success me-5" type="submit" (click)="getByMotCle()">Chercher</button>
+                </form>
+            </div>
+        </div>
+
+
+
+        <div class="row mb-4">
+            <!---------------------------------- Prix MINI / Prix MAX / Chercher ---------------------------------------->
+            <div class="col-12">
+                <form class="row" (ngSubmit)="getCatByPrix(f.value)" #f="ngForm">
+                    <div class="col-4">
+                        <input type="number" ngModel name="min" class="form-control" placeholder="prix mini">
+                    </div>
+                    <div class="col-4">
+                        <input type="number" ngModel name="max" class="form-control" placeholder="prix max">
+                    </div>
+                    <div class="col-4">
+                        <button class="btn btn-outline-success" type="submit">Chercher</button>
+                    </div>
+                </form>
+            </div>
+
+
+        </div>
+
+
 
         <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 g-4">
             <div class="col" *ngFor="let t of trottinette">
@@ -12,7 +48,7 @@
                             <li class="list-group-item" style="height: 64px">{{ t.marque }}</li>
                             <li class="list-group-item" style="height: 32px">{{ t.modele }}</li>
                             <li class="list-group-item" style="height: 32px">{{ t.puissance }}</li>
-                            <li class="list-group-item" style="height: 32px"><b>{{ t.prix }} €</b></li>
+                            <li class="list-group-item" style="height: 32px"><b>{{ formatPrice(t.prix) }} €</b></li>
                         </ul>
                     </div>
                     <div class="card-footer text-center">
@@ -112,7 +148,7 @@
                                         <div class="card-body">
                                             <h5 class="card-title">Marque : {{this.detailRecup.marque}} </h5>
                                             <h5 class="card-title">Modèle : {{this.detailRecup.modele}}</h5>
-                                            <p class="card-text">A propos du véhicule :
+                                            <p class="card-text"><u>A propos du véhicule</u> :
                                                 <br>{{this.detailRecup.description}}
                                             </p>
                                             <p>Etat neuf</p>
@@ -127,7 +163,7 @@
 
                                             <p class="card-text"><strong class="text-muted">Prix :
                                                     <span
-                                                        style=" letter-spacing: 0.4em;">{{this.detailRecup.prix}}</span>
+                                                        style=" letter-spacing: 0.4em;">{{formatPrice(this.detailRecup.prix)}}</span>
                                                     €</strong></p>
                                         </div>
                                     </div>
@@ -220,7 +256,8 @@
 
                                 <div class="col-12 border border-dark text text-center">
                                     <label for="nbJour" class="form-label">Prix du véhicule</label>
-                                    <p style="letter-spacing: 0.4em;"><strong>{{this.commandRecap.prix}} € </strong></p>
+                                    <p style="letter-spacing: 0.4em;"><strong>{{formatPrice(this.commandRecap.prix)}} €
+                                        </strong></p>
                                 </div>
 
                                 <div *ngIf="this.detailRecup " class="col-12 mt-5 d-flex justify-content-between">
@@ -241,7 +278,7 @@
                     </div>
                     <div class="modal-footer">
                         <button class="btn btn-dark" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Retour
-                            fiche produit</button>
+                            fiche véhicule</button>
                     </div>
                 </div>
             </div>
@@ -259,8 +296,8 @@
             <div class="modal-content" *ngIf="this.commandRecap">
 
                 <div class="modal-header">
-                    <h5 class="modal-title text-success" id="modalConfirmBuyLabel"> CONFIRMATION de votre ACHAT
-                        <br><strong>{{this.commandRecap.sex}} {{this.commandRecap.prenom}} {{this.commandRecap.nom}}
+                    <h5 class="modal-title text-success" id="modalConfirmBuyLabel"> CONFIRMATION de votre ACHAT<br>
+                        <strong>{{this.commandRecap.sex}} {{this.commandRecap.prenom}} {{this.commandRecap.nom}}
                         </strong>
                     </h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -270,7 +307,7 @@
                     <p> La commande du modèle <strong>{{this.commandRecap.modele}}</strong> de la marque
                         <strong>{{this.commandRecap.marque}}</strong> est bien confirmée.
                     </p>
-                    <p> Le total à régler est de <strong>{{this.commandRecap.prix}} € </strong></p>
+                    <p> Le total à régler est de <strong>{{formatPrice(this.commandRecap.prix)}} € </strong></p>
                     <hr>
                     <p> La livraison se fera après réception du paiement de <strong>{{this.commandRecap.sex}}
                             {{this.commandRecap.prenom}} {{this.commandRecap.nom}} </strong></p>

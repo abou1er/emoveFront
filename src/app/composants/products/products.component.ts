@@ -70,9 +70,6 @@ formattedPrice: any;
     this.p = $event
     document.documentElement.scrollTop = 0
 
-
-    
-    
     // 
   }
 

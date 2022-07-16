@@ -36,8 +36,10 @@ export class ProductsService {
   }
 
   getbyPermis(permis: any) {
-    return this.http.get(`${this.URL}/byCat/cat/cat?permis=${permis}`);
+    return this.http.get(`${this.URL}/byCat/cat/cat/permis?permis=${permis}`);
   }
+
+
 
   updateV(v: any) {
     return this.http.patch(`${this.URL}/v._id`, v)
@@ -47,8 +49,19 @@ export class ProductsService {
     return this.http.get(`${this.URL}/byPrice?min=${min}&max=${max}`);
   }
 
-  getMotosByPrix(min: any, max: any) {
-    return this.http.get(`${this.URL}/byCat/moto/by/price?min=${min}&max=${max}&categorie=moto`);
+  // original
+  // getMotosByPrix(min: any, max: any) {
+  //   return this.http.get(`${this.URL}/byCat/moto/by/price?min=${min}&max=${max}&categorie=moto`);
+  // }
+
+  // copie
+  getCategoryByPrix(min: any, max: any, catego : any) {
+    return this.http.get(`${this.URL}/byCat/moto/by/price?min=${min}&max=${max}&categorie=${catego}`);
+  }
+
+
+  getMotosByPrixPermis(min: any, max: any, permis : any, catego: any) {
+    return this.http.get(`${this.URL}/byCat/moto/by/price?min=${min}&max=${max}&categorie=${catego}&permis=${permis}`);
   }
 
   // getMotosByPrix(min:any, max:any, catego:any){

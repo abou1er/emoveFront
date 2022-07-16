@@ -1,28 +1,52 @@
 <h2 class="text-center text-success p-5 bg-light">Tous nos véhicules</h2>
 <div class="bg-dark p-3">
-  <div class="container pb-3">
 
-    <div class="row">
-      <!--------------------------------------------- ZONE de RECHERCHE ---------------------------------->
-      <div class="col-5">
-        <form class="d-flex" role="search">
-          <input class="form-control me-2" type="search" placeholder="saisir votre recherche" aria-label="Search"
-            name="KeyWord" [(ngModel)]="MotCle">
-          <button class="btn btn-outline-success me-5" type="submit" (click)="getByMotCle()">Chercher</button>
-        </form>
-      </div>
+  <nav class="navbar d-flex justify-content-between navbar-expand-lg navbar-dark bg-dark text-white">
 
-      <!--------------------------------------------- ZONE de TRI par Catégorie ---------------------------------->
-      <div class="col-2">
+    <div class="container-fluid">
+  
+      <a class="navbar-brand text-white"></a>
+      <button class="navbar-toggler text-white  border-light border-3" type="button" data-bs-toggle="collapse"
+        data-bs-target="#responsiveSearch" aria-controls="responsiveSearch" aria-expanded="false"
+        aria-label="Toggle navigation">
+        <span class="bi bi-search"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+          <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+        </svg></span>
+      </button>
+  
+      <div class="container collapse navbar-collapse align-self-end" id="responsiveSearch">
+  
+        <ul class="navbar-nav">
+          <li class="nav-item mb-2">
+            <!--------------------------------------------- ZONE de TRI par Catégorie ---------------------------------->
+      <div class="col-12 me-2">
         <button class="btn btn-outline-success dropdown-toggle" type="button" id="dropdownMenuButton1"
           data-bs-toggle="dropdown" aria-expanded="false">Catégorie</button>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
           <li *ngFor="let C of allCategory"><a class="dropdown-item" (click)="getByCategoVehicule(C)">{{C}}</a></li>
         </ul>
       </div>
+          </li>
 
-      <!---------------------------------- Prix MINI / Prix MAX / Chercher ---------------------------------------->
-      <div class="col-5">
+
+          <li class="nav-item mb-2">
+            <div class="row">
+              <!--------------------------------------------- ZONE de RECHERCHE ---------------------------------->
+              <div class="col-12">
+                <form class="d-flex" role="search">
+                  <input class="form-control me-2" type="search" placeholder="saisir votre recherche" aria-label="Search"
+                    name="KeyWord" [(ngModel)]="MotCle">
+                  <button class="btn btn-outline-success me-5" type="submit" (click)="getByMotCle()">Chercher</button>
+                </form>
+              </div>
+            </div>
+        
+          </li>
+
+
+          <li class="nav-item mb-2">
+           <!---------------------------------- Prix MINI / Prix MAX / Chercher ---------------------------------------->
+      <div class="col-12">
         <form class="row" (ngSubmit)="getByPrix(f.value)" #f="ngForm">
           <div class="col-4">
             <input type="number" ngModel name="min" class="form-control" placeholder="prix mini">
@@ -35,10 +59,29 @@
           </div>
         </form>
       </div>
+          </li>
 
+
+          
+        </ul>
+  
+      </div>
+  
+  
+  
+  
+  
+  
     </div>
+   
+  
+  
+  
+  </nav>
+  
+  
 
-  </div>
+
 
 
 
@@ -147,7 +190,7 @@
                     <div class="card-body">
                       <h5 class="card-title">Marque : {{this.detailRecup.marque}} </h5>
                       <h5 class="card-title">Modèle : {{this.detailRecup.modele}}</h5>
-                      <p class="card-text">A propos du véhicule : {{this.detailRecup.description}}</p>
+                      <p class="card-text"><u>A propos du véhicule</u> : <br> {{this.detailRecup.description}}</p>
                       <p>Etat neuf</p>
                       <div class="row">
                         <div class="col-6">
@@ -260,7 +303,7 @@
 
                 <div class="col-12 border border-dark text-center">
                   <label for="nbJour" class="form-label">Prix du véhicule</label>
-                  <p><strong>{{this.commandRecap.prix}} € </strong></p>
+                  <p><strong>{{formatPrice(this.commandRecap.prix)}} € </strong></p>
                 </div>
 
                 <div *ngIf="this.detailRecup " class="col-12 mt-5 d-flex justify-content-between">
@@ -306,7 +349,7 @@
         <div class="modal-body">
           <p> La commande du modèle <strong>{{this.commandRecap.modele}}</strong> de la marque
             <strong>{{this.commandRecap.marque}}</strong> est bien confirmée.</p>
-          <p> Le total à régler est de <strong>{{this.commandRecap.prix}} €. </strong></p>
+          <p> Le total à régler est de <strong>{{formatPrice(this.commandRecap.prix)}} €. </strong></p>
           <hr>
           <p> La livraison se fera après réception du paiement de <strong> {{this.commandRecap.sex}}
               {{this.commandRecap.prenom}} {{this.commandRecap.nom}} </strong></p>

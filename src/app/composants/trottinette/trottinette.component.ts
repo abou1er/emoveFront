@@ -9,6 +9,8 @@ import { UsersService } from 'src/app/services/users.service';
 })
 export class TrottinetteComponent implements OnInit {
 
+  MotCle = ""
+
   trottinette: any;
   detailRecup : any
   waitInfo : boolean = false
@@ -46,6 +48,13 @@ export class TrottinetteComponent implements OnInit {
     this.getTrottine();
   }
 
+  formatPrice(num: any){
+    // regExp = 
+     const espaceAvecNombre = String(num).replace(/(?<!\..*)(\d)(?=(?:\d{3})+(?:\.|$))/g, '$1 ');
+    return espaceAvecNombre;
+    }
+
+
   getTrottine(){
     this.productsservice.getbyCategoVehicule(this.trottinetteCategory).subscribe(data =>{
       this.trottinette = data
@@ -54,6 +63,18 @@ export class TrottinetteComponent implements OnInit {
     })
   }
 
+    // test get cat + prix
+    getCatByPrix(f: any,) {
+      console.log(f.min, f.max, );
+      // console.log(moto.categorie);
+        
+      this.productsservice.getCategoryByPrix(f.min, f.max, this.trottinetteCategory).subscribe(result => {
+        this.trottinette = result;
+        console.log( this.trottinette);
+        
+        
+      })
+    }
 
   getDetail( t : any){
     this.waitInfo = true;
@@ -63,6 +84,12 @@ export class TrottinetteComponent implements OnInit {
     console.log(this.detailRecup.description);
 
   }
+    // ***** méthode de recherche par  Mot Clé ******************
+    getByMotCle() {
+      this.productsservice.getByKeyWord(this.MotCle).subscribe(result => {
+        this.trottinette = result;
+      })
+    }
 
   takeCommand(){ //transfère donnée dans l'objet vide qui va être réutilisé pour afficher les infos dan sles modal suivantes
     this.commandRecap.image =  this.detailRecup.image;

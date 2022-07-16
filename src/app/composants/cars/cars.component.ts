@@ -49,6 +49,13 @@ export class CarsComponent implements OnInit {
     this.getCars();
   }
 
+  formatPrice(num: any){
+    // regExp = 
+     const espaceAvecNombre = String(num).replace(/(?<!\..*)(\d)(?=(?:\d{3})+(?:\.|$))/g, '$1 ');
+    return espaceAvecNombre;
+    }
+
+
   getCars() {
     this.productsservice.getbyCategoVehicule(this.carsCategory).subscribe(data => {
       this.Cars = data
@@ -82,7 +89,25 @@ export class CarsComponent implements OnInit {
   // }
 
 
+  // get cat + prix
+  getCatByPrix(f: any,) {
+    console.log(f.min, f.max, );
+    // console.log(moto.categorie);
+      
+    this.productsservice.getCategoryByPrix(f.min, f.max, this.carsCategory).subscribe(result => {
+      this.Cars = result;
+      console.log( this.Cars);
+      
+      
+    })
+  }
 
+      // ***** méthode de recherche par  Mot Clé ******************
+      getByMotCle() {
+        this.productsservice.getByKeyWord(this.MotCle).subscribe(result => {
+          this.Cars = result;
+        })
+      }
 
   takeCommand() { //transfère donnée dans l'objet vide qui va être réutilisé pour afficher les infos dan sles modal suivantes
     this.commandRecap.image = this.detailRecup.image;

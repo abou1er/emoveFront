@@ -1,12 +1,61 @@
 <h2 class="text-center text-success p-5 bg-light">Motos</h2>
 <div class="bg-dark p-3">
+
+
   <div class="container pb-3">
 
-    <form class="row" (ngSubmit)="getMotosByPrix(f.value, this.Motos.categorie)" #f="ngForm">
-
-      <div>
-        <p class="btn btn-outline-success">Recherche par prix</p>
+    <div class="row mb-2">
+      <!--------------------------------------------- ZONE de RECHERCHE ---------------------------------->
+      <div class="col-12">
+          <form class="d-flex" role="search">
+              <input class="form-control me-2" type="search" placeholder="saisir votre recherche"
+                  aria-label="Search" name="KeyWord" [(ngModel)]="MotCle">
+              <button class="btn btn-outline-success me-5" type="submit" (click)="getByMotCle()">Chercher</button>
+          </form>
       </div>
+  </div>
+
+
+
+  <div class="row mb-2">
+      <!---------------------------------- Prix MINI / Prix MAX / Chercher ---------------------------------------->
+      <div class="col-12">
+          <form class="row" (ngSubmit)="getCatByPrix(f.value)" #f="ngForm">
+              <div class="col-4">
+                  <input type="number" ngModel name="min" class="form-control" placeholder="prix mini">
+              </div>
+              <div class="col-4">
+                  <input type="number" ngModel name="max" class="form-control" placeholder="prix max">
+              </div>
+              <div class="col-4">
+                  <button class="btn btn-outline-success" type="submit">Chercher</button>
+              </div>
+          </form>
+      </div>
+
+
+  </div>
+
+  </div>
+  <div class="container pb-3">
+
+    
+    <!-- get by permis -->
+    <div class="row ">
+      <div class="col-3">
+        <button type="button" (click)="getByPermisMotos()" class="btn btn-success"><small> Avec permis</small></button>
+      </div>
+
+      <div class="col-3">
+        <button type="button" (click)="getSansPermisMotos()" class="btn btn-success"><small> Sans permis</small></button>
+      </div>
+    </div>
+    <!--FIN get by permis -->
+
+
+
+    <!-- test trie PERMIS + CAT + PRIX fonctionne déjà en back!!-->
+    <!-- <form class="row" (ngSubmit)="gettypePermisMotosPrix(f.value)" #f="ngForm">
 
       <div class="col-4">
         <input type="number" ngModel name="min" class="form-control" placeholder="mini">
@@ -14,13 +63,33 @@
       <div class="col-4">
         <input type="number" ngModel name="max" class="form-control" placeholder="max">
       </div>
+
+      
+      <div class="col-3">
+        <div name="permis" class="col-12">
+          <label for="inputState" class="form-label">Type Permis</label>
+          <select name="permis" class="form-select" ngModel required>
+
+            <option>sans permis</option>
+            <option>permis moto</option>
+
+          </select>
+        </div>
+      </div>
+      
+
+
       <div class="col-3">
         <button class="btn btn-outline-success" type="submit">Chercher</button>
       </div>
 
-    </form>
+
+
+    </form> -->
+    <!-- FIN trie permis + cat + prix -->
 
   </div>
+ 
 
 
   <!----------------------------------------- PARTIE PRINCIPALE -------------------------------------------->
@@ -36,7 +105,7 @@
               <li class="list-group-item" style="height: 64px">{{ moto.marque }}</li>
               <li class="list-group-item" style="height: 32px">{{ moto.modele }}</li>
               <li class="list-group-item" style="height: 32px">Puissance {{ moto.puissance }} Watt</li>
-              <li class="list-group-item" style="height: 32px"><b>{{ moto.prix }} €</b></li>
+              <li class="list-group-item" style="height: 32px"><b>{{ formatPrice(moto.prix) }} €</b></li>
             </ul>
           </div>
           <div class="card-footer text-center">
@@ -66,7 +135,8 @@
 
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalToggleLabel"> <button type="button" class="btn-close"
-          data-bs-dismiss="modal" aria-label="Close"></button> {{this.detailRecup.marque}} {{this.detailRecup.modele}}
+              data-bs-dismiss="modal" aria-label="Close"></button> {{this.detailRecup.marque}}
+            {{this.detailRecup.modele}}
           </h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
@@ -123,7 +193,7 @@
                   <div class="card-body">
                     <h5 class="card-title">Marque : {{this.detailRecup.marque}} </h5>
                     <h5 class="card-title">Modèle : {{this.detailRecup.modele}}</h5>
-                    <p class="card-text">A propos du véhicule : {{this.detailRecup.description}}</p>
+                    <p class="card-text"><u>A propos du véhicule</u> : <br> {{this.detailRecup.description}}</p>
                     <p>Etat neuf</p>
                     <div class="row">
                       <div class="col-6">
@@ -146,7 +216,8 @@
                     </div>
 
 
-                    <p class="card-text"><strong class="text-muted">Prix : {{this.detailRecup.prix}} €</strong></p>
+                    <p class="card-text"><strong class="text-muted">Prix : {{formatPrice(this.detailRecup.prix)}}
+                        €</strong></p>
                   </div>
                 </div>
                 <!--   fin card info left -->
@@ -236,7 +307,7 @@
 
               <div class="col-12 border border-dark text-center">
                 <label for="nbJour" class="form-label">Prix du véhicule</label>
-                <p><strong>{{this.commandRecap.prix}} € </strong></p>
+                <p><strong>{{formatPrice(this.commandRecap.prix)}} € </strong></p>
               </div>
 
               <div *ngIf="this.detailRecup " class="col-12 mt-5 d-flex justify-content-between">
@@ -256,7 +327,7 @@
         </div>
         <div class="modal-footer">
           <button class="btn btn-dark" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Retour fiche
-            produit</button>
+            véhicule</button>
         </div>
       </div>
     </div>
@@ -283,7 +354,7 @@
         <p> La commande du modèle <strong>{{this.commandRecap.modele}}</strong> de la marque
           <strong>{{this.commandRecap.marque}}</strong> est bien confirmée.
         </p>
-        <p> Le total à régler est de <strong>{{this.commandRecap.prix}}</strong> € </p>
+        <p> Le total à régler est de <strong>{{formatPrice(this.commandRecap.prix)}}</strong> € </p>
         <hr>
         <p> La livraison se fera après réception du paiement de <strong>{{this.commandRecap.sex}}
             {{this.commandRecap.prenom}} {{this.commandRecap.nom}} </strong> </p>

@@ -16,7 +16,8 @@ export class MotoComponent implements OnInit {
   detailRecup: any
   waitInfo: boolean = false
   motoCategory = "moto";
-
+  pm ="permis moto"
+  sp = "sans permis"
   MotCle = ""
 
     // objet pour formulaire client + validation
@@ -51,6 +52,12 @@ export class MotoComponent implements OnInit {
     this.getMotos();
   }
 
+  formatPrice(num: any){
+    // regExp = 
+     const espaceAvecNombre = String(num).replace(/(?<!\..*)(\d)(?=(?:\d{3})+(?:\.|$))/g, '$1 ');
+    return espaceAvecNombre;
+    }
+
 
   getMotos() {
     this.productsservice.getbyCategoVehicule(this.motoCategory).subscribe(data => {
@@ -58,6 +65,31 @@ export class MotoComponent implements OnInit {
       console.log(this.Motos);
     })
   }
+
+  // getbypermis
+  getByPermisMotos() {
+    this.productsservice.getbyPermis(this.pm).subscribe(data => {
+      this.Motos = data
+      console.log("getByPermisMotos",this.Motos);
+    })
+  }
+    // getSanspermis
+    getSansPermisMotos() {
+      this.productsservice.getbyPermis(this.sp).subscribe(data => {
+        this.Motos = data
+        console.log(this.Motos);
+      })
+    }
+
+    //test
+    //getMotosByPrixSansPermis
+    gettypePermisMotosPrix(f: any) {
+      this.productsservice.getMotosByPrixPermis(f.min, f.max, this.motoCategory, f.permis).subscribe(data => {
+        this.Motos = data
+        console.log(this.Motos);
+      })
+    }
+  //test
 
   getDetail(c: any) {
     this.waitInfo = true;
@@ -77,17 +109,31 @@ export class MotoComponent implements OnInit {
   }
 
    // ***** méthode de tri par PRIX des motos***********************************
-   getMotosByPrix(f: any, moto : any) {
+  //  getMotosByPrix(f: any, moto : any) {
+  //   console.log(f.min, f.max, );
+  //   // console.log(moto.categorie);
+      
+  //   this.productsservice.getMotosByPrix(f.min, f.max).subscribe(result => {
+  //     this.Motos = result;
+  //     console.log( this.Motos);
+      
+      
+  //   })
+  // }
+
+  // test get cat + prix
+    getCatByPrix(f: any,) {
     console.log(f.min, f.max, );
     // console.log(moto.categorie);
       
-    this.productsservice.getMotosByPrix(f.min, f.max).subscribe(result => {
+    this.productsservice.getCategoryByPrix(f.min, f.max, this.motoCategory).subscribe(result => {
       this.Motos = result;
       console.log( this.Motos);
       
       
     })
   }
+  
 
 
   // ***** méthode de recherche par  Mot Clé ******************
