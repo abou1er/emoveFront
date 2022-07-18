@@ -1,5 +1,6 @@
-<div class="container">
+<h2 class=" text-center m-auto mb-5 text-success p-5 bg-light">Gestion des véhicules</h2>
 
+<div class="container  mt-5 mb-3">
 
 
   <!-- test nav -->
@@ -104,12 +105,14 @@
 
           <td>
             <!-- UPDATE Button trigger modal -->
+            <!-- icône MODIFIER -->
             <button type="button" class="btn  btn-outline-warning" (click)="getDetail(allP)" data-bs-toggle="modal"
               data-bs-target="#updateModal"><small> <i class="fa-solid fa-file-pen"></i> </small></button>
           </td>
 
           <td>
             <!-- DELETE Button trigger modal -->
+            <!-- icône SUPPRIMER -->
             <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal"
               (click)="getDetail(allP)">
               <i class="fa-solid fa-trash"></i>
@@ -165,25 +168,29 @@
             </div>
 
             <div class="input-group mb-3">
-              <span class="input-group-text" id="basic-addon3"><strong>&nbsp;autonomie&nbsp;</strong> (préciser "km")</span>
+              <span class="input-group-text" id="basic-addon3"><strong>&nbsp;autonomie&nbsp;</strong> (préciser
+                "km")</span>
               <input type="text" class="form-control" placeholder="exemple: 110 km" name="autonomie"
                 aria-describedby="basic-addon3" [(ngModel)]="detailRecup.autonomie">
             </div>
 
             <div class="input-group mb-3">
-              <span class="input-group-text" id="basic-addon3"><u>si voiture&nbsp;</u> : <strong>&nbsp;année&nbsp;</strong> de commercialisation</span>
+              <span class="input-group-text" id="basic-addon3"><u>si voiture&nbsp;</u> :
+                <strong>&nbsp;année&nbsp;</strong> de commercialisation</span>
               <input type="text" class="form-control" placeholder="2018, 2021,..." name="annee"
                 aria-describedby="basic-addon3" [(ngModel)]="detailRecup.annee" required>
             </div>
 
             <div class="input-group mb-3">
-              <span class="input-group-text" id="basic-addon3"><u>si voiture&nbsp;</u> : nombre de <strong>&nbsp;km parcourus</strong></span>
+              <span class="input-group-text" id="basic-addon3"><u>si voiture&nbsp;</u> : nombre de <strong>&nbsp;km
+                  parcourus</strong></span>
               <input type="text" class="form-control" placeholder="81777, 65142..." name="kilometrage"
                 aria-describedby="basic-addon3" [(ngModel)]="detailRecup.kilometrage" required>
             </div>
 
             <div name="permis1" class="col-md-4 mb-3">
-              <label for="inputState" class="form-label "><u>si moto&nbsp;</u> : type de <strong>&nbsp;permis</strong></label>
+              <label for="inputState" class="form-label "><u>si moto&nbsp;</u> : type de
+                <strong>&nbsp;permis</strong></label>
               <select name="permis" [(ngModel)]="detailRecup.permis" required id="permis" class="form-select">
                 <option value=" "></option>
                 <option value="permis moto">permis moto</option>
@@ -204,7 +211,8 @@
             </div>
 
             <div class="input-group mb-3">
-              <span class="input-group-text" id="basic-addon3"><u>si moto&nbsp;</u> : <strong>&nbsp;équivalent&nbsp;</strong> moto thermique</span>
+              <span class="input-group-text" id="basic-addon3"><u>si moto&nbsp;</u> :
+                <strong>&nbsp;équivalent&nbsp;</strong> moto thermique</span>
               <input type="text" class="form-control" placeholder="exemple: Équivalent 50 cm3" name="equivalent"
                 aria-describedby="basic-addon3" [(ngModel)]="detailRecup.equivalent" required>
             </div>
@@ -440,7 +448,8 @@
                     </div>
 
 
-                    <p class="card-text"><strong class="text-muted">Prix : {{formatPrice(this.detailRecup.prix)}} €</strong></p>
+                    <p class="card-text"><strong class="text-muted">Prix : {{formatPrice(this.detailRecup.prix)}}
+                        €</strong></p>
                   </div>
                 </div>
               </div>

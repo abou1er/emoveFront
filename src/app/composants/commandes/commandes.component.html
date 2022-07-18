@@ -1,45 +1,54 @@
+<!-- <h5>Les commandes effectuées</h5> -->
+<h2 class=" text-center m-auto mb-5 text-success p-5 bg-light">Commandes effectuées</h2>
 
-<h5>Les commandes effectuées</h5>
+<div class="container mt-5 mb-3">
 
 
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Civilité </th>
+                <th>Nom</th>
+                <th>Prénom </th>
+                <th>Catégorie commandée </th>
+                <th>Marque </th>
+                <th>Modèle </th>
+                <th>image </th>
+                <th>Supprimer la commande </th>
+                <th>Statut <small>(à livrer / annuler)</small></th>
+                <th>Modifier info </th>
+            </tr>
+        </thead>
 
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>Civilité  </th>
-            <th>Nom</th>
-            <th>Prénom </th>
-            <th>Catégorie commandé </th>
-            <th>Marque  </th>
-            <th>Modèle  </th>
-            <th>image </th>
-            <th>Supprimer commande  </th>
-            <th>A livrer/Annuler </th>
-            <th>Modifier info </th>
+        <tbody>
+            <tr *ngFor="let c of commandes;" [ngClass]="{'table-success' : c.confirme, 'table-danger': !c.confirme}">
+                <td>{{c.sex}} </td>
+                <td>{{c.nom}}</td>
+                <td>{{c.prenom}}</td>
+                <td>{{c.categorie}}</td>
+                <td>{{c.marque}} </td>
+                <td>{{c.modele}} </td>
+                <td style="max-width: 50px; max-height: 50px;">
+                    <img src="{{c.image}}" class="card-img-top" style="max-height: 50px; object-fit: cover" alt="">
+                </td>
 
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let c of commandes;" [ngClass]="{'table-success' : c.confirme, 'table-danger': !c.confirme}">
-            <td>Civilité : {{c.sex}} </td>
-            <td>Nom : {{c.nom}}</td>
-            <td> Prénom : {{c.prenom}}</td>
-            <td>Catégorie commandé : {{c.categorie}}</td>
-            <td>Marque : {{c.marque}} </td>
-            <td>Modèle : {{c.modele}} </td>
-            <td style="max-width: 50px; max-height: 50px;">
-                <img src="{{c.image}}" class="card-img-top" style="max-height: 50px; object-fit: cover" alt="">
-            </td>
+                <!-- icône SUPPRIMER -->
+                <td><button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                        (click)="(c.id)">
+                        <i class="fa-solid fa-trash"></i></button> </td>
 
-            <td><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="(c.id)" > Supprimer la commandes</button> </td>         
-            
-            <td><button type="button" class="btn btn-primary"  (click)="updateCC(c)" > 
-              <strong *ngIf="c.confirme"> à livrer</strong>
-              <strong *ngIf="!c.confirme"  class="bg-warning"> Annulé</strong>
-            </button> </td>   
-            
-            <td><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#updateModal"  > Modifier la reservation</button> </td> 
-    
-        </tr>
-    </tbody>
-</table>
+                <td><button type="button" (click)="updateCC(c)">
+                        <strong *ngIf="c.confirme" class="btn"> à livrer</strong>
+                        <strong *ngIf="!c.confirme" class="btn btn-warning"> Annulé</strong>
+                    </button> </td>
+
+                <!-- icône MODIFIER -->
+                <td><button type="button" class="btn btn-outline-warning" data-bs-toggle="modal"
+                        data-bs-target="#updateModal"><small> <i class="fa-solid fa-file-pen"></i> </small></button>
+                </td>
+
+            </tr>
+        </tbody>
+    </table>
+
+</div>
