@@ -1,0 +1,45 @@
+
+<h5>Les commandes effectuées</h5>
+
+
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Civilité  </th>
+            <th>Nom</th>
+            <th>Prénom </th>
+            <th>Catégorie commandé </th>
+            <th>Marque  </th>
+            <th>Modèle  </th>
+            <th>image </th>
+            <th>Supprimer commande  </th>
+            <th>Livré/Annulé </th>
+            <th>Modifier info </th>
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let c of commandes;" [ngClass]="{'table-success' : c.confirme, 'table-danger': !c.confirme}">
+            <td>Civilité : {{c.sex}} </td>
+            <td>Nom : {{c.nom}}</td>
+            <td> Prénom : {{c.prenom}}</td>
+            <td>Catégorie commandé : {{c.categorie}}</td>
+            <td>Marque : {{c.marque}} </td>
+            <td>Modèle : {{c.modele}} </td>
+            <td style="max-width: 50px; max-height: 50px;">
+                <img src="{{c.image}}" class="card-img-top" style="max-height: 50px; object-fit: cover" alt="">
+            </td>
+
+            <td><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="(c.id)" > Supprimer la commandes</button> </td>         
+            
+            <td><button type="button" class="btn btn-primary"  (click)="changeStatus(c)" > 
+              <strong *ngIf="c.confirme"> Réservé</strong>
+              <strong *ngIf="!c.confirme"  class="bg-warning"> Annulé</strong>
+            </button> </td>   
+            
+            <td><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#updateModal"  > Modifier la reservation</button> </td> 
+    
+        </tr>
+    </tbody>
+</table>

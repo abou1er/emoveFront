@@ -24,6 +24,7 @@ import { HttpClientModule } from '@angular/common/http';
 import {NgxPaginationModule} from 'ngx-pagination';
 
 import { AjoutervehiculeComponent } from './composants/ajoutervehicule/ajoutervehicule.component';
+import { CommandesComponent } from './composants/commandes/commandes.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { AjoutervehiculeComponent } from './composants/ajoutervehicule/ajouterve
     TrottinetteComponent,
     GestionAdminComponent,
     AjoutervehiculeComponent,
+    CommandesComponent,
     
 
   ],

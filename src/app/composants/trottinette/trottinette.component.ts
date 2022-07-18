@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CommandesService } from 'src/app/services/commandes.service';
 import { ProductsService } from 'src/app/services/products.service';
 import { UsersService } from 'src/app/services/users.service';
 
@@ -42,7 +43,7 @@ export class TrottinetteComponent implements OnInit {
       prix : Number
       }
 
-  constructor(private productsservice: ProductsService, private usersservice: UsersService) { }
+  constructor(private productsservice: ProductsService,  private commandeService : CommandesService) { }
 
   ngOnInit(): void {
     this.getTrottine();
@@ -125,6 +126,13 @@ export class TrottinetteComponent implements OnInit {
     console.log("commandRecap", this.commandRecap);
     console.log("detailRecup" , this.detailRecup);
 
+
+     // post commande
+ let data = this.commandRecap
+ this.commandeService.saveCommande(data).subscribe(data=>{
+   console.log("post ok");
+ })
+ // fin post commande
   }
 
 

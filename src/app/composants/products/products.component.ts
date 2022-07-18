@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CommandesService } from 'src/app/services/commandes.service';
 import { ProductsService } from 'src/app/services/products.service';
 import { UsersService } from 'src/app/services/users.service';
 
@@ -57,13 +58,25 @@ formattedPrice: any;
 
   p: number = 0;
 
-  constructor(private productsservice: ProductsService, private usersservice: UsersService) { }
+  constructor(private productsservice: ProductsService, private commandeService : CommandesService) { }
 
   ngOnInit(): void {
     this.getallProducts()
 
   }
 
+
+  // post commandes
+  saveC(f:any){
+    console.log(f.value);
+    let data = f.value
+    this.commandeService.saveCommande(data).subscribe(data=>{
+      console.log("post ok");
+      
+    })
+    
+  }
+  // fin post commande
 
   // ***** méthode Pagination ****************
   pageChange($event: any) {
@@ -170,6 +183,12 @@ formattedPrice: any;
     console.log("commandRecap", this.commandRecap);
     console.log("detailRecup" , this.detailRecup);
 
+    // post commande
+    let data = this.commandRecap
+    this.commandeService.saveCommande(data).subscribe(data=>{
+      console.log("post ok");
+    })
+    // fin post commande
   }
 
 
