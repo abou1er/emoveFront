@@ -21,6 +21,23 @@ export class CommandesService {
 
 
     confirmation(_id:any, confirme:any){
-      return this.http.patch(`${this.URL}`, _id + {confirme:!confirme})
+      return this.http.patch(this.URL+ _id , {confirme:!confirme})
     }
+
+
+
+    updateC(v:any){
+      return this.http.patch(this.URL+v._id,v)
+    }
+
+
+
+
+    updateCC(_id:any, confirme:any){
+      return this.http.patch("http://localhost:7878/"+_id, {confirme : !confirme})
+    }
+
+    // confirmation(r:any){
+    //   return this.http.patch(this.URL+r._id, r)
+    // }
 }

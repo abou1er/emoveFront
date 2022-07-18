@@ -14,7 +14,7 @@
             <th>Modèle  </th>
             <th>image </th>
             <th>Supprimer commande  </th>
-            <th>Livré/Annulé </th>
+            <th>A livrer/Annuler </th>
             <th>Modifier info </th>
 
         </tr>
@@ -33,8 +33,8 @@
 
             <td><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="(c.id)" > Supprimer la commandes</button> </td>         
             
-            <td><button type="button" class="btn btn-primary"  (click)="changeStatus(c)" > 
-              <strong *ngIf="c.confirme"> Réservé</strong>
+            <td><button type="button" class="btn btn-primary"  (click)="updateCC(c)" > 
+              <strong *ngIf="c.confirme"> à livrer</strong>
               <strong *ngIf="!c.confirme"  class="bg-warning"> Annulé</strong>
             </button> </td>   
             

@@ -15,7 +15,7 @@ export class ProductsComponent implements OnInit {
 formattedPrice: any;
 
 
-
+statutConfirme: boolean =false;
 
 
   cars: any;
@@ -30,6 +30,7 @@ formattedPrice: any;
 
   // objet pour formulaire client + validation
   commandRecap:  any = {
+    _id: '',
     sex: "",
     nom: "",
     prenom: "",
@@ -162,6 +163,8 @@ formattedPrice: any;
     this.commandRecap.description =  this.detailRecup.description;
     this.commandRecap.equivalent =  this.detailRecup.equivalent;
     this.commandRecap.prix =  this.detailRecup.prix;
+    this.commandRecap.confirme = this.statutConfirme;
+    // this.commandRecap._id = this.detailRecup._id;
 
     console.log(this.commandRecap);
   }
@@ -179,6 +182,8 @@ formattedPrice: any;
     this.commandRecap.description =  this.detailRecup.description;
     this.commandRecap.equivalent =  this.detailRecup.equivalent;
     this.commandRecap.prix =  this.detailRecup.prix;
+    this.commandRecap.confirme = this.statutConfirme; 
+    // this.commandRecap._id = this.detailRecup._id;   
 
     console.log("commandRecap", this.commandRecap);
     console.log("detailRecup" , this.detailRecup);
