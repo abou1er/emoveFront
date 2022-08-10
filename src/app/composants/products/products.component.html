@@ -271,53 +271,148 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <!-- FORM addInfoUser -->
+            <!-- FORM addInfoUser -->  
+            <!-- TEST CONTROLE DES CHAMPS -->
 
             <div *ngIf="this.commandRecap" class="container mt-5">
-              <form #f="ngForm" class="row  g-3 shadow-lg mb-4 p-2 bg-body rounded">
+                  <!-- novalidate va permettre de prendre en compte les champs required -->
+              <form novalidate #f="ngForm" class="row  g-3 shadow-lg mb-4 p-2 bg-body rounded">
 
                 <p class="text-center"> Saisir VOS informations</p>
 
                 <div name="sex" class="col-12">
                   <label for="inputState" class="form-label">Civilité</label>
-                  <select name="sex" class="form-select" ngModel required>
+                  <select name="sex" class="form-select" ngModel required #sexVar="ngModel" [ngClass]="{'is-invalid' :sexVar.touched && !sexVar.valid}"  >
 
                     <option>monsieur</option>
                     <option>madame</option>
 
                   </select>
+
+                  <div class="invalid-feedback">
+                    <span *ngIf="lastNameVar.errors?.['required']">
+                      Veuillez choisir une civilité
+                    </span>
+
+                    
+                  </div>
                 </div>
 
                 <div class="col-12">
                   <label for="nom" class="form-label">NOM</label>
-                  <input type="text" class="form-control" name="nom" ngModel required>
+                  <input type="text" class="form-control" name="nom" ngModel required #lastNameVar="ngModel" minlength="3" [ngClass]="{'is-invalid' :lastNameVar.touched && !lastNameVar.valid}">
 
+                    <!-- retour erreur input NOM -->
+                  <div class="invalid-feedback">
+                    <span *ngIf="lastNameVar.errors?.['required']">
+                      Entrez votre nom
+                    </span>
+
+                    <span *ngIf="lastNameVar.errors?.['minlength']">
+                      Entrez au minimum 3 caractères
+                    </span>
+                  </div>
+                  <!-- FIN retour erreur input NOM -->
                 </div>
+
                 <div class="col-12">
                   <label for="prenom" class="form-label">Prénom</label>
-                  <input type="text" class="form-control" name="prenom" ngModel required>
+                  <input type="text" class="form-control" name="prenom" ngModel required #firstNameVar="ngModel" maxlength="8" minlength="2" [ngClass]="{'is-invalid' :firstNameVar.touched && !firstNameVar.valid}">
 
+                  <!-- retour erreur input préNOM -->
+                  <div class="invalid-feedback">
+                    <span *ngIf="firstNameVar.errors?.['required']">
+                      Entrez votre prénom
+                    </span>
+
+                    <span *ngIf="firstNameVar.errors?.['minlength']">
+                      Entrez au minimum 2 caractères
+                    </span>
+
+                    <span *ngIf="firstNameVar.errors?.['maxlength']">
+                      Entrez au maximum 8 caractères
+                    </span>
+                  </div>
+                  <!-- FIN retour erreur input préNOM -->
                 </div>
+                
+
 
                 <div class="col-12">
                   <label for="adresseMail" class="form-label">Adresse mail
                   </label>
-                  <input type="mail" class="form-control" name="adresseMail" ngModel required>
+                  <input type="mail" class="form-control" name="adresseMail" ngModel required email #emailVar="ngModel" [ngClass]="{'is-invalid' :emailVar.touched && !emailVar.valid}">
+
+                  <!-- retour erreur input EMAIL -->
+                  <div class="invalid-feedback">
+                    <span *ngIf="emailVar.errors?.['required']">
+                      Taper adresse mail
+                    </span>
+
+                    <span *ngIf="emailVar.errors?.['email']">
+                      Entrez mail valide
+                    </span>
+
+                  </div>
+                <!-- FIN retour erreur input EMAIL -->
                 </div>
 
                 <div class="col-12">
                   <label for="age" class="form-label">Date de naissance</label>
-                  <input type="date" class="form-control" placeholder="ex: 28/08/2022" name="age" ngModel required>
+                  <input type="date" class="form-control" placeholder="ex: 28/08/2022" name="age" ngModel required #ageVar="ngModel" [ngClass]="{'is-invalid' :ageVar.touched && !ageVar.valid}">
+
+                  <!-- retour erreur input DateNaissance -->
+                  <div class="invalid-feedback">
+                    <span *ngIf="ageVar.errors?.['required']">
+                      Entrer votre date de naissance
+                    </span>
+
+                  </div>
+                <!-- FIN retour erreur input DateNaissance -->
                 </div>
 
                 <div class="col-12">
                   <label for="adresse" class="form-label">Adresse</label>
-                  <input type="text" class="form-control" name="adresse" ngModel required>
+                  <input type="text" class="form-control" name="adresse" ngModel required  #adresseVar="ngModel" maxlength="18" minlength="5" [ngClass]="{'is-invalid' :adresseVar.touched && !adresseVar.valid}">
+
+                  <!-- retour erreur input adresse -->
+                  <div class="invalid-feedback">
+                    <span *ngIf="adresseVar.errors?.['required']">
+                      Entrez votre adresse
+                    </span>
+
+                    <span *ngIf="adresseVar.errors?.['minlength']">
+                      Entrez au minimum 5 caractères
+                    </span>
+
+                    <span *ngIf="adresseVar.errors?.['maxlength']">
+                      Entrez au maximum 8 caractères
+                    </span>
+                  </div>
+                  <!-- FIN retour erreur input adresse -->
+
+                  
                 </div>
 
                 <div class="col-12">
                   <label for="ville" class="form-label">Ville</label>
-                  <input type="text" class="form-control" name="ville" ngModel required>
+                  <input type="text" class="form-control" name="ville" ngModel required #villeVar="ngModel" maxlength="18" minlength="5" [ngClass]="{'is-invalid' :villeVar.touched && !villeVar.valid}">
+
+                  <!-- retour erreur input ville -->
+                  <div class="invalid-feedback">
+                    <span *ngIf="villeVar.errors?.['required']">
+                      Entrez votre ville
+                    </span>
+
+                    <span *ngIf="villeVar.errors?.['minlength']">
+                      Entrez au minimum 5 caractères
+                    </span>
+
+                    <span *ngIf="villeVar.errors?.['maxlength']">
+                      Entrez au maximum 8 caractères
+                    </span>
+                  </div>
+                  <!-- FIN retour erreur input ville -->
                 </div>
                 <div class="col-12">
                   <label for="codePostal" class="form-label">Code postal</label>
