@@ -20,10 +20,19 @@ export class GestionAdminComponent implements OnInit {
 
   MotCle = ""
 
+   // skeleton-loader
+   loader = true;
+   totalCount = 26;  //produits par page dans pagination
+ 
+ 
+
   constructor(private adminService : AdminService, private productsservice: ProductsService) { }
 
   ngOnInit(): void {
+
+    this.loader = false;
     this.getallProducts()
+    
   }
 
 

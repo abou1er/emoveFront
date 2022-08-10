@@ -25,6 +25,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
 
 import { AjoutervehiculeComponent } from './composants/ajoutervehicule/ajoutervehicule.component';
 import { CommandesComponent } from './composants/commandes/commandes.component';
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { CommandesComponent } from './composants/commandes/commandes.component';
     FormsModule,
     HttpClientModule,
     NgxPaginationModule,
+    NgxSkeletonLoaderModule
   ],
   providers: [],
   bootstrap: [AppComponent]

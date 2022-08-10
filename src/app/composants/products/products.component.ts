@@ -17,7 +17,6 @@ formattedPrice: any;
 
 statutConfirme: boolean =false;
 
-
   cars: any;
   allProducts: any;
   detailRecup: any;
@@ -26,6 +25,12 @@ statutConfirme: boolean =false;
   carsCategory = "voiture";
   motoCategory = "moto";
   trottinetteCategory = "trottinette";
+
+
+  // skeleton-loader
+  loader = true;
+  totalCount = 9;  //produits par page dans pagination
+
 
 
   // objet pour formulaire client + validation
@@ -62,8 +67,11 @@ statutConfirme: boolean =false;
   constructor(private productsservice: ProductsService, private commandeService : CommandesService) { }
 
   ngOnInit(): void {
+    
     this.getallProducts()
 
+    this.loader = false;
+ 
   }
 
 
@@ -90,7 +98,9 @@ statutConfirme: boolean =false;
 
   getallProducts() {
     this.productsservice.getAll().subscribe(data => {
-      this.allProducts = data
+    this.allProducts = data
+
+    console.log("this.allProducts.length" , this.allProducts.length);
     })
   }
 
