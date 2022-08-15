@@ -78,10 +78,10 @@
         <div class="modal-content" *ngIf="waitInfo">
 
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalToggleLabel"> <button type="button" class="btn-close"
+            <h5 class="modal-title" id="exampleModalToggleLabel"> <button type="button" class="btn-close ms-3 me-5"
                 data-bs-dismiss="modal" aria-label="Close"></button> {{this.detailRecup.marque}} 
                 {{this.detailRecup.modele}} </h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <button type="button" class="btn-close " data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
 
           <div class="modal-body bg-dark">
@@ -143,14 +143,10 @@
                           <p>Autonomie : {{this.detailRecup.autonomie}}</p>
                         </div>
                         <div class="col-6">
-                          <p>Puissance : {{this.detailRecup.puissance}}</p>
+                          <p>Puissance : {{this.detailRecup.puissance}} W</p>
                         </div>
                       </div>
 
-
-                      <div>
-                        <p>Equivalent : {{this.detailRecup.equivalent}}</p>
-                      </div>
                       <!-- <div class="col-6"><p>Puissance : {{this.detailRecup.puissance}}</p></div> -->
 
 
