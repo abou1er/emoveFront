@@ -228,9 +228,12 @@
 
 
                       <div>
-                        <p>Equivalent : {{this.detailRecup.equivalent}}</p>
+                        <p *ngIf="detailRecup.equivalent ">Equivalent : {{detailRecup.equivalent}}</p>
+
+                        <!-- <p *ngIf="!detailRecup.equivalent ">Equivalent : {{detailRecup.equivalent}}</p> -->
+
                       </div>
-                      <!-- <div class="col-6"><p>Puissance : {{this.detailRecup.puissance}}</p></div> -->
+                      
 
 
                       <div>
