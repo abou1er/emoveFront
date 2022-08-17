@@ -32,7 +32,7 @@ export class ProductsComponent implements OnInit {
 
   // skeleton-loader
   loader = true;
-  totalCount = 9;  //produits par page dans pagination
+  totalCount = 1;  //produits par page dans pagination
 
 
 
@@ -75,7 +75,10 @@ export class ProductsComponent implements OnInit {
 
     this.getallProducts()
 
-    this.loader = false;
+    setTimeout(() => {
+      this.loader = false;
+    }, 3000);
+    // this.loader = false;
 
   }
 
