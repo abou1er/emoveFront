@@ -1,4 +1,7 @@
+import { Content } from '@angular/compiler/src/render3/r3_ast';
 import { Component, OnInit } from '@angular/core';
+import { EmailValidator } from '@angular/forms';
+import { isEmpty } from 'rxjs';
 import { CommandesService } from 'src/app/services/commandes.service';
 import { ProductsService } from 'src/app/services/products.service';
 import { UsersService } from 'src/app/services/users.service';
@@ -11,11 +14,11 @@ import { UsersService } from 'src/app/services/users.service';
 })
 export class ProductsComponent implements OnInit {
 
-// TEST LEILA 
-formattedPrice: any;
+  // TEST LEILA 
+  formattedPrice: any;
 
 
-statutConfirme: boolean =false;
+  statutConfirme: boolean = false;
 
   cars: any;
   allProducts: any;
@@ -34,7 +37,7 @@ statutConfirme: boolean =false;
 
 
   // objet pour formulaire client + validation
-  commandRecap:  any = {
+  commandRecap: any = {
     _id: '',
     sex: "",
     nom: "",
@@ -42,48 +45,50 @@ statutConfirme: boolean =false;
     age: "",
     adresseMail: "",
     adresse: "",
-    ville:"",
+    ville: "",
     codePostal: "",
-    image : "",
-    image2 : "",
-    image3 : "",
-    categorie :"",
-    marque : "",
-    modele : "",
-    annee : "",
-    autonomie : "",
-    permis :"",
-    kilometrage : "",
-    puissance : Number,
-    description : "", 
-    equivalent : "",
-    prix : Number
-    }
+    image: "",
+    image2: "",
+    image3: "",
+    categorie: "",
+    marque: "",
+    modele: "",
+    annee: "",
+    autonomie: "",
+    permis: "",
+    kilometrage: "",
+    puissance: Number,
+    description: "",
+    equivalent: "",
+    prix: Number
+  }
 
   MotCle = ""
 
+  msgError = "";
+  commandSuccess = "";
   p: number = 0;
 
-  constructor(private productsservice: ProductsService, private commandeService : CommandesService) { }
+  constructor(private productsservice: ProductsService, private commandeService: CommandesService) { }
 
   ngOnInit(): void {
-    
+
     this.getallProducts()
 
     this.loader = false;
- 
+
   }
 
 
   // post commandes
-  saveC(f:any){
+  saveC(f: any) {
     console.log(f.value);
     let data = f.value
-    this.commandeService.saveCommande(data).subscribe(data=>{
+    this.commandeService.saveCommande(data).subscribe(data => {
       console.log("post ok");
-      
+
     })
-    
+
   }
   // fin post commande
 
@@ -98,17 +103,17 @@ statutConfirme: boolean =false;
 
   getallProducts() {
     this.productsservice.getAll().subscribe(data => {
-    this.allProducts = data
+      this.allProducts = data
 
-    console.log("this.allProducts.length" , this.allProducts.length);
+      console.log("this.allProducts.length", this.allProducts.length);
     })
   }
 
 
-  formatPrice(num: any){
-  // regExp = 
-   const espaceAvecNombre = String(num).replace(/(?<!\..*)(\d)(?=(?:\d{3})+(?:\.|$))/g, '$1 ');
-  return espaceAvecNombre;
+  formatPrice(num: any) {
+    // regExp = 
+    const espaceAvecNombre = String(num).replace(/(?<!\..*)(\d)(?=(?:\d{3})+(?:\.|$))/g, '$1 ');
+    return espaceAvecNombre;
   }
 
   // getallProducts(p: any) {
@@ -150,7 +155,7 @@ statutConfirme: boolean =false;
     })
   }
 
-  
+
   // ***** méthode de tri par PRIX ***********************************
   getByPrix(f: any) {
     // console.log(f.min, f.max);
@@ -160,50 +165,76 @@ statutConfirme: boolean =false;
     })
   }
 
-  takeCommand(){ //transfère donnée dans l'objet vide qui va être réutilisé pour afficher les infos dan sles modal suivantes
-    this.commandRecap.image =  this.detailRecup.image;
-    this.commandRecap.categorie =  this.detailRecup.categorie;
-    this.commandRecap.marque =  this.detailRecup.marque;
-    this.commandRecap.modele =  this.detailRecup.modele;
-    this.commandRecap.annee =  this.detailRecup.annee;
-    this.commandRecap.autonomie =  this.detailRecup.autonomie;
-    this.commandRecap.permis =  this.detailRecup.permis;
-    this.commandRecap.kilometrage =  this.detailRecup.kilometrage;
-    this.commandRecap.puissance =  this.detailRecup.puissance;
-    this.commandRecap.description =  this.detailRecup.description;
-    this.commandRecap.equivalent =  this.detailRecup.equivalent;
-    this.commandRecap.prix =  this.detailRecup.prix;
+  takeCommand() { //transfère donnée dans l'objet vide qui va être réutilisé pour afficher les infos dan sles modal suivantes
+    this.commandRecap.image = this.detailRecup.image;
+    this.commandRecap.categorie = this.detailRecup.categorie;
+    this.commandRecap.marque = this.detailRecup.marque;
+    this.commandRecap.modele = this.detailRecup.modele;
+    this.commandRecap.annee = this.detailRecup.annee;
+    this.commandRecap.autonomie = this.detailRecup.autonomie;
+    this.commandRecap.permis = this.detailRecup.permis;
+    this.commandRecap.kilometrage = this.detailRecup.kilometrage;
+    this.commandRecap.puissance = this.detailRecup.puissance;
+    this.commandRecap.description = this.detailRecup.description;
+    this.commandRecap.equivalent = this.detailRecup.equivalent;
+    this.commandRecap.prix = this.detailRecup.prix;
     this.commandRecap.confirme = this.statutConfirme;
     // this.commandRecap._id = this.detailRecup._id;
 
     console.log(this.commandRecap);
   }
-  validCommand(f:any){
+  validCommand(f: any) {
     this.commandRecap = f   //recup info formulaire
-    this.commandRecap.image =  this.detailRecup.image;
-    this.commandRecap.categorie =  this.detailRecup.categorie;
-    this.commandRecap.marque =  this.detailRecup.marque;
-    this.commandRecap.modele =  this.detailRecup.modele;
-    this.commandRecap.annee =  this.detailRecup.annee;
-    this.commandRecap.autonomie =  this.detailRecup.autonomie;
-    this.commandRecap.permis =  this.detailRecup.permis;
-    this.commandRecap.kilometrage =  this.detailRecup.kilometrage;
-    this.commandRecap.puissance =  this.detailRecup.puissance;
-    this.commandRecap.description =  this.detailRecup.description;
-    this.commandRecap.equivalent =  this.detailRecup.equivalent;
-    this.commandRecap.prix =  this.detailRecup.prix;
-    this.commandRecap.confirme = this.statutConfirme; 
+    this.commandRecap.image = this.detailRecup.image;
+    this.commandRecap.categorie = this.detailRecup.categorie;
+    this.commandRecap.marque = this.detailRecup.marque;
+    this.commandRecap.modele = this.detailRecup.modele;
+    this.commandRecap.annee = this.detailRecup.annee;
+    this.commandRecap.autonomie = this.detailRecup.autonomie;
+    this.commandRecap.permis = this.detailRecup.permis;
+    this.commandRecap.kilometrage = this.detailRecup.kilometrage;
+    this.commandRecap.puissance = this.detailRecup.puissance;
+    this.commandRecap.description = this.detailRecup.description;
+    this.commandRecap.equivalent = this.detailRecup.equivalent;
+    this.commandRecap.prix = this.detailRecup.prix;
+    this.commandRecap.confirme = this.statutConfirme;
     // this.commandRecap._id = this.detailRecup._id;   
+    console.log(this.commandRecap.nom.length, "length");
 
-    console.log("commandRecap", this.commandRecap);
-    console.log("detailRecup" , this.detailRecup);
+    // console.log("commandRecap", this.commandRecap);
+    // console.log("detailRecup" , this.detailRecup);
+    let typePostal;
+    typePostal = typeof (this.commandRecap.codePostal)
 
-    // post commande
-    let data = this.commandRecap
-    this.commandeService.saveCommande(data).subscribe(data=>{
-      console.log("post ok");
-    })
-    // fin post commande
+
+    if (          //
+      this.commandRecap.sex <= 1
+      || this.commandRecap.nom.length <= 2
+      || this.commandRecap.prenom.length <= 1
+      || this.commandRecap.adresseMail.length <= 6
+      || this.commandRecap.age.length <= 9
+      || this.commandRecap.adresse.length <= 4
+      || this.commandRecap.ville.length <= 4
+      || typePostal != 'number'
+
+    ){
+      console.log("IF UN CHAMPS NA PAS ETAIT RESPECTE");
+      // this.msgError = "le champs nom est vide";
+      this.msgError = "UN CHAMPS NA PAS ETAIT RESPECTE"
+      // console.log(typeof(this.commandRecap.codePostal  == Number) );
+    } else {
+      let commandSuccess
+      console.log("on est dans le trankil");
+      // post commande
+      let data = this.commandRecap
+      this.commandeService.saveCommande(data).subscribe(data => {
+        console.log("post ok");
+      })
+      // fin post commande
+
+    }
+
+
   }
 
 

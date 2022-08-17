@@ -347,7 +347,7 @@
                 <div class="col-12">
                   <label for="adresseMail" class="form-label">Adresse mail
                   </label>
-                  <input type="mail" class="form-control" name="adresseMail" ngModel required email #emailVar="ngModel" [ngClass]="{'is-invalid' :emailVar.touched && !emailVar.valid}">
+                  <input type="mail" class="form-control" name="adresseMail" ngModel required email="true" email #emailVar="ngModel" [ngClass]="{'is-invalid' :emailVar.touched && !emailVar.valid}">
 
                   <!-- retour erreur input EMAIL -->
                   <div class="invalid-feedback">
@@ -415,7 +415,7 @@
                     </span>
 
                     <span *ngIf="villeVar.errors?.['maxlength']">
-                      Entrez au maximum 8 caractères
+                      Entrez au maximum 18 caractères
                     </span>
                   </div>
                   <!-- FIN retour erreur input ville -->
@@ -446,8 +446,7 @@
 
           </div>
           <div class="modal-footer">
-            <button class="btn btn-dark" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Back to
-              first</button>
+            <button class="btn btn-dark" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Retour</button>
           </div>
         </div>
       </div>
@@ -461,7 +460,7 @@
   <!-- Modal Récapitulatif/Confirm-->
   <div class="modal fade" id="modalConfirmBuy" tabindex="-1" aria-labelledby="modalConfirmBuyLabel" aria-hidden="true">
     <div class="modal-dialog">
-      <div class="modal-content" *ngIf="this.commandRecap">
+      <div class="modal-content" *ngIf="!this.msgError">
 
         <div class="modal-header">
           <h5 class="modal-title text-success" id="modalConfirmBuyLabel"> CONFIRMATION de votre ACHAT <br>
@@ -487,6 +486,35 @@
         </div>
 
       </div>
+
+      <!-- erreur formulaire client -->
+      <div class="modal-content" *ngIf="this.msgError">
+
+        <div class="modal-header">
+          <h5 class="modal-title text-danger" id="modalConfirmBuyLabel"> UN CHAMPS NA PAS ETAIT RESPECTE <br>
+            
+          </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body">
+          <p><strong> Veuillez vérifier les champs du formulaire</strong> 
+          </p>
+         
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" data-bs-dismiss="modal">Fermer</button>
+        </div>
+
+      </div>
+      <!-- fin erreur formulaire client -->
+
+
+
+
+
+
     </div>
   </div>
   <!-- fin  Modal Récapitulatif/Confirm-->
