@@ -77,7 +77,7 @@ export class ProductsComponent implements OnInit {
 
     setTimeout(() => {
       this.loader = false;
-    }, 3000);
+    }, 2600);
     // this.loader = false;
 
   }
