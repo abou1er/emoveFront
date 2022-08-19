@@ -226,7 +226,7 @@ export class ProductsComponent implements OnInit {
     ){
       console.log("IF UN CHAMPS NA PAS ETAIT RESPECTE");
       // this.msgError = "le champs nom est vide";
-      this.msgError = "UN CHAMPS NA PAS ETAIT RESPECTE"
+      this.msgError = "erreur"
       // console.log(typeof(this.commandRecap.codePostal  == Number) );
     } else {
       let commandSuccess

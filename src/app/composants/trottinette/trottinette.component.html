@@ -46,10 +46,10 @@
                     <div class="card-body text-center">
                         <h5 class="card-title">{{ t.marque }} {{ t.modele }}</h5>
                         <ul class="list-group list-group-flush text-center">
-                            <li class="list-group-item" style="height: 64px">{{ t.marque }}</li>
-                            <li class="list-group-item" style="height: 32px">{{ t.modele }}</li>
-                            <li class="list-group-item" style="height: 32px">{{ t.puissance }}</li>
-                            <li class="list-group-item" style="height: 32px"><b>{{ formatPrice(t.prix) }} €</b></li>
+                            <li class="list-group-item" style="height: 64px">Marque : {{ t.marque }}</li>
+                            <li class="list-group-item" style="height: 32px">Modèle : {{ t.modele }}</li>
+                            <li class="list-group-item" style="height: 32px">Puissance : {{ t.puissance }} W</li>
+                            <li class="list-group-item" style="height: 32px"><b>Prix: {{ formatPrice(t.prix) }} €</b></li>
                         </ul>
                     </div>
                     <div class="card-footer text-center">
@@ -188,141 +188,259 @@
         </div><!--    FIN Modal all info-->
 
 
-        <!-- modal info user -->
-        <div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2"
-            tabindex="-1">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalToggleLabel2">ACHAT du modèle
-                            <strong>{{this.commandRecap.modele}}</strong> de la marque
-                            <strong>{{this.commandRecap.marque}}</strong>
-                        </h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <!-- FORM addInfoUser -->
+   <!-- modal info user -->
+   <div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2"
+   tabindex="-1">
+   <div class="modal-dialog modal-dialog-centered">
+     <div class="modal-content">
+       <div class="modal-header">
+         <h5 class="modal-title" id="exampleModalToggleLabel2">ACHAT du modèle
+           <strong>{{this.commandRecap.modele}}</strong> de la
+           marque <strong>{{this.commandRecap.marque}}</strong>
+         </h5>
+         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+       </div>
+       <div class="modal-body">
+         <!-- FORM addInfoUser -->  
+         <!-- TEST CONTROLE DES CHAMPS -->
 
-                        <div *ngIf="this.commandRecap" class="container mt-5">
-                            <form #f="ngForm" class="row  g-3 shadow-lg mb-4 p-2 bg-body rounded">
+         <div *ngIf="this.commandRecap" class="container mt-5">
+               <!-- novalidate va permettre de prendre en compte les champs required -->
+           <form novalidate #f="ngForm" class="row  g-3 shadow-lg mb-4 p-2 bg-body rounded">
 
-                                <p class="text-center"> Saisir VOS informations</p>
+             <p class="text-center"> Saisir VOS informations</p>
 
-                                <div name="sex" class="col-12">
-                                    <label for="inputState" class="form-label">Civilité</label>
-                                    <select name="sex" class="form-select" ngModel required>
+             <div name="sex" class="col-12">
+               <label for="inputState" class="form-label">Civilité</label>
+               <select name="sex" class="form-select" ngModel required #sexVar="ngModel" [ngClass]="{'is-invalid' :sexVar.touched && !sexVar.valid}"  >
 
-                                        <option>monsieur</option>
-                                        <option>madame</option>
+                 <option>monsieur</option>
+                 <option>madame</option>
 
-                                    </select>
-                                </div>
+               </select>
 
-                                <div class="col-12">
-                                    <label for="nom" class="form-label">NOM</label>
-                                    <input type="text" class="form-control" name="nom" ngModel required>
+               <div class="invalid-feedback">
+                 <span *ngIf="lastNameVar.errors?.['required']">
+                   Veuillez choisir une civilité
+                 </span>
 
-                                </div>
-                                <div class="col-12">
-                                    <label for="prenom" class="form-label">Prénom</label>
-                                    <input type="text" class="form-control" name="prenom" ngModel required>
+                 
+               </div>
+             </div>
 
-                                </div>
+             <div class="col-12">
+               <label for="nom" class="form-label">NOM</label>
+               <input type="text" class="form-control" name="nom" ngModel required #lastNameVar="ngModel" minlength="3" [ngClass]="{'is-invalid' :lastNameVar.touched && !lastNameVar.valid}">
 
-                                <div class="col-12">
-                                    <label for="adresseMail" class="form-label">Adresse mail
-                                    </label>
-                                    <input type="mail" class="form-control" name="adresseMail" ngModel required>
-                                </div>
+                 <!-- retour erreur input NOM -->
+               <div class="invalid-feedback">
+                 <span *ngIf="lastNameVar.errors?.['required']">
+                   Entrez votre nom
+                 </span>
 
-                                <div class="col-12">
-                                    <label for="age" class="form-label">Date de naissance</label>
-                                    <input type="date" class="form-control" placeholder="ex: 28/08/2022" name="age"
-                                        ngModel required>
-                                </div>
+                 <span *ngIf="lastNameVar.errors?.['minlength']">
+                   Entrez au minimum 3 caractères
+                 </span>
+               </div>
+               <!-- FIN retour erreur input NOM -->
+             </div>
 
-                                <div class="col-12">
-                                    <label for="adresse" class="form-label">Adresse</label>
-                                    <input type="text" class="form-control" name="adresse" ngModel required>
-                                </div>
+             <div class="col-12">
+               <label for="prenom" class="form-label">Prénom</label>
+               <input type="text" class="form-control" name="prenom" ngModel required #firstNameVar="ngModel" maxlength="8" minlength="2" [ngClass]="{'is-invalid' :firstNameVar.touched && !firstNameVar.valid}">
 
-                                <div class="col-12">
-                                    <label for="ville" class="form-label">Ville</label>
-                                    <input type="text" class="form-control" name="ville" ngModel required>
-                                </div>
-                                <div class="col-12">
-                                    <label for="codePostal" class="form-label">Code postal</label>
-                                    <input type="number" class="form-control" name="codePostal" ngModel required>
-                                </div>
+               <!-- retour erreur input préNOM -->
+               <div class="invalid-feedback">
+                 <span *ngIf="firstNameVar.errors?.['required']">
+                   Entrez votre prénom
+                 </span>
 
-                                <div class="col-12 border border-dark text text-center">
-                                    <label for="nbJour" class="form-label">Prix du véhicule</label>
-                                    <p style="letter-spacing: 0.4em;"><strong>{{formatPrice(this.commandRecap.prix)}} €
-                                        </strong></p>
-                                </div>
+                 <span *ngIf="firstNameVar.errors?.['minlength']">
+                   Entrez au minimum 2 caractères
+                 </span>
 
-                                <div *ngIf="this.detailRecup " class="col-12 mt-5 d-flex justify-content-between">
-
-                                    <button (click)="validCommand(f.value)" class="btn btn-success"
-                                        data-bs-target="#modalConfirmBuy" data-bs-toggle="modal">Valider mes
-                                        informations </button>
-
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
-                                        aria-label="Close"> Fermer</button>
-                                </div>
-                            </form>
-
-                        </div>
-                        <!-- fin form -->
+                 <span *ngIf="firstNameVar.errors?.['maxlength']">
+                   Entrez au maximum 8 caractères
+                 </span>
+               </div>
+               <!-- FIN retour erreur input préNOM -->
+             </div>
+             
 
 
-                    </div>
-                    <div class="modal-footer">
-                        <button class="btn btn-dark" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Retour
-                            fiche véhicule</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- fin modal info user -->
+             <div class="col-12">
+               <label for="adresseMail" class="form-label">Adresse mail
+               </label>
+               <input type="mail" class="form-control" name="adresseMail" ngModel required email="true" email #emailVar="ngModel" [ngClass]="{'is-invalid' :emailVar.touched && !emailVar.valid}">
+
+               <!-- retour erreur input EMAIL -->
+               <div class="invalid-feedback">
+                 <span *ngIf="emailVar.errors?.['required']">
+                   Taper adresse mail
+                 </span>
+
+                 <span *ngIf="emailVar.errors?.['email']">
+                   Entrez mail valide
+                 </span>
+
+               </div>
+             <!-- FIN retour erreur input EMAIL -->
+             </div>
+
+             <div class="col-12">
+               <label for="age" class="form-label">Date de naissance</label>
+               <input type="date" class="form-control" placeholder="ex: 28/08/2022" name="age" ngModel required #ageVar="ngModel" [ngClass]="{'is-invalid' :ageVar.touched && !ageVar.valid}">
+
+               <!-- retour erreur input DateNaissance -->
+               <div class="invalid-feedback">
+                 <span *ngIf="ageVar.errors?.['required']">
+                   Entrer votre date de naissance
+                 </span>
+
+               </div>
+             <!-- FIN retour erreur input DateNaissance -->
+             </div>
+
+             <div class="col-12">
+               <label for="adresse" class="form-label">Adresse</label>
+               <input type="text" class="form-control" name="adresse" ngModel required  #adresseVar="ngModel" maxlength="18" minlength="5" [ngClass]="{'is-invalid' :adresseVar.touched && !adresseVar.valid}">
+
+               <!-- retour erreur input adresse -->
+               <div class="invalid-feedback">
+                 <span *ngIf="adresseVar.errors?.['required']">
+                   Entrez votre adresse
+                 </span>
+
+                 <span *ngIf="adresseVar.errors?.['minlength']">
+                   Entrez au minimum 5 caractères
+                 </span>
+
+                 <span *ngIf="adresseVar.errors?.['maxlength']">
+                   Entrez au maximum 8 caractères
+                 </span>
+               </div>
+               <!-- FIN retour erreur input adresse -->
+
+               
+             </div>
+
+             <div class="col-12">
+               <label for="ville" class="form-label">Ville</label>
+               <input type="text" class="form-control" name="ville" ngModel required #villeVar="ngModel" maxlength="18" minlength="5" [ngClass]="{'is-invalid' :villeVar.touched && !villeVar.valid}">
+
+               <!-- retour erreur input ville -->
+               <div class="invalid-feedback">
+                 <span *ngIf="villeVar.errors?.['required']">
+                   Entrez votre ville
+                 </span>
+
+                 <span *ngIf="villeVar.errors?.['minlength']">
+                   Entrez au minimum 5 caractères
+                 </span>
+
+                 <span *ngIf="villeVar.errors?.['maxlength']">
+                   Entrez au maximum 18 caractères
+                 </span>
+               </div>
+               <!-- FIN retour erreur input ville -->
+             </div>
+             <div class="col-12">
+               <label for="codePostal" class="form-label">Code postal</label>
+               <input type="number" class="form-control" name="codePostal" ngModel required>
+             </div>
+
+             <div class="col-12 border border-dark text-center">
+               <label for="nbJour" class="form-label">Prix du véhicule</label>
+               <p><strong>{{formatPrice(this.commandRecap.prix)}} € </strong></p>
+             </div>
+
+             <div *ngIf="this.detailRecup " class="col-12 mt-5 d-flex justify-content-between">
+
+               <button (click)="validCommand(f.value)" class="btn btn-success" data-bs-target="#modalConfirmBuy"
+                 data-bs-toggle="modal">Valider mes informations </button>
+
+               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" aria-label="Close">
+                 Fermer</button>
+             </div>
+           </form>
+
+         </div>
+         <!-- fin form -->
+
+
+       </div>
+       <div class="modal-footer">
+         <button class="btn btn-dark" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Retour</button>
+       </div>
+     </div>
+   </div>
+ </div>
+ <!-- fin modal info user -->
 
     </div>
 
 
 
-    <!-- Modal Récapitulatif/Confirm-->
-    <div class="modal fade" id="modalConfirmBuy" tabindex="-1" aria-labelledby="modalConfirmBuyLabel"
-        aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content" *ngIf="this.commandRecap">
 
-                <div class="modal-header">
-                    <h5 class="modal-title text-success" id="modalConfirmBuyLabel"> CONFIRMATION de votre ACHAT<br>
-                        <strong>{{this.commandRecap.sex}} {{this.commandRecap.prenom}} {{this.commandRecap.nom}}
-                        </strong>
-                    </h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
+  <!-- Modal Récapitulatif/Confirm-->
+  <div class="modal fade" id="modalConfirmBuy" tabindex="-1" aria-labelledby="modalConfirmBuyLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content" *ngIf="this.msgError">
 
-                <div class="modal-body">
-                    <p> La commande du modèle <strong>{{this.commandRecap.modele}}</strong> de la marque
-                        <strong>{{this.commandRecap.marque}}</strong> est bien confirmée.
-                    </p>
-                    <p> Le total à régler est de <strong>{{formatPrice(this.commandRecap.prix)}} € </strong></p>
-                    <hr>
-                    <p> La livraison se fera après réception du paiement de <strong>{{this.commandRecap.sex}}
-                            {{this.commandRecap.prenom}} {{this.commandRecap.nom}} </strong></p>
-                    <p> à l'adresse : <strong>{{this.commandRecap.adresse}}</strong>. Ville :
-                        <strong>{{this.commandRecap.ville}} {{this.commandRecap.codePostal}} </strong>
-                    </p>
-                </div>
-
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-success" data-bs-dismiss="modal">Fermer</button>
-                </div>
-
-            </div>
+        <div class="modal-header">
+          <h5 class="modal-title text-success" id="modalConfirmBuyLabel"> CONFIRMATION de votre ACHAT <br>
+            <strong>{{this.commandRecap.sex}} {{this.commandRecap.prenom}} {{this.commandRecap.nom}} </strong>
+          </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
+
+        <div class="modal-body">
+          <p> La commande du modèle <strong>{{this.commandRecap.modele}}</strong> de la marque
+            <strong>{{this.commandRecap.marque}}</strong> est bien confirmée.
+          </p>
+          <p> Le total à régler est de <strong>{{formatPrice(this.commandRecap.prix)}} €. </strong></p>
+          <hr>
+          <p> La livraison se fera après réception du paiement de <strong> {{this.commandRecap.sex}}
+              {{this.commandRecap.prenom}} {{this.commandRecap.nom}} </strong></p>
+          <p> à l'adresse : <strong>{{this.commandRecap.adresse}}</strong>. Ville : <strong>{{this.commandRecap.ville}}
+              {{this.commandRecap.codePostal}}</strong></p>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" data-bs-dismiss="modal">Fermer</button>
+        </div>
+
+      </div>
+
+      <!-- erreur formulaire client -->
+      <div class="modal-content" *ngIf="!this.msgError">
+
+        <div class="modal-header">
+          <h5 class="modal-title text-danger" style="text-transform: uppercase" id="modalConfirmBuyLabel">UN ou plusieurs n'ont pas étaient correctement renseignés<br>
+            
+          </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body">
+          <p><strong> Veuillez vérifier les champs du formulaire</strong> 
+          </p>
+         
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fermer</button>
+        </div>
+
+      </div>
+      <!-- fin erreur formulaire client -->
+
+
+
+
+
+
     </div>
-    <!-- fin  Modal Récapitulatif/Confirm-->
+  </div>
+  <!-- fin  Modal Récapitulatif/Confirm-->
 </div>

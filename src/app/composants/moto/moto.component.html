@@ -102,10 +102,10 @@
           <div class="card-body text-center">
             <h5 class="card-title">{{ moto.marque }} {{ moto.modele }}</h5>
             <ul class="list-group list-group-flush text-center">
-              <li class="list-group-item" style="height: 64px">{{ moto.marque }}</li>
-              <li class="list-group-item" style="height: 32px">{{ moto.modele }}</li>
-              <li class="list-group-item" style="height: 32px">Puissance {{ moto.puissance }} Watt</li>
-              <li class="list-group-item" style="height: 32px"><b>{{ formatPrice(moto.prix) }} €</b></li>
+              <li class="list-group-item" style="height: 64px">Marque : {{ moto.marque }}</li>
+              <li class="list-group-item" style="height: 32px">Modèle : {{ moto.modele }}</li>
+              <li class="list-group-item" style="height: 32px">Puissance : {{ moto.puissance }} W</li>
+              <li class="list-group-item" style="height: 32px"><b>Prix : {{ formatPrice(moto.prix) }} €</b></li>
             </ul>
           </div>
           <div class="card-footer text-center">

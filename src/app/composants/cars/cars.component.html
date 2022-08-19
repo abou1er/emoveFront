@@ -47,10 +47,10 @@
           <div class="card-body text-center">
             <h5 class="card-title">{{ car.marque }} {{ car.modele }}</h5>
             <ul class="list-group list-group-flush text-center">
-              <li class="list-group-item" style="height: 64px">{{ car.marque }}</li>
-              <li class="list-group-item" style="height: 32px">{{ car.modele }}</li>
-              <li class="list-group-item" style="height: 32px">{{ car.puissance }}</li>
-              <li class="list-group-item" style="height: 32px"><b>{{formatPrice(car.prix) }} €</b></li>
+              <li class="list-group-item" style="height: 64px">Marque : {{ car.marque }}</li>
+              <li class="list-group-item" style="height: 32px">Modèle : {{ car.modele }}</li>
+              <li class="list-group-item" style="height: 32px">Puissance : {{ car.puissance }} W</li>
+              <li class="list-group-item" style="height: 32px"><b>Prix : {{formatPrice(car.prix) }} €</b></li>
             </ul>
           </div>
           <div class="card-footer text-center">
