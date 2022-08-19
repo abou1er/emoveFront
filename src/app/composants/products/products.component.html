@@ -483,58 +483,58 @@
 
 
 
-  <!-- Modal Récapitulatif/Confirm-->
-  <div class="modal fade" id="modalConfirmBuy" tabindex="-1" aria-labelledby="modalConfirmBuyLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content" *ngIf="!this.msgError">
+<!-- Modal Récapitulatif/Confirm-->
+<div class="modal fade" id="modalConfirmBuy" tabindex="-1" aria-labelledby="modalConfirmBuyLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content" *ngIf="this.msgError">
 
-        <div class="modal-header">
-          <h5 class="modal-title text-success" id="modalConfirmBuyLabel"> CONFIRMATION de votre ACHAT <br>
-            <strong>{{this.commandRecap.sex}} {{this.commandRecap.prenom}} {{this.commandRecap.nom}} </strong>
-          </h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-
-        <div class="modal-body">
-          <p> La commande du modèle <strong>{{this.commandRecap.modele}}</strong> de la marque
-            <strong>{{this.commandRecap.marque}}</strong> est bien confirmée.
-          </p>
-          <p> Le total à régler est de <strong>{{formatPrice(this.commandRecap.prix)}} €. </strong></p>
-          <hr>
-          <p> La livraison se fera après réception du paiement de <strong> {{this.commandRecap.sex}}
-              {{this.commandRecap.prenom}} {{this.commandRecap.nom}} </strong></p>
-          <p> à l'adresse : <strong>{{this.commandRecap.adresse}}</strong>. Ville : <strong>{{this.commandRecap.ville}}
-              {{this.commandRecap.codePostal}}</strong></p>
-        </div>
-
-        <div class="modal-footer">
-          <button type="button" class="btn btn-success" data-bs-dismiss="modal">Fermer</button>
-        </div>
-
+      <div class="modal-header">
+        <h5 class="modal-title text-success" id="modalConfirmBuyLabel"> CONFIRMATION de votre ACHAT <br>
+          <strong>{{this.commandRecap.sex}} {{this.commandRecap.prenom}} {{this.commandRecap.nom}} </strong>
+        </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 
-      <!-- erreur formulaire client -->
-      <div class="modal-content" *ngIf="this.msgError">
-
-        <div class="modal-header">
-          <h5 class="modal-title text-danger" style="text-transform: capitalize" id="modalConfirmBuyLabel">UN ou plusieurs n'ont pas étaient correctement renseigné<br>
-            
-          </h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-
-        <div class="modal-body">
-          <p><strong> Veuillez vérifier les champs du formulaire</strong> 
-          </p>
-         
-        </div>
-
-        <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fermer</button>
-        </div>
-
+      <div class="modal-body">
+        <p> La commande du modèle <strong>{{this.commandRecap.modele}}</strong> de la marque
+          <strong>{{this.commandRecap.marque}}</strong> est bien confirmée.
+        </p>
+        <p> Le total à régler est de <strong>{{formatPrice(this.commandRecap.prix)}} €. </strong></p>
+        <hr>
+        <p> La livraison se fera après réception du paiement de <strong> {{this.commandRecap.sex}}
+            {{this.commandRecap.prenom}} {{this.commandRecap.nom}} </strong></p>
+        <p> à l'adresse : <strong>{{this.commandRecap.adresse}}</strong>. Ville : <strong>{{this.commandRecap.ville}}
+            {{this.commandRecap.codePostal}}</strong></p>
       </div>
-      <!-- fin erreur formulaire client -->
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" data-bs-dismiss="modal">Fermer</button>
+      </div>
+
+    </div>
+
+    <!-- erreur formulaire client -->
+    <div class="modal-content" *ngIf="!this.msgError">
+
+      <div class="modal-header">
+        <h5 class="modal-title text-danger" style="text-transform: uppercase" id="modalConfirmBuyLabel">UN ou plusieurs n'ont pas étaient correctement renseignés<br>
+          
+        </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <div class="modal-body">
+        <p><strong> Veuillez vérifier les champs du formulaire</strong> 
+        </p>
+       
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fermer</button>
+      </div>
+
+    </div>
+    <!-- fin erreur formulaire client -->
 
 
 

@@ -18,7 +18,7 @@ export class ProductsComponent implements OnInit {
   formattedPrice: any;
 
 
-  statutConfirme: boolean = false;
+ 
 
   cars: any;
   allProducts: any;
@@ -65,7 +65,8 @@ export class ProductsComponent implements OnInit {
 
   MotCle = ""
 
-  msgError = "";
+  statutConfirme: boolean = false;
+  msgError = true;
   commandSuccess = "";
   p: number = 0;
 
@@ -77,11 +78,11 @@ export class ProductsComponent implements OnInit {
 
 
     
-    setTimeout(() => {
-      this.loader = false;
-    }, 5000);
+    // setTimeout(() => {
+    //   this.loader = false;
+    // }, 5000);
 
-    // this.loader = false;
+    this.loader = false;
 
   }
 
@@ -204,39 +205,40 @@ export class ProductsComponent implements OnInit {
     this.commandRecap.equivalent = this.detailRecup.equivalent;
     this.commandRecap.prix = this.detailRecup.prix;
     this.commandRecap.confirme = this.statutConfirme;
-    // this.commandRecap._id = this.detailRecup._id;   
-    console.log(this.commandRecap.nom.length, "length");
+     // this.commandRecap._id = this.detailRecup._id;   
+     console.log(this.commandRecap.nom.length, "length");
 
-    // console.log("commandRecap", this.commandRecap);
-    // console.log("detailRecup" , this.detailRecup);
-    let typePostal;
-    typePostal = typeof (this.commandRecap.codePostal)
-
-
-    if (          //
-      this.commandRecap.sex <= 1
-      || this.commandRecap.nom.length <= 2
-      || this.commandRecap.prenom.length <= 1
-      || this.commandRecap.adresseMail.length <= 6
-      || this.commandRecap.age.length <= 9
-      || this.commandRecap.adresse.length <= 4
-      || this.commandRecap.ville.length <= 4
-      || typePostal != 'number'
-
-    ){
-      console.log("IF UN CHAMPS NA PAS ETAIT RESPECTE");
-      // this.msgError = "le champs nom est vide";
-      this.msgError = "erreur"
-      // console.log(typeof(this.commandRecap.codePostal  == Number) );
-    } else {
-      let commandSuccess
-      console.log("on est dans le trankil");
-      // post commande
-      let data = this.commandRecap
-      this.commandeService.saveCommande(data).subscribe(data => {
-        console.log("post ok");
-      })
-      // fin post commande
+     // console.log("commandRecap", this.commandRecap);
+     // console.log("detailRecup" , this.detailRecup);
+     let typePostal;
+     typePostal = typeof (this.commandRecap.codePostal)
+ 
+ 
+     if (          //
+       this.commandRecap.sex <= 1
+       || this.commandRecap.nom.length <= 2
+       || this.commandRecap.prenom.length <= 1
+       || this.commandRecap.adresseMail.length <= 6
+       || this.commandRecap.age.length <= 9
+       || this.commandRecap.adresse.length <= 4
+       || this.commandRecap.ville.length <= 4
+       || typePostal != 'number'
+ 
+     ){
+       console.log("IF UN CHAMPS NA PAS ETAIT RESPECTE");
+       // this.msgError = "le champs nom est vide";
+       this.msgError = false
+       // console.log(typeof(this.commandRecap.codePostal  == Number) );
+     } else {
+       let commandSuccess
+       console.log("on est dans le trankil");
+       // post commande
+       this.msgError = true
+       let data = this.commandRecap
+       this.commandeService.saveCommande(data).subscribe(data => {
+         console.log("post ok");
+       })
+       // fin post commande
 
     }
 
