@@ -71,23 +71,22 @@
 
         <!-- Modal all info-->
         <!-- grande carte -->
-        <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel"
-            tabindex="-1">
-            <div class="modal-dialog modal-fullscreen modal-dialog-centered">
-                <div class="modal-content" *ngIf="waitInfo">
-
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalToggleLabel"> <button type="button" class="btn-close ms-3 me-5"
-                                data-bs-dismiss="modal" aria-label="Close"></button> {{this.detailRecup.marque}}
-                            {{this.detailRecup.modele}}</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-
-                    <!-- <div class="modal-header row justify-content-between custom-line">
-                        <div class="col-1"><p class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></p></div>
-                        <div class="col-10"><h5 class="modal-title" id="exampleModalToggleLabel"> {{this.detailRecup.marque}} {{this.detailRecup.modele}}</h5></div>
-                        <div class="col-1"><p class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></p></div>
-                    </div> -->
+        <div class="modal fade sizeModal" id="exampleModalToggle" tabindex="-1" aria-labelledby="classicModalLabel" aria-hidden="true">
+          <!-- <div class="modal fade sizeModal border border-4 " id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel"
+          tabindex="-1"> -->
+          <!-- <div class="modal sizeModal border border-success border-4  fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel"
+            tabindex="-1"> -->
+            <div class="modal-dialog  sizeModalDialog modal-dialog-centered">
+              <!-- <div class="modal-dialog modal-fullscreen sizeModalDialog modal-dialog-centered"> -->
+              <div class="modal-content" *ngIf="waitInfo">
+      
+                <div class="modal-header bg-light sticky-top">
+                  <h5 class="modal-title" id="exampleModalToggleLabel">
+                   <strong>  <button type="button" class="btn-close ms-3 me-5"
+                      data-bs-dismiss="modal" aria-label="Close"></button></strong> {{this.detailRecup.marque}}
+                    {{this.detailRecup.modele}}</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
 
                     <div class="modal-body bg-dark">
 
