@@ -5,7 +5,8 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class ProductsService {
-  URL = "https://scenic-congaree-98068.herokuapp.com"
+   URL = "https://scenic-congaree-98068.herokuapp.com"
+  //URL = "http://localhost:7878/"   // test offline
   constructor(private http: HttpClient) { }
 
   // méthode GET TOUS les Produits 
