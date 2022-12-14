@@ -1,8 +1,16 @@
 
 :host >>> ngx-skeleton-loader .loader{
   height: 30px;
-  width: 300px;
-  background-color: orange;
+  width: 30%;
+  background-color: rgb(133, 131, 130);
+  height: 400px;
+  margin-right: 3%;
+  
+}
+
+.skeletonloaderr{
+  margin-left: 2%;
+  /* border: #DDFFF7 solid 5px; */
 }
 
 .sizeModalDialog{

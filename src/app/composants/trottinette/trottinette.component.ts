@@ -58,7 +58,7 @@ totalCount = 10;
     this.getTrottine();
 
     // skeleton
-    this.loader = false;
+    // this.loader = false;
     //fin skeleton
   }
 
@@ -73,6 +73,11 @@ totalCount = 10;
     this.productsservice.getbyCategoVehicule(this.trottinetteCategory).subscribe(data =>{
       this.trottinette = data
       console.log(this.trottinette);
+
+      if ( this.trottinette.length >= 1 ){
+        this.loader = false
+
+      }
       
     })
   }

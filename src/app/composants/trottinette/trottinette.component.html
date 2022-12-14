@@ -3,387 +3,390 @@
 <div class="bg-dark p-3">
 
 
-    <div class="container pb-3">
+  <div class="container pb-3">
 
-        <div class="row mb-2">
-            <!--------------------------------------------- ZONE de RECHERCHE ---------------------------------->
-            <div class="col-12">
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="saisir votre recherche"
-                        aria-label="Search" name="KeyWord" [(ngModel)]="MotCle">
-                    <button class="btn btn-outline-success me-5" type="submit" (click)="getByMotCle()">Chercher</button>
-                </form>
-            </div>
-        </div>
-
-
-
-        <div class="row mb-4">
-            <!---------------------------------- Prix MINI / Prix MAX / Chercher ---------------------------------------->
-            <div class="col-12">
-                <form class="row" (ngSubmit)="getCatByPrix(f.value)" #f="ngForm">
-                    <div class="col-4">
-                        <input type="number" ngModel name="min" class="form-control" placeholder="prix mini">
-                    </div>
-                    <div class="col-4">
-                        <input type="number" ngModel name="max" class="form-control" placeholder="prix max">
-                    </div>
-                    <div class="col-4">
-                        <button class="btn btn-outline-success" type="submit">Chercher</button>
-                    </div>
-                </form>
-            </div>
-
-
-        </div>
-
-
-
-        <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 g-4">
-            <div class="col" *ngFor="let t of trottinette">
-                <div class="card h-100">
-                    <img src="{{ t.image }}" class="card-img-top" style="max-height: 600px; object-fit: contain" />
-                    <div class="card-body text-center">
-                        <h5 class="card-title">{{ t.marque }} {{ t.modele }}</h5>
-                        <ul class="list-group list-group-flush text-center">
-                            <li class="list-group-item" style="height: 64px">Marque : {{ t.marque }}</li>
-                            <li class="list-group-item" style="height: 32px">Modèle : {{ t.modele }}</li>
-                            <li class="list-group-item" style="height: 32px">Puissance : {{ t.puissance }} W</li>
-                            <li class="list-group-item" style="height: 32px"><b>Prix: {{ formatPrice(t.prix) }} €</b></li>
-                        </ul>
-                    </div>
-                    <div class="card-footer text-center">
-
-                        <button type="button" (click)="getDetail(t)" class="btn " data-bs-toggle="modal"
-                            data-bs-target="#exampleModalToggle"><small> Voir plus de
-                                détails </small></button>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-
-       
+    <div class="row mb-2">
+      <!--------------------------------------------- ZONE de RECHERCHE ---------------------------------->
+      <div class="col-12">
+        <form class="d-flex" role="search">
+          <input class="form-control me-2" type="search" placeholder="saisir votre recherche" aria-label="Search"
+            name="KeyWord" [(ngModel)]="MotCle">
+          <button class="btn btn-outline-success me-5" type="submit" (click)="getByMotCle()">Chercher</button>
+        </form>
+      </div>
     </div>
 
+
+
+    <div class="row mb-4">
+      <!---------------------------------- Prix MINI / Prix MAX / Chercher ---------------------------------------->
+      <div class="col-12">
+        <form class="row" (ngSubmit)="getCatByPrix(f.value)" #f="ngForm">
+          <div class="col-4">
+            <input type="number" ngModel name="min" class="form-control" placeholder="prix mini">
+          </div>
+          <div class="col-4">
+            <input type="number" ngModel name="max" class="form-control" placeholder="prix max">
+          </div>
+          <div class="col-4">
+            <button class="btn btn-outline-success" type="submit">Chercher</button>
+          </div>
+        </form>
+      </div>
+
+
+    </div>
+
+
+
+    <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 g-4">
+      <div class="col" *ngFor="let t of trottinette">
+        <div class="card h-100">
+          <img src="{{ t.image }}" class="card-img-top" style="max-height: 600px; object-fit: contain" />
+          <div class="card-body text-center">
+            <h5 class="card-title">{{ t.marque }} {{ t.modele }}</h5>
+            <ul class="list-group list-group-flush text-center">
+              <li class="list-group-item" style="height: 64px">Marque : {{ t.marque }}</li>
+              <li class="list-group-item" style="height: 32px">Modèle : {{ t.modele }}</li>
+              <li class="list-group-item" style="height: 32px">Puissance : {{ t.puissance }} W</li>
+              <li class="list-group-item" style="height: 32px"><b>Prix: {{ formatPrice(t.prix) }} €</b></li>
+            </ul>
+          </div>
+          <div class="card-footer text-center">
+
+            <button type="button" (click)="getDetail(t)" class="btn " data-bs-toggle="modal"
+              data-bs-target="#exampleModalToggle"><small> Voir plus de
+                détails </small></button>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+  </div>
 
     <!-- //skeletonloader -->
-    <div class="item border-3 border-dark">
-      <ngx-skeleton-loader count="5" appearance="line" *ngIf="!loader"></ngx-skeleton-loader>
+    <div class="skeletonloaderr " *ngIf="loader">
+      <div class=" ms-5 item border-3 border-dark">
+        <ngx-skeleton-loader count="3" appearance="line" *ngIf="loader"></ngx-skeleton-loader>
+      </div>
     </div>
-<!-- //fin skeletonloader -->
+    <!-- //fin skeletonloader -->
 
-    <div class="container-fluid">
 
-        <!-- Modal all info-->
-        <!-- grande carte -->
-        <div class="modal fade sizeModal" id="exampleModalToggle" tabindex="-1" aria-labelledby="classicModalLabel" aria-hidden="true">
-          <!-- <div class="modal fade sizeModal border border-4 " id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel"
+
+  <div class="container-fluid">
+
+    <!-- Modal all info-->
+    <!-- grande carte -->
+    <div class="modal fade sizeModal" id="exampleModalToggle" tabindex="-1" aria-labelledby="classicModalLabel"
+      aria-hidden="true">
+      <!-- <div class="modal fade sizeModal border border-4 " id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel"
           tabindex="-1"> -->
-          <!-- <div class="modal sizeModal border border-success border-4  fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel"
+      <!-- <div class="modal sizeModal border border-success border-4  fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel"
             tabindex="-1"> -->
-            <div class="modal-dialog  sizeModalDialog modal-dialog-centered">
-              <!-- <div class="modal-dialog modal-fullscreen sizeModalDialog modal-dialog-centered"> -->
-              <div class="modal-content" *ngIf="waitInfo">
-      
-                <div class="modal-header bg-light sticky-top">
-                  <h5 class="modal-title" id="exampleModalToggleLabel">
-                   <strong>  <button type="button" class="btn-close ms-3 me-5"
-                      data-bs-dismiss="modal" aria-label="Close"></button></strong> {{this.detailRecup.marque}}
-                    {{this.detailRecup.modele}}</h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
+      <div class="modal-dialog  sizeModalDialog modal-dialog-centered">
+        <!-- <div class="modal-dialog modal-fullscreen sizeModalDialog modal-dialog-centered"> -->
+        <div class="modal-content" *ngIf="waitInfo">
 
-                    <div class="modal-body bg-dark">
+          <div class="modal-header bg-light sticky-top">
+            <h5 class="modal-title" id="exampleModalToggleLabel">
+              <strong> <button type="button" class="btn-close ms-3 me-5" data-bs-dismiss="modal"
+                  aria-label="Close"></button></strong> {{this.detailRecup.marque}}
+              {{this.detailRecup.modele}}
+            </h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
 
-                        <div class="container-fluid">
-                            <!-- grande carte -->
-                            <div class="card mb-3">
-                                <div class="row g-0">
-                                    <div class="col-md-6 col-lg-7">
+          <div class="modal-body bg-dark">
 
-                                        <!-- carousel -->
-                                        <div id="carouselExampleIndicators" class="carousel slide"
-                                            data-bs-ride="carousel">
-                                            <div class="carousel-indicators bg-dark rounded-pill">
-                                                <button type="button" data-bs-target="#carouselExampleIndicators"
-                                                    data-bs-slide-to="0" class="active" aria-current="true"
-                                                    aria-label="Slide 1"></button>
-                                                <button type="button" data-bs-target="#carouselExampleIndicators"
-                                                    data-bs-slide-to="1" aria-label="Slide 2"></button>
-                                                <button type="button" data-bs-target="#carouselExampleIndicators"
-                                                    data-bs-slide-to="2" aria-label="Slide 3"></button>
-                                            </div>
-                                            <div class="carousel-inner"
-                                                style="height: 500px; object-fit: scale-down; border:solid 2px ">
-                                                <div class="carousel-item active" style="height: 500px;">
-                                                    <img src="{{this.detailRecup.image}}" class="d-block w-100"
-                                                        style="height: 500px; object-fit: scale-down; border:solid 2px "
-                                                        alt="...">
-                                                </div>
-                                                <div class="carousel-item" style="height: 500px;">
-                                                    <img src="{{this.detailRecup.image2}}" class="d-block w-100"
-                                                        style="height: 500px; object-fit: scale-down; border:solid 2px "
-                                                        alt="...">
-                                                </div>
-                                                <div class="carousel-item" style="height: 500px;">
-                                                    <img src="{{this.detailRecup.image3}}" class="d-block w-100"
-                                                        style="height: 500px; object-fit: scale-down; border:solid 2px "
-                                                        alt="...">
-                                                </div>
-                                            </div>
-                                            <button class="carousel-control-prev" type="button"
-                                                data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-                                                <span class="carousel-control-prev-icon rounded-circle bg-dark"
-                                                    aria-hidden="true"></span>
-                                                <span class="visually-hidden">Previous</span>
-                                            </button>
-                                            <button class="carousel-control-next " type="button"
-                                                data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-                                                <span class="carousel-control-next-icon rounded-circle bg-dark "
-                                                    aria-hidden="true"></span>
-                                                <span class="visually-hidden bg-dark text-black-50">Next</span>
-                                            </button>
-                                        </div>
-                                        <!-- fin carousel -->
-                                    </div>
+            <div class="container-fluid">
+              <!-- grande carte -->
+              <div class="card mb-3">
+                <div class="row g-0">
+                  <div class="col-md-6 col-lg-7">
 
-
-                                    <!-- card info left -->
-                                    <div class="col-md-5">
-                                        <div class="card-body">
-                                            <h5 class="card-title">Marque : {{this.detailRecup.marque}} </h5>
-                                            <h5 class="card-title">Modèle : {{this.detailRecup.modele}}</h5>
-                                            <p class="card-text"><u>A propos du véhicule</u> :
-                                                <br>{{this.detailRecup.description}}
-                                            </p>
-                                            <p>Etat neuf</p>
-                                            <div class="row">
-                                                <div class="col-6">
-                                                    <p>Autonomie : {{this.detailRecup.autonomie}}</p>
-                                                </div>
-                                                <div class="col-6">
-                                                    <p>Puissance : {{this.detailRecup.puissance}}</p>
-                                                </div>
-                                            </div>
-
-                                            <p class="card-text"><strong class="text-muted">Prix :
-                                                    <span
-                                                        style=" letter-spacing: 0.4em;">{{formatPrice(this.detailRecup.prix)}}</span>
-                                                    €</strong></p>
-                                        </div>
-                                    </div>
-                                    <!--   fin card info left -->
-                                </div>
-                            </div>
-                            <!-- FIN grande carte -->
-
+                    <!-- carousel -->
+                    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                      <div class="carousel-indicators bg-dark rounded-pill">
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
+                          class="active" aria-current="true" aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                          aria-label="Slide 2"></button>
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                          aria-label="Slide 3"></button>
+                      </div>
+                      <div class="carousel-inner" style="height: 500px; object-fit: scale-down; border:solid 2px ">
+                        <div class="carousel-item active" style="height: 500px;">
+                          <img src="{{this.detailRecup.image}}" class="d-block w-100"
+                            style="height: 500px; object-fit: scale-down; border:solid 2px " alt="...">
                         </div>
-                        <!--fluid -->
+                        <div class="carousel-item" style="height: 500px;">
+                          <img src="{{this.detailRecup.image2}}" class="d-block w-100"
+                            style="height: 500px; object-fit: scale-down; border:solid 2px " alt="...">
+                        </div>
+                        <div class="carousel-item" style="height: 500px;">
+                          <img src="{{this.detailRecup.image3}}" class="d-block w-100"
+                            style="height: 500px; object-fit: scale-down; border:solid 2px " alt="...">
+                        </div>
+                      </div>
+                      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+                        data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon rounded-circle bg-dark" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                      </button>
+                      <button class="carousel-control-next " type="button" data-bs-target="#carouselExampleIndicators"
+                        data-bs-slide="next">
+                        <span class="carousel-control-next-icon rounded-circle bg-dark " aria-hidden="true"></span>
+                        <span class="visually-hidden bg-dark text-black-50">Next</span>
+                      </button>
                     </div>
-                    <!--body -->
+                    <!-- fin carousel -->
+                  </div>
 
 
-                    <div class="modal-footer">
-                        <button class="btn btn-success" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal"
-                            (click)="takeCommand()">Passer une commande</button>
+                  <!-- card info left -->
+                  <div class="col-md-5">
+                    <div class="card-body">
+                      <h5 class="card-title">Marque : {{this.detailRecup.marque}} </h5>
+                      <h5 class="card-title">Modèle : {{this.detailRecup.modele}}</h5>
+                      <p class="card-text"><u>A propos du véhicule</u> :
+                        <br>{{this.detailRecup.description}}
+                      </p>
+                      <p>Etat neuf</p>
+                      <div class="row">
+                        <div class="col-6">
+                          <p>Autonomie : {{this.detailRecup.autonomie}}</p>
+                        </div>
+                        <div class="col-6">
+                          <p>Puissance : {{this.detailRecup.puissance}}</p>
+                        </div>
+                      </div>
+
+                      <p class="card-text"><strong class="text-muted">Prix :
+                          <span style=" letter-spacing: 0.4em;">{{formatPrice(this.detailRecup.prix)}}</span>
+                          €</strong></p>
                     </div>
+                  </div>
+                  <!--   fin card info left -->
                 </div>
+              </div>
+              <!-- FIN grande carte -->
+
             </div>
-        </div><!--    FIN Modal all info-->
+            <!--fluid -->
+          </div>
+          <!--body -->
 
 
-   <!-- modal info user -->
-   <div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2"
-   tabindex="-1">
-   <div class="modal-dialog modal-dialog-centered">
-     <div class="modal-content">
-       <div class="modal-header">
-         <h5 class="modal-title" id="exampleModalToggleLabel2">ACHAT du modèle
-           <strong>{{this.commandRecap.modele}}</strong> de la
-           marque <strong>{{this.commandRecap.marque}}</strong>
-         </h5>
-         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-       </div>
-       <div class="modal-body">
-         <!-- FORM addInfoUser -->  
-         <!-- TEST CONTROLE DES CHAMPS -->
-
-         <div *ngIf="this.commandRecap" class="container mt-5">
-               <!-- novalidate va permettre de prendre en compte les champs required -->
-           <form novalidate #f="ngForm" class="row  g-3 shadow-lg mb-4 p-2 bg-body rounded">
-
-             <p class="text-center"> Saisir VOS informations</p>
-
-             <div name="sex" class="col-12">
-               <label for="inputState" class="form-label">Civilité</label>
-               <select name="sex" class="form-select" ngModel required #sexVar="ngModel" [ngClass]="{'is-invalid' :sexVar.touched && !sexVar.valid}"  >
-
-                 <option>monsieur</option>
-                 <option>madame</option>
-
-               </select>
-
-               <div class="invalid-feedback">
-                 <span *ngIf="lastNameVar.errors?.['required']">
-                   Veuillez choisir une civilité
-                 </span>
-
-                 
-               </div>
-             </div>
-
-             <div class="col-12">
-               <label for="nom" class="form-label">NOM</label>
-               <input type="text" class="form-control" name="nom" ngModel required #lastNameVar="ngModel" minlength="3" [ngClass]="{'is-invalid' :lastNameVar.touched && !lastNameVar.valid}">
-
-                 <!-- retour erreur input NOM -->
-               <div class="invalid-feedback">
-                 <span *ngIf="lastNameVar.errors?.['required']">
-                   Entrez votre nom
-                 </span>
-
-                 <span *ngIf="lastNameVar.errors?.['minlength']">
-                   Entrez au minimum 3 caractères
-                 </span>
-               </div>
-               <!-- FIN retour erreur input NOM -->
-             </div>
-
-             <div class="col-12">
-               <label for="prenom" class="form-label">Prénom</label>
-               <input type="text" class="form-control" name="prenom" ngModel required #firstNameVar="ngModel" maxlength="8" minlength="2" [ngClass]="{'is-invalid' :firstNameVar.touched && !firstNameVar.valid}">
-
-               <!-- retour erreur input préNOM -->
-               <div class="invalid-feedback">
-                 <span *ngIf="firstNameVar.errors?.['required']">
-                   Entrez votre prénom
-                 </span>
-
-                 <span *ngIf="firstNameVar.errors?.['minlength']">
-                   Entrez au minimum 2 caractères
-                 </span>
-
-                 <span *ngIf="firstNameVar.errors?.['maxlength']">
-                   Entrez au maximum 8 caractères
-                 </span>
-               </div>
-               <!-- FIN retour erreur input préNOM -->
-             </div>
-             
+          <div class="modal-footer">
+            <button class="btn btn-success" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal"
+              (click)="takeCommand()">Passer une commande</button>
+          </div>
+        </div>
+      </div>
+    </div><!--    FIN Modal all info-->
 
 
-             <div class="col-12">
-               <label for="adresseMail" class="form-label">Adresse mail
-               </label>
-               <input type="mail" class="form-control" name="adresseMail" ngModel required email="true" email #emailVar="ngModel" [ngClass]="{'is-invalid' :emailVar.touched && !emailVar.valid}">
+    <!-- modal info user -->
+    <div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2"
+      tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalToggleLabel2">ACHAT du modèle
+              <strong>{{this.commandRecap.modele}}</strong> de la
+              marque <strong>{{this.commandRecap.marque}}</strong>
+            </h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <!-- FORM addInfoUser -->
+            <!-- TEST CONTROLE DES CHAMPS -->
 
-               <!-- retour erreur input EMAIL -->
-               <div class="invalid-feedback">
-                 <span *ngIf="emailVar.errors?.['required']">
-                   Taper adresse mail
-                 </span>
+            <div *ngIf="this.commandRecap" class="container mt-5">
+              <!-- novalidate va permettre de prendre en compte les champs required -->
+              <form novalidate #f="ngForm" class="row  g-3 shadow-lg mb-4 p-2 bg-body rounded">
 
-                 <span *ngIf="emailVar.errors?.['email']">
-                   Entrez mail valide
-                 </span>
+                <p class="text-center"> Saisir VOS informations</p>
 
-               </div>
-             <!-- FIN retour erreur input EMAIL -->
-             </div>
+                <div name="sex" class="col-12">
+                  <label for="inputState" class="form-label">Civilité</label>
+                  <select name="sex" class="form-select" ngModel required #sexVar="ngModel"
+                    [ngClass]="{'is-invalid' :sexVar.touched && !sexVar.valid}">
 
-             <div class="col-12">
-               <label for="age" class="form-label">Date de naissance</label>
-               <input type="date" class="form-control" placeholder="ex: 28/08/2022" name="age" ngModel required #ageVar="ngModel" [ngClass]="{'is-invalid' :ageVar.touched && !ageVar.valid}">
+                    <option>monsieur</option>
+                    <option>madame</option>
 
-               <!-- retour erreur input DateNaissance -->
-               <div class="invalid-feedback">
-                 <span *ngIf="ageVar.errors?.['required']">
-                   Entrer votre date de naissance
-                 </span>
+                  </select>
 
-               </div>
-             <!-- FIN retour erreur input DateNaissance -->
-             </div>
-
-             <div class="col-12">
-               <label for="adresse" class="form-label">Adresse</label>
-               <input type="text" class="form-control" name="adresse" ngModel required  #adresseVar="ngModel" maxlength="18" minlength="5" [ngClass]="{'is-invalid' :adresseVar.touched && !adresseVar.valid}">
-
-               <!-- retour erreur input adresse -->
-               <div class="invalid-feedback">
-                 <span *ngIf="adresseVar.errors?.['required']">
-                   Entrez votre adresse
-                 </span>
-
-                 <span *ngIf="adresseVar.errors?.['minlength']">
-                   Entrez au minimum 5 caractères
-                 </span>
-
-                 <span *ngIf="adresseVar.errors?.['maxlength']">
-                   Entrez au maximum 8 caractères
-                 </span>
-               </div>
-               <!-- FIN retour erreur input adresse -->
-
-               
-             </div>
-
-             <div class="col-12">
-               <label for="ville" class="form-label">Ville</label>
-               <input type="text" class="form-control" name="ville" ngModel required #villeVar="ngModel" maxlength="18" minlength="5" [ngClass]="{'is-invalid' :villeVar.touched && !villeVar.valid}">
-
-               <!-- retour erreur input ville -->
-               <div class="invalid-feedback">
-                 <span *ngIf="villeVar.errors?.['required']">
-                   Entrez votre ville
-                 </span>
-
-                 <span *ngIf="villeVar.errors?.['minlength']">
-                   Entrez au minimum 5 caractères
-                 </span>
-
-                 <span *ngIf="villeVar.errors?.['maxlength']">
-                   Entrez au maximum 18 caractères
-                 </span>
-               </div>
-               <!-- FIN retour erreur input ville -->
-             </div>
-             <div class="col-12">
-               <label for="codePostal" class="form-label">Code postal</label>
-               <input type="number" class="form-control" name="codePostal" ngModel required>
-             </div>
-
-             <div class="col-12 border border-dark text-center">
-               <label for="nbJour" class="form-label">Prix du véhicule</label>
-               <p><strong>{{formatPrice(this.commandRecap.prix)}} € </strong></p>
-             </div>
-
-             <div *ngIf="this.detailRecup " class="col-12 mt-5 d-flex justify-content-between">
-
-               <button (click)="validCommand(f.value)" class="btn btn-success" data-bs-target="#modalConfirmBuy"
-                 data-bs-toggle="modal">Valider mes informations </button>
-
-               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" aria-label="Close">
-                 Fermer</button>
-             </div>
-           </form>
-
-         </div>
-         <!-- fin form -->
+                  <div class="invalid-feedback">
+                    <span *ngIf="lastNameVar.errors?.['required']">
+                      Veuillez choisir une civilité
+                    </span>
 
 
-       </div>
-       <div class="modal-footer">
-         <button class="btn btn-dark" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Retour</button>
-       </div>
-     </div>
-   </div>
- </div>
- <!-- fin modal info user -->
+                  </div>
+                </div>
 
+                <div class="col-12">
+                  <label for="nom" class="form-label">NOM</label>
+                  <input type="text" class="form-control" name="nom" ngModel required #lastNameVar="ngModel"
+                    minlength="3" [ngClass]="{'is-invalid' :lastNameVar.touched && !lastNameVar.valid}">
+
+                  <!-- retour erreur input NOM -->
+                  <div class="invalid-feedback">
+                    <span *ngIf="lastNameVar.errors?.['required']">
+                      Entrez votre nom
+                    </span>
+
+                    <span *ngIf="lastNameVar.errors?.['minlength']">
+                      Entrez au minimum 3 caractères
+                    </span>
+                  </div>
+                  <!-- FIN retour erreur input NOM -->
+                </div>
+
+                <div class="col-12">
+                  <label for="prenom" class="form-label">Prénom</label>
+                  <input type="text" class="form-control" name="prenom" ngModel required #firstNameVar="ngModel"
+                    maxlength="8" minlength="2" [ngClass]="{'is-invalid' :firstNameVar.touched && !firstNameVar.valid}">
+
+                  <!-- retour erreur input préNOM -->
+                  <div class="invalid-feedback">
+                    <span *ngIf="firstNameVar.errors?.['required']">
+                      Entrez votre prénom
+                    </span>
+
+                    <span *ngIf="firstNameVar.errors?.['minlength']">
+                      Entrez au minimum 2 caractères
+                    </span>
+
+                    <span *ngIf="firstNameVar.errors?.['maxlength']">
+                      Entrez au maximum 8 caractères
+                    </span>
+                  </div>
+                  <!-- FIN retour erreur input préNOM -->
+                </div>
+
+
+
+                <div class="col-12">
+                  <label for="adresseMail" class="form-label">Adresse mail
+                  </label>
+                  <input type="mail" class="form-control" name="adresseMail" ngModel required email="true" email
+                    #emailVar="ngModel" [ngClass]="{'is-invalid' :emailVar.touched && !emailVar.valid}">
+
+                  <!-- retour erreur input EMAIL -->
+                  <div class="invalid-feedback">
+                    <span *ngIf="emailVar.errors?.['required']">
+                      Taper adresse mail
+                    </span>
+
+                    <span *ngIf="emailVar.errors?.['email']">
+                      Entrez mail valide
+                    </span>
+
+                  </div>
+                  <!-- FIN retour erreur input EMAIL -->
+                </div>
+
+                <div class="col-12">
+                  <label for="age" class="form-label">Date de naissance</label>
+                  <input type="date" class="form-control" placeholder="ex: 28/08/2022" name="age" ngModel required
+                    #ageVar="ngModel" [ngClass]="{'is-invalid' :ageVar.touched && !ageVar.valid}">
+
+                  <!-- retour erreur input DateNaissance -->
+                  <div class="invalid-feedback">
+                    <span *ngIf="ageVar.errors?.['required']">
+                      Entrer votre date de naissance
+                    </span>
+
+                  </div>
+                  <!-- FIN retour erreur input DateNaissance -->
+                </div>
+
+                <div class="col-12">
+                  <label for="adresse" class="form-label">Adresse</label>
+                  <input type="text" class="form-control" name="adresse" ngModel required #adresseVar="ngModel"
+                    maxlength="18" minlength="5" [ngClass]="{'is-invalid' :adresseVar.touched && !adresseVar.valid}">
+
+                  <!-- retour erreur input adresse -->
+                  <div class="invalid-feedback">
+                    <span *ngIf="adresseVar.errors?.['required']">
+                      Entrez votre adresse
+                    </span>
+
+                    <span *ngIf="adresseVar.errors?.['minlength']">
+                      Entrez au minimum 5 caractères
+                    </span>
+
+                    <span *ngIf="adresseVar.errors?.['maxlength']">
+                      Entrez au maximum 8 caractères
+                    </span>
+                  </div>
+                  <!-- FIN retour erreur input adresse -->
+
+
+                </div>
+
+                <div class="col-12">
+                  <label for="ville" class="form-label">Ville</label>
+                  <input type="text" class="form-control" name="ville" ngModel required #villeVar="ngModel"
+                    maxlength="18" minlength="5" [ngClass]="{'is-invalid' :villeVar.touched && !villeVar.valid}">
+
+                  <!-- retour erreur input ville -->
+                  <div class="invalid-feedback">
+                    <span *ngIf="villeVar.errors?.['required']">
+                      Entrez votre ville
+                    </span>
+
+                    <span *ngIf="villeVar.errors?.['minlength']">
+                      Entrez au minimum 5 caractères
+                    </span>
+
+                    <span *ngIf="villeVar.errors?.['maxlength']">
+                      Entrez au maximum 18 caractères
+                    </span>
+                  </div>
+                  <!-- FIN retour erreur input ville -->
+                </div>
+                <div class="col-12">
+                  <label for="codePostal" class="form-label">Code postal</label>
+                  <input type="number" class="form-control" name="codePostal" ngModel required>
+                </div>
+
+                <div class="col-12 border border-dark text-center">
+                  <label for="nbJour" class="form-label">Prix du véhicule</label>
+                  <p><strong>{{formatPrice(this.commandRecap.prix)}} € </strong></p>
+                </div>
+
+                <div *ngIf="this.detailRecup " class="col-12 mt-5 d-flex justify-content-between">
+
+                  <button (click)="validCommand(f.value)" class="btn btn-success" data-bs-target="#modalConfirmBuy"
+                    data-bs-toggle="modal">Valider mes informations </button>
+
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" aria-label="Close">
+                    Fermer</button>
+                </div>
+              </form>
+
+            </div>
+            <!-- fin form -->
+
+
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-dark" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Retour</button>
+          </div>
+        </div>
+      </div>
     </div>
+    <!-- fin modal info user -->
+
+  </div>
 
 
 
@@ -422,16 +425,17 @@
       <div class="modal-content" *ngIf="!this.msgError">
 
         <div class="modal-header">
-          <h5 class="modal-title text-danger" style="text-transform: uppercase" id="modalConfirmBuyLabel">UN ou plusieurs champs n'ont pas étaient correctement renseignés<br>
-            
+          <h5 class="modal-title text-danger" style="text-transform: uppercase" id="modalConfirmBuyLabel">UN ou
+            plusieurs champs n'ont pas étaient correctement renseignés<br>
+
           </h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
 
         <div class="modal-body">
-          <p><strong> Veuillez vérifier les champs du formulaire</strong> 
+          <p><strong> Veuillez vérifier les champs du formulaire</strong>
           </p>
-         
+
         </div>
 
         <div class="modal-footer">
