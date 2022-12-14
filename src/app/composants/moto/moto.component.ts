@@ -12,6 +12,11 @@ export class MotoComponent implements OnInit {
 
 //http://localhost:7878/byCat?categorie=trottinette&pricemin=300&pricemax=50000
 
+//skeletonloader
+loader = true;
+totalCount = 10;
+
+//fin skeletonloader
 
   Motos: any;
   detailRecup: any
@@ -54,6 +59,7 @@ export class MotoComponent implements OnInit {
 
   ngOnInit(): void {
     this.getMotos();
+    
   }
 
   formatPrice(num: any){
@@ -67,6 +73,13 @@ export class MotoComponent implements OnInit {
     this.productsservice.getbyCategoVehicule(this.motoCategory).subscribe(data => {
       this.Motos = data
       console.log(this.Motos);
+
+      if ( this.Motos.length >= 3 ){
+        this.loader = false
+
+      }
+      
+
     })
   }
 
