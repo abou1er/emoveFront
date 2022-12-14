@@ -10,6 +10,12 @@ import { UsersService } from 'src/app/services/users.service';
 })
 export class TrottinetteComponent implements OnInit {
 
+//skeletonloader
+loader = true;
+totalCount = 10;
+
+//fin skeletonloader
+
   MotCle = ""
 
   trottinette: any;
@@ -50,6 +56,10 @@ export class TrottinetteComponent implements OnInit {
 
   ngOnInit(): void {
     this.getTrottine();
+
+    // skeleton
+    this.loader = false;
+    //fin skeleton
   }
 
   formatPrice(num: any){

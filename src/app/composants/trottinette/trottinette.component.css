@@ -1,4 +1,10 @@
 
+:host >>> ngx-skeleton-loader .loader{
+  height: 30px;
+  width: 300px;
+  background-color: orange;
+}
+
 .sizeModalDialog{
     max-width: 100%
   }

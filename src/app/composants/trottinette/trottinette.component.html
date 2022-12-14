@@ -64,14 +64,15 @@
         </div>
         
 
-        <div class="border-3 mt-2 border-dark" style="height: 500px;">
-          <img src="https://timebusinessnews.com/wp-content/uploads/Necessity-of-website-maintenance.jpg" class="d-block w-100"
-            style="height: 500px; object-fit: scale-down; border:solid 2px " alt="...">
-        </div>
+       
     </div>
 
 
-
+    <!-- //skeletonloader -->
+    <div class="item border-3 border-dark">
+      <ngx-skeleton-loader count="5" appearance="line" *ngIf="!loader"></ngx-skeleton-loader>
+    </div>
+<!-- //fin skeletonloader -->
 
     <div class="container-fluid">
 
