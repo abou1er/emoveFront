@@ -32,7 +32,7 @@ export class ProductsComponent implements OnInit {
 
   // skeleton-loader
   loader = true;
-  totalCount = 1;  //produits par page dans pagination
+  totalCount = 3;  //produits par page dans pagination
 
 
 
@@ -82,7 +82,7 @@ export class ProductsComponent implements OnInit {
     //   this.loader = false;
     // }, 5000);
 
-    this.loader = false;
+ 
 
   }
 
@@ -113,6 +113,11 @@ export class ProductsComponent implements OnInit {
       this.allProducts = data
 
       console.log("this.allProducts.length", this.allProducts.length);
+
+      if ( this.allProducts.length >= 3 ){
+        this.loader = false
+
+      }
     })
   }
 

@@ -89,57 +89,29 @@
 
 
 
+    <!-- //skeletonloader -->
+    <div class="skeletonloaderr " *ngIf="loader">
+      <div class=" ms-5 item border-3 border-dark">
+        <ngx-skeleton-loader count="3" appearance="line" *ngIf="loader" >
 
 
+          <!-- <ngx-skeleton-loader count="3" appearance="line" *ngIf="loader" 
+            [theme]="{
+    'background-color': '#D3D3D3',
+     height: '200px',
+     width: '95%',
+    'border-radius': '12px'
+  }"> -->
 
+        </ngx-skeleton-loader>
+      </div>
+    </div>
+    <!-- //fin skeletonloader -->
+
+  
 
   <!----------------------------------------- PARTIE PRINCIPALE -------------------------------------------->
   <div class="container">
-
-    <div class=" row">
-      <div class="col-4"> <!-- test skeleton -->
-  <ngx-skeleton-loader count="{{totalCount}}" appearance="circle" *ngIf="loader" animation="progress" [theme]="{
-    'background-color': '#D3D3D3',
-     height: '200px',
-     width: '95%',
-    'border-radius': '12px'
-  }">
-  
-  </ngx-skeleton-loader>
-  <!-- fin test skeleton --></div>
-
-  
-      <div class="col-4"> <!-- test skeleton -->
-  <ngx-skeleton-loader count="{{totalCount}}" appearance="circle" *ngIf="loader" animation="progress" [theme]="{
-    'background-color': '#D3D3D3',
-     height: '200px',
-     width: '95%',
-    'border-radius': '12px'
-  }">
-  
-  </ngx-skeleton-loader>
-  <!-- fin test skeleton --></div>
-      <div class="col-4"> <!-- test skeleton -->
-  <ngx-skeleton-loader count="{{totalCount}}" appearance="circle" *ngIf="loader" animation="progress" [theme]="{
-    'background-color': '#D3D3D3',
-     height: '200px',
-     width: '95%',
-    'border-radius':  '12px'
-  }">
-  
-  </ngx-skeleton-loader>
-  <!-- fin test skeleton --></div>
- 
-</div>
-
-
-
-
-  
-
-
-
-
 
     <!-- BOUCLE all véhicules -->
     <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 g-4">
