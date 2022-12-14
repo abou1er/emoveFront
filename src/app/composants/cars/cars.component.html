@@ -39,6 +39,14 @@
 
 
 
+    <!-- //skeletonloader -->
+    <div class="skeletonloaderr " *ngIf="!loader">
+      <div class=" ms-5 item border-3 border-dark">
+        <ngx-skeleton-loader count="3" appearance="line" *ngIf="!loader"></ngx-skeleton-loader>
+      </div>
+    </div>
+    <!-- //fin skeletonloader -->
+
   <!----------------------------------------- PARTIE PRINCIPALE -------------------------------------------->
   <div class="container">
 

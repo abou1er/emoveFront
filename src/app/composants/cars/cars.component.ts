@@ -10,6 +10,13 @@ import { UsersService } from 'src/app/services/users.service';
 })
 export class CarsComponent implements OnInit {
 
+//skeletonloader
+loader = true;
+totalCount = 10;
+
+//fin skeletonloader
+
+
   Cars: any;
   detailRecup: any
   waitInfo: boolean = false
@@ -64,6 +71,11 @@ export class CarsComponent implements OnInit {
     this.productsservice.getbyCategoVehicule(this.carsCategory).subscribe(data => {
       this.Cars = data
       console.log(this.Cars);
+
+      if ( this.Cars.length >= 3 ){
+        this.loader = false
+
+      }
 
     })
   }
